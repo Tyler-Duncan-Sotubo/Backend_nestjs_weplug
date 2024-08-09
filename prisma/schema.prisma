@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Audio {
+  id               String   @id @default(cuid())
+  userId           String
+  title            String
+  artist           String
+  releaseDate      DateTime
+  primaryGenre     String
+  secondaryGenre   String
+  language         String
+  label            String
+  copyrightHolder  String
+  copyrightYear    String
+  productionHolder String
+  productionYear   String
+  releaseCover     String
+  releaseAudio     String?
+  releaseAudioLink String?
+  lyrics           String?
+  releaseType      String
+  status           String
+  UPC              String   @default("")
+  ISRC             String   @default("")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  smartLink        String   @default("")
+}
