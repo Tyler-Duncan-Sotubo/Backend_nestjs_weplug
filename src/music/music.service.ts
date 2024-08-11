@@ -52,6 +52,18 @@ export class MusicService {
       },
     });
 
+    await this.prismaService.track.create({
+      data: {
+        title: dto.title,
+        audioId: audioRelease.id,
+        trackNumber: 1,
+        audioLink: audioRelease.releaseAudio,
+        productionCredit: dto.productionHolder,
+        lyrics: dto.lyrics,
+        ISRC: audioRelease.ISRC,
+      },
+    });
+
     if (audioRelease) {
       // send email
       this.musicReleaseService.sendMusicReleaseEmail(user.email, user.name);

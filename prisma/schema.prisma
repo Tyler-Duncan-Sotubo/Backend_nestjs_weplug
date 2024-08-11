@@ -32,4 +32,18 @@ model Audio {
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
   smartLink        String   @default("")
+  Track            Track[]
+}
+
+model Track {
+  id               String  @id @default(cuid())
+  audioId          String
+  title            String
+  lyrics           String?
+  productionCredit String?
+  ISRC             String?
+  trackNumber      Int // Track number in the album
+  audioLink        String // URL or path to track audio file
+
+  Audio Audio @relation(fields: [audioId], references: [id])
 }
