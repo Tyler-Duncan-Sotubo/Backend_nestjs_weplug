@@ -52,12 +52,20 @@ export class MusicService {
       },
     });
 
+    let audioLink = '';
+
+    if (audioRelease.releaseAudio) {
+      audioLink = audioRelease.releaseAudio;
+    } else {
+      audioLink = audioRelease.releaseAudioLink;
+    }
+
     await this.prismaService.track.create({
       data: {
         title: dto.title,
         audioId: audioRelease.id,
         trackNumber: 1,
-        audioLink: audioRelease.releaseAudio,
+        audioLink,
         productionCredit: dto.productionHolder,
         lyrics: dto.lyrics,
         ISRC: audioRelease.ISRC,
