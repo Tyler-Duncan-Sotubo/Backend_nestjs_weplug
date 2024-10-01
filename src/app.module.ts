@@ -4,6 +4,7 @@ import { AwsService } from './aws/aws.service';
 import { MailModule } from './mail/mail.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
+import { StreamsModule } from './streams/streams.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ConfigModule } from '@nestjs/config';
     MusicModule,
     MailModule,
     PrismaModule,
+    StreamsModule,
   ],
   providers: [AwsService],
 })

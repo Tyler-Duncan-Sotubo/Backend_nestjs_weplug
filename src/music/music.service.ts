@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { AudioReleaseDto } from './dto';
+import { AudioReleaseDto, UserIdDto, AudioByIdDto } from './dto';
 import { User } from './user.type';
 import { AwsService } from '../aws/aws.service';
 import { PrismaService } from '../prisma/prisma.service';
@@ -44,7 +44,7 @@ export class MusicService {
       data: {
         ...dto,
         userId: user.id,
-        releaseDate: new Date(dto.releaseDate),
+        releaseDate: dto.releaseDate,
         releaseCover: image,
         releaseAudio: audio,
         status: 'pending',
@@ -79,5 +79,66 @@ export class MusicService {
       this.notificationService.sendMusicReleaseEmail();
     }
     return 'Audio Release Created';
+  }
+
+  async getAudioReleasesByUserId(dto: UserIdDto) {
+    const audioReleases = await this.prismaService.audio.findMany({
+      where: {
+        userId: dto.userId,
+      },
+      select: {
+        id: true,
+        title: true,
+        artist: true,
+        releaseCover: true,
+        status: true,
+        UPC: true,
+        smartLink: true,
+        releaseDate: true,
+      },
+    });
+
+    if (audioReleases.length === 0) {
+      return [];
+    }
+
+    return audioReleases;
+  }
+
+  async getAudioReleaseById(dto: AudioByIdDto) {
+    const { audioId } = dto;
+    const audio = await this.prismaService.audio.findUnique({
+      where: {
+        id: audioId,
+      },
+      include: {
+        Track: true,
+      },
+    });
+
+    if (!audio) {
+      return null;
+    }
+
+    return audio;
+  }
+
+  async getAudioById(dto: AudioByIdDto) {
+    const { audioId } = dto;
+    const audio = await this.prismaService.audio.findUnique({
+      where: {
+        id: audioId,
+      },
+      select: {
+        releaseCover: true,
+        title: true,
+      },
+    });
+
+    if (!audio) {
+      return null;
+    }
+
+    return audio;
   }
 }
