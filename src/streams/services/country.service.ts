@@ -16,7 +16,7 @@ export class CountryService {
       const streamsData = this.prepareStreamsData(createStreamDto, countryMap);
 
       await this.insertStreamsData(streamsData);
-      return 'All streams inserted successfully!';
+      return 'All country streams inserted successfully!';
     } catch (error) {
       this.handleError(error);
     }

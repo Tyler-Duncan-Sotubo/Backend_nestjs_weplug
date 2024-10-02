@@ -35,6 +35,9 @@ model Audio {
   Track            Track[]
   Streams          Streams[]
   StreamByCountry  StreamByCountry[]
+  Store            Store[]
+  MonthlyReport    MonthlyReport[]
+  CountryEarnings  CountryEarnings[]
 }
 
 model Track {
@@ -66,6 +69,8 @@ model Streams {
   audioId String
 
   @@unique([dspId, date, audioId]) // Unique constraint to avoid duplicate uploads
+  // index
+  @@index([audioId], name: "unique_streams")
 }
 
 model Country {
@@ -83,4 +88,53 @@ model StreamByCountry {
   date      DateTime
   audioId   String
   audio     Audio    @relation(fields: [audioId], references: [id])
+
+  // index
+  @@index([audioId], name: "unique_stream_by_country")
+}
+
+// This schema is for Prisma ORM and should be placed in your `schema.prisma` file.
+
+model Store {
+  id             String @id @default(uuid())
+  name           String
+  trackDownloads Int
+  streams        Int
+  totalSales     Int
+  earnings       Float
+  audioId        String
+  audio          Audio  @relation(fields: [audioId], references: [id])
+
+  // index
+  @@index([audioId], name: "unique_store")
+}
+
+model CountryEarnings {
+  id             String @id @default(uuid())
+  name           String
+  trackDownloads Int
+  streams        Int
+  totalSales     Int
+  earnings       Float
+  audioId        String
+  audio          Audio  @relation(fields: [audioId], references: [id])
+
+  // index 
+  @@index([audioId], name: "unique_country_earnings")
+}
+
+model MonthlyReport {
+  id             String @id @default(uuid())
+  month          Int
+  year           Int
+  trackDownloads Int
+  streams        Int
+  totalSales     Int
+  earnings       Float
+  date           String
+  audioId        String
+  audio          Audio  @relation(fields: [audioId], references: [id])
+
+  // Ensure unique reports for each month/year/store/country combo
+  @@index([audioId], name: "unique_monthly_report")
 }

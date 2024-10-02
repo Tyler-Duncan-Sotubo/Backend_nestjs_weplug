@@ -21,7 +21,7 @@ export class StreamsService {
       // Bulk insert streams
       await this.insertStreamsData(streamsData);
 
-      console.log('All streams inserted successfully!');
+      return 'All streams inserted successfully!';
     } catch (error) {
       this.handleError(error);
     }
@@ -41,7 +41,6 @@ export class StreamsService {
     const { startDate, endDate } = this.calculateDateRange(timeRangeDto);
 
     const audioIds = await this.fetchUserAudioIds(userId);
-
     if (audioIds.length === 0) return [];
 
     const streams = await this.fetchStreamsForAudioIds(
@@ -49,7 +48,6 @@ export class StreamsService {
       startDate,
       endDate,
     );
-
     return this.groupAndFormatStreamsByDsp(streams);
   }
 
@@ -143,6 +141,8 @@ export class StreamsService {
         startDate.setDate(today.getDate() - 33);
         break;
       case 'all':
+        startDate.setDate(today.getDate() - 365);
+        break;
       default:
         startDate.setDate(today.getDate() - 365);
         break;
