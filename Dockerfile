@@ -28,5 +28,7 @@ RUN npm install --prod
 
 COPY --from=development /usr/src/app/dist ./dist
 
+RUN npx prisma generate
+
 CMD ["node", "dist/main.js"]
 
