@@ -97,8 +97,6 @@ export class CountryReportService {
     const audioIds = audios.map((audio) => audio.id);
     if (audioIds.length === 0) return [];
 
-    console.log('audioIds', audioIds);
-
     const countryReports =
       await this.getCountryEarningsWithCountryIds(audioIds);
 
