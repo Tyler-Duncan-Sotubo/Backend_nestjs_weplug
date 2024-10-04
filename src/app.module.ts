@@ -8,6 +8,8 @@ import { StreamsModule } from './streams/streams.module';
 import { MonthlySalesModule } from './report/monthly-sales/monthly-sales.module';
 import { StoresReportModule } from './report/stores-report/stores-report.module';
 import { CountryReportModule } from './report/country-report/country-report.module';
+import { DocumentsModule } from './payout/documents/documents.module';
+import { PaymentModule } from './payout/payment/payment.module';
 
 @Module({
   imports: [
@@ -21,6 +23,8 @@ import { CountryReportModule } from './report/country-report/country-report.modu
     MonthlySalesModule,
     StoresReportModule,
     CountryReportModule,
+    DocumentsModule,
+    PaymentModule,
   ],
   providers: [AwsService],
 })
