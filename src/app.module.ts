@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { MusicModule } from './music/music.module';
 import { AwsService } from './aws/aws.service';
 import { MailModule } from './mail/mail.module';
-import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { StreamsModule } from './streams/streams.module';
 import { MonthlySalesModule } from './report/monthly-sales/monthly-sales.module';
@@ -19,7 +18,6 @@ import { DatabaseModule } from './database/database.module';
     }),
     MusicModule,
     MailModule,
-    PrismaModule,
     StreamsModule,
     MonthlySalesModule,
     StoresReportModule,
