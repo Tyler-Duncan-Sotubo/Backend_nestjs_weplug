@@ -50,8 +50,7 @@ export class IdCheckService {
     // check if document status is in cache
     const documentStatus = await this.cacheService.get(cacheKey);
     if (documentStatus) {
-      const status = JSON.parse(documentStatus);
-      return [status];
+      JSON.parse(documentStatus);
     }
 
     const document = await this.prisma.document.findFirst({
@@ -59,13 +58,13 @@ export class IdCheckService {
         userId,
       },
       select: {
-        isVerified: true,
+        id: true,
       },
     });
 
     // store document status in cache
     await this.cacheService.set(cacheKey, JSON.stringify(document));
 
-    return [document];
+    return document;
   }
 }
