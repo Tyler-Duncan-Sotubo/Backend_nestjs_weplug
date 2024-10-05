@@ -10,6 +10,7 @@ import { StoresReportModule } from './report/stores-report/stores-report.module'
 import { CountryReportModule } from './report/country-report/country-report.module';
 import { DocumentsModule } from './payout/documents/documents.module';
 import { PaymentModule } from './payout/payment/payment.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { PaymentModule } from './payout/payment/payment.module';
     CountryReportModule,
     DocumentsModule,
     PaymentModule,
+    DatabaseModule,
   ],
   providers: [AwsService],
 })

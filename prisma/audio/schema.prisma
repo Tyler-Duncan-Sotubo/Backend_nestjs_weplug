@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "../../node_modules/@prisma/audio/client"
 }
 
 datasource db {
@@ -137,22 +138,4 @@ model MonthlyReport {
 
   // Ensure unique reports for each month/year/store/country combo
   @@index([audioId], name: "unique_monthly_report")
-}
-
-model Document {
-  id         String   @id @default(cuid())
-  userId     String
-  fileUrl    String
-  isVerified Boolean  @default(false)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-}
-
-model Payout {
-  id        String   @id @default(cuid())
-  userId    String
-  amount    Float
-  status    String   @default("pending")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }

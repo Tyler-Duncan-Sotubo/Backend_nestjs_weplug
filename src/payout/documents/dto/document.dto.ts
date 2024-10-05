@@ -11,5 +11,9 @@ export class DocumentDTO {
 
   @IsString()
   @IsNotEmpty()
+  documentType: string;
+
+  @IsString()
+  @IsNotEmpty()
   image: string;
 }

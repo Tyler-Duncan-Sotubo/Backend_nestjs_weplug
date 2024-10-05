@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { AudioReleaseDto, UserIdDto, AudioByIdDto } from './dto';
 import { User } from './user.type';
 import { AwsService } from '../aws/aws.service';
-import { PrismaService } from '../prisma/prisma.service';
+import { AudioPrismaService } from 'src/database/audio-prisma.service';
 import { MusicReleaseService } from '../mail/musicRelease.service';
 import { NotificationService } from '../mail/notification.service';
 
@@ -10,7 +10,7 @@ import { NotificationService } from '../mail/notification.service';
 export class MusicService {
   constructor(
     private awsService: AwsService,
-    private prismaService: PrismaService,
+    private prisma: AudioPrismaService,
     private musicReleaseService: MusicReleaseService,
     private notificationService: NotificationService,
   ) {}
@@ -40,7 +40,7 @@ export class MusicService {
     delete dto.audioFileName;
     delete dto.user;
 
-    const audioRelease = await this.prismaService.audio.create({
+    const audioRelease = await this.prisma.audio.create({
       data: {
         ...dto,
         userId: user.id,
@@ -60,7 +60,7 @@ export class MusicService {
       audioLink = audioRelease.releaseAudioLink;
     }
 
-    await this.prismaService.track.create({
+    await this.prisma.track.create({
       data: {
         title: dto.title,
         audioId: audioRelease.id,
@@ -82,7 +82,7 @@ export class MusicService {
   }
 
   async getAudioReleasesByUserId(dto: UserIdDto) {
-    const audioReleases = await this.prismaService.audio.findMany({
+    const audioReleases = await this.prisma.audio.findMany({
       where: {
         userId: dto.userId,
       },
@@ -107,7 +107,7 @@ export class MusicService {
 
   async getAudioReleaseById(dto: AudioByIdDto) {
     const { audioId } = dto;
-    const audio = await this.prismaService.audio.findUnique({
+    const audio = await this.prisma.audio.findUnique({
       where: {
         id: audioId,
       },
@@ -125,7 +125,7 @@ export class MusicService {
 
   async getAudioById(dto: AudioByIdDto) {
     const { audioId } = dto;
-    const audio = await this.prismaService.audio.findUnique({
+    const audio = await this.prisma.audio.findUnique({
       where: {
         id: audioId,
       },

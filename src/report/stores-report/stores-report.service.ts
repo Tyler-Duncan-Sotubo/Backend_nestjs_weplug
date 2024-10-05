@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { StoresResponseDTO } from './dto/store-report.dto';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { AudioPrismaService } from 'src/database/audio-prisma.service';
 import { ReportType } from './types/report.type';
 import { Store } from '@prisma/client';
 
 @Injectable()
 export class StoresReportService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: AudioPrismaService) {}
   // Method to find an existing report based on 'name'
   async findExistingReport(audioId: string, name: string) {
     return await this.prisma.store.findFirst({

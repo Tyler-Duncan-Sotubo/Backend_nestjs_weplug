@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { AudioPrismaService } from 'src/database/audio-prisma.service';
 import { MonthlyReportsResponseDTO } from './dto/monthly-report.dto';
 
 type AggregatedData = {
@@ -14,7 +14,7 @@ type AggregatedData = {
 
 @Injectable()
 export class MonthlySalesService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: AudioPrismaService) {}
 
   // Function to find an existing report by audioId and date
   private async findExistingReport(audioId: string, date: string) {
