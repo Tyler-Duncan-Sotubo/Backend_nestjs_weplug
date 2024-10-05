@@ -17,10 +17,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prisma:audio:dbpush": "npx prisma db push --schema prisma/audio/schema.prisma",
-    "prisma:payment:dbpush": "npx prisma db push --schema prisma/payment/schema.prisma",
-    "prisma:generate:db_clients": "prisma generate --schema prisma/audio/schema.prisma && prisma generate --schema prisma/payment/schema.prisma"
+    "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.627.0",

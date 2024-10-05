@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaClient as PaymentPrismaClient } from '@prisma/payment/client';
+import { PrismaClient } from '@prisma/client';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
-export class PaymentPrismaService extends PaymentPrismaClient {
+export class PrismaService extends PrismaClient {
   constructor(config: ConfigService) {
     super({
       datasources: {
         db: {
-          url: config.get('DATABASE_URL_PAYMENT'),
+          url: config.get('DATABASE_URL'),
         },
       },
     });

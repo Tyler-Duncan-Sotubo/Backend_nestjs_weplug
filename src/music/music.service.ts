@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { AudioReleaseDto, UserIdDto, AudioByIdDto } from './dto';
 import { User } from './user.type';
 import { AwsService } from '../aws/aws.service';
-import { AudioPrismaService } from 'src/database/audio-prisma.service';
+import { PrismaService } from 'src/database/prisma.service';
 import { MusicReleaseService } from '../mail/musicRelease.service';
 import { NotificationService } from '../mail/notification.service';
 
@@ -10,7 +10,7 @@ import { NotificationService } from '../mail/notification.service';
 export class MusicService {
   constructor(
     private awsService: AwsService,
-    private prisma: AudioPrismaService,
+    private prisma: PrismaService,
     private musicReleaseService: MusicReleaseService,
     private notificationService: NotificationService,
   ) {}

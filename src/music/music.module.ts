@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { MusicController } from './music.controller';
 import { MusicService } from './music.service';
 import { AwsService } from 'src/aws/aws.service';
-import { AudioPrismaService } from 'src/database/audio-prisma.service';
+import { PrismaService } from 'src/database/prisma.service';
 
 @Module({
   controllers: [MusicController],
-  providers: [MusicService, AwsService, AudioPrismaService],
+  providers: [MusicService, AwsService, PrismaService],
 })
 export class MusicModule {}

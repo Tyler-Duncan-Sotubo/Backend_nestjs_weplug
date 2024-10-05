@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PaymentPrismaService } from 'src/database/payment-prisma.service';
+import { PrismaService } from 'src/database/prisma.service';
 import { DocumentDTO } from './dto/document.dto';
 import { AwsService } from 'src/aws/aws.service';
 import { IdentityService } from 'src/mail/identity.service';
@@ -12,7 +12,7 @@ interface User {
 @Injectable()
 export class DocumentsService {
   constructor(
-    private prisma: PaymentPrismaService,
+    private prisma: PrismaService,
     private awsService: AwsService,
     private notificationService: IdentityService,
   ) {}

@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { AudioPrismaService } from 'src/database/audio-prisma.service';
+import { PrismaService } from 'src/database/prisma.service';
 import { CreateStreamsDTO } from '../dto/create-stream.dto';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 @Injectable()
 export class CountryService {
-  constructor(private readonly prisma: AudioPrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   async create(createStreamDto: CreateStreamsDTO) {
     try {

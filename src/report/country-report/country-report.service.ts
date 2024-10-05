@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { CountriesResponseDTO } from './dto/country-report.dto';
 import { CountryEarnings } from '@prisma/client';
 import { CountryReport } from './types/report-country-types';
-import { AudioPrismaService } from 'src/database/audio-prisma.service';
+import { PrismaService } from 'src/database/prisma.service';
 
 @Injectable()
 export class CountryReportService {
-  constructor(private readonly prisma: AudioPrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   async findExistingReport(audioId: string, name: string) {
     return await this.prisma.countryEarnings.findFirst({

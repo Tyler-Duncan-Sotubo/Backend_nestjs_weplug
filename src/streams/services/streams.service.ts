@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateStreamsDTO } from '../dto/create-stream.dto';
-import { AudioPrismaService } from 'src/database/audio-prisma.service';
+import { PrismaService } from 'src/database/prisma.service';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { TimeRangeDTO } from '../dto/time-range.dto';
 
 @Injectable()
 export class StreamsService {
-  constructor(private readonly prisma: AudioPrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   async create(CreateStreamDTO: CreateStreamsDTO) {
     try {
