@@ -3,10 +3,14 @@ import { CountriesResponseDTO } from './dto/country-report.dto';
 import { CountryEarnings } from '@prisma/client';
 import { CountryReport } from './types/report-country-types';
 import { PrismaService } from 'src/database/prisma.service';
+import { CacheService } from 'src/cache/cache.service';
 
 @Injectable()
 export class CountryReportService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly cacheService: CacheService,
+  ) {}
 
   async findExistingReport(audioId: string, name: string) {
     return await this.prisma.countryEarnings.findFirst({
@@ -92,6 +96,15 @@ export class CountryReportService {
 
   // Method to fetch country reports for a user
   async fetchCountryReports(userId: string) {
+    // Cache Key for country reports
+    const cacheKey = `country-report-${userId}`;
+
+    // fetch reports from cache
+    const cachedReports = await this.cacheService.get(cacheKey);
+    if (cachedReports) {
+      return JSON.parse(cachedReports);
+    }
+
     // Fetch audio IDs for the user
     const audios = await this.fetchUserAudios(userId);
     const audioIds = audios.map((audio) => audio.id);
@@ -101,6 +114,12 @@ export class CountryReportService {
       await this.getCountryEarningsWithCountryIds(audioIds);
 
     const aggregateCountryReports = this.aggregateData(countryReports);
+
+    // Cache the fetched data
+    await this.cacheService.set(
+      cacheKey,
+      JSON.stringify(aggregateCountryReports),
+    );
 
     return aggregateCountryReports;
   }

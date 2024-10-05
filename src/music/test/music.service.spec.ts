@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MusicService } from './../music.service';
-import { AwsService } from '../../aws/aws.service';
+import { AwsService } from '../../libs/aws/aws.service';
 import { PrismaService } from '../../prisma/prisma.service';
-import { MusicReleaseService } from '../../mail/musicRelease.service';
-import { NotificationService } from '../../mail/notification.service';
+import { MusicReleaseService } from '../../libs/mail/musicRelease.service';
+import { NotificationService } from '../../libs/mail/notification.service';
 import { ConfigService } from '@nestjs/config';
 import { AudioReleaseDto, VideoReleaseDto, user, userReleases } from './dummy';
 

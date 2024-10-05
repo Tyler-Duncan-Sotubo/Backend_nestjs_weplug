@@ -1,30 +1,26 @@
 import { Module } from '@nestjs/common';
 import { MusicModule } from './music/music.module';
-import { AwsService } from './aws/aws.service';
-import { MailModule } from './mail/mail.module';
+import { AwsService } from './libs/aws/aws.service';
+import { MailModule } from './libs/mail/mail.module';
 import { ConfigModule } from '@nestjs/config';
-import { StreamsModule } from './streams/streams.module';
-import { MonthlySalesModule } from './report/monthly-sales/monthly-sales.module';
-import { StoresReportModule } from './report/stores-report/stores-report.module';
-import { CountryReportModule } from './report/country-report/country-report.module';
-import { DocumentsModule } from './payout/documents/documents.module';
-import { PaymentModule } from './payout/payment/payment.module';
 import { DatabaseModule } from './database/database.module';
+import { IdCheckModule } from './id-check/id-check.module';
+import { ReportsModule } from './report/report.module';
+import { RevenueModule } from './revenue/revenue.module';
+import { CacheModule } from './cache/cache.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    DatabaseModule,
     MusicModule,
     MailModule,
-    StreamsModule,
-    MonthlySalesModule,
-    StoresReportModule,
-    CountryReportModule,
-    DocumentsModule,
-    PaymentModule,
-    DatabaseModule,
+    ReportsModule,
+    IdCheckModule,
+    RevenueModule,
+    CacheModule,
   ],
   providers: [AwsService],
 })
