@@ -6,9 +6,15 @@ import {
   HttpStatus,
   Param,
   Post,
+  Put,
 } from '@nestjs/common';
 import { MusicService } from './music.service';
-import { AudioByIdDto, AudioReleaseDto, UserIdDto } from './dto';
+import {
+  AudioByIdDto,
+  AudioReleaseDto,
+  UpdateAudioByIdDto,
+  UserIdDto,
+} from './dto';
 
 @Controller('api')
 export class MusicController {
@@ -28,9 +34,24 @@ export class MusicController {
   }
 
   @HttpCode(HttpStatus.OK)
+  @Get('/audio')
+  async fetchAll() {
+    return this.musicService.getAllAudio();
+  }
+
+  @HttpCode(HttpStatus.OK)
   @Get('/audio-by-id/:audioId')
   async getAudioReleaseById(@Param() dto: AudioByIdDto) {
     return this.musicService.getAudioReleaseById(dto);
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Put('/audio-by-id/:audioId')
+  async updateOneById(
+    @Param('audioId') audioId: string,
+    @Body() dto: UpdateAudioByIdDto,
+  ) {
+    return this.musicService.updateAudioById(dto, audioId);
   }
 
   @HttpCode(HttpStatus.OK)

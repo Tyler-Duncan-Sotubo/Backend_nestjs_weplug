@@ -1,5 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { AudioReleaseDto, UserIdDto, AudioByIdDto } from './dto';
+import {
+  AudioReleaseDto,
+  UserIdDto,
+  AudioByIdDto,
+  UpdateAudioByIdDto,
+} from './dto';
 import { User } from './user.type';
 import { AwsService } from '../libs/aws/aws.service';
 import { PrismaService } from 'src/database/prisma.service';
@@ -176,6 +181,45 @@ export class MusicService {
 
     // store data in cache
     await this.cacheService.set(cacheKey, JSON.stringify(audio));
+
+    return audio;
+  }
+
+  async getAllAudio() {
+    const audio = await this.prisma.audio.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+      select: {
+        id: true,
+        title: true,
+        artist: true,
+        releaseCover: true,
+        smartLink: true,
+        status: true,
+        UPC: true,
+        ISRC: true,
+      },
+    });
+
+    if (audio.length === 0) {
+      return [];
+    }
+
+    return audio;
+  }
+
+  async updateAudioById(dto: UpdateAudioByIdDto, audioId: string) {
+    const audio = await this.prisma.audio.update({
+      where: {
+        id: audioId,
+      },
+      data: {
+        ...dto,
+      },
+    });
+
+    console.log(audio);
 
     return audio;
   }
