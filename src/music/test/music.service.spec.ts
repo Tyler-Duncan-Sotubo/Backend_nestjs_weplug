@@ -5,39 +5,47 @@ import { PrismaService } from '../../database/prisma.service';
 import { MusicReleaseService } from '../../libs/mail/musicRelease.service';
 import { NotificationService } from '../../libs/mail/notification.service';
 import { ConfigService } from '@nestjs/config';
+import { CacheService } from '../../cache/cache.service';
+import { CacheModule } from '../../cache/cache.module';
+import { AudioReleaseDto } from './dummy';
 
 describe('MusicService', () => {
   let service: MusicService;
 
-  const MockPrisma = {
-    audios: {
-      create: () => Promise.resolve({}),
-      findMany: () => Promise.resolve([]),
+  const mockPrismaService = {
+    audio: {
+      create: jest.fn(), // Mock `create` method
     },
-    videos: {
-      create: () => Promise.resolve({}),
-      findMany: () => Promise.resolve([]),
+    track: {
+      create: jest.fn(), // Mock `create` method for track
     },
   };
-  // const mockAwsService = {
-  //   uploadImageToS3: jest.fn(),
-  // };
+
+  const mockAwsService = {
+    uploadImageToS3: jest.fn(),
+    uploadAudioToS3: jest.fn(),
+  };
+
   const mockMusicReleaseService = {
     sendMusicReleaseEmail: jest.fn(),
   };
+
   const mockNotificationService = {
     sendMusicReleaseEmail: jest.fn(),
   };
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [CacheModule],
       providers: [
         MusicService,
-        AwsService,
-        ConfigService,
         {
           provide: PrismaService,
-          useValue: MockPrisma,
+          useValue: mockPrismaService, // Use the correct mock here
+        },
+        {
+          provide: AwsService,
+          useValue: mockAwsService,
         },
         {
           provide: MusicReleaseService,
@@ -47,8 +55,11 @@ describe('MusicService', () => {
           provide: NotificationService,
           useValue: mockNotificationService,
         },
+        CacheService,
+        ConfigService,
       ],
     }).compile();
+
     service = module.get<MusicService>(MusicService);
   });
 
@@ -56,14 +67,34 @@ describe('MusicService', () => {
     expect(service).toBeDefined();
   });
 
-  // Create Audio Release
-  // it('should create an audio release', async () => {
-  //   jest
-  //     .spyOn(MockPrisma.audios, 'create')
-  //     .mockResolvedValueOnce(AudioReleaseDto);
-  //   jest.spyOn(mockAwsService, 'uploadImageToS3').mockResolvedValueOnce({});
-  //   const result = await service.createAudioRelease(AudioReleaseDto);
+  it('should create an audio release', async () => {
+    // Mocking Prisma audio.create and track.create methods
+    const mockCreateAudio = jest
+      .spyOn(mockPrismaService.audio, 'create')
+      .mockResolvedValueOnce({
+        id: 1,
+        releaseAudio: null,
+        releaseAudioLink: 'audioLink',
+        ISRC: 'ISRC_CODE',
+      });
 
-  //   expect(result).toEqual('Audio Release Created');
-  // });
+    const mockCreateTrack = jest
+      .spyOn(mockPrismaService.track, 'create')
+      .mockResolvedValueOnce({});
+
+    // Mocking AWS service methods
+    const mockUploadImage = jest
+      .spyOn(mockAwsService, 'uploadImageToS3')
+      .mockResolvedValueOnce('imageUrl');
+
+    // Call the method
+    const result = await service.createAudioRelease(AudioReleaseDto);
+
+    // Assertions
+    expect(mockCreateAudio).toHaveBeenCalled();
+    expect(mockCreateTrack).toHaveBeenCalled();
+    expect(mockUploadImage).toHaveBeenCalled();
+
+    expect(result).toEqual('Audio Release Created');
+  });
 });

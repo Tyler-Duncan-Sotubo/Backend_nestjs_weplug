@@ -15,8 +15,8 @@ export const AudioReleaseDto = {
   releaseAudio: '',
   releaseAudioLink: '',
   lyrics: '',
-  imageFileName: '',
-  audioFileName: '',
+  imageFileName: 'image name.jpg',
+  audioFileName: 'audio name.mp3',
 };
 
 export const VideoReleaseDto = {

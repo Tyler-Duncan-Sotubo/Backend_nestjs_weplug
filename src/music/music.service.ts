@@ -7,10 +7,10 @@ import {
 } from './dto';
 import { User } from './user.type';
 import { AwsService } from '../libs/aws/aws.service';
-import { PrismaService } from 'src/database/prisma.service';
+import { PrismaService } from '../database/prisma.service';
 import { MusicReleaseService } from '../libs/mail/musicRelease.service';
 import { NotificationService } from '../libs/mail/notification.service';
-import { CacheService } from 'src/cache/cache.service';
+import { CacheService } from '../cache/cache.service';
 
 @Injectable()
 export class MusicService {
