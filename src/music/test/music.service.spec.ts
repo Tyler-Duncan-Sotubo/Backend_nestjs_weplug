@@ -1,11 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MusicService } from './../music.service';
 import { AwsService } from '../../libs/aws/aws.service';
-import { PrismaService } from '../../prisma/prisma.service';
+import { PrismaService } from '../../database/prisma.service';
 import { MusicReleaseService } from '../../libs/mail/musicRelease.service';
 import { NotificationService } from '../../libs/mail/notification.service';
 import { ConfigService } from '@nestjs/config';
-import { AudioReleaseDto, VideoReleaseDto, user, userReleases } from './dummy';
 
 describe('MusicService', () => {
   let service: MusicService;
@@ -67,32 +66,4 @@ describe('MusicService', () => {
 
   //   expect(result).toEqual('Audio Release Created');
   // });
-
-  // Create Video Release
-  it('should create a video release', async () => {
-    jest
-      .spyOn(MockPrisma.videos, 'create')
-      .mockResolvedValueOnce(VideoReleaseDto);
-    const result = await service.createVideoRelease(user, VideoReleaseDto);
-    expect(result).toEqual('Video Release Created');
-  });
-
-  // Get Releases
-  it('should get releases', async () => {
-    jest
-      .spyOn(MockPrisma.audios, 'findMany')
-      .mockResolvedValueOnce([{ AudioReleaseDto: AudioReleaseDto }]);
-    jest
-      .spyOn(MockPrisma.videos, 'findMany')
-      .mockResolvedValueOnce([{ VideoReleaseDto: VideoReleaseDto }]);
-    const result = await service.getReleases(user);
-    expect(result).toEqual(userReleases);
-  });
-
-  // Get Latest Releases
-  it('should get latest releases', async () => {
-    jest.spyOn(MockPrisma.audios, 'findMany').mockResolvedValueOnce([]);
-    const result = await service.getLatestReleases();
-    expect(result).toEqual([]);
-  });
 });

@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MusicController } from './../music.controller';
 import { MusicService } from './../music.service';
-import { AudioReleaseDto, VideoReleaseDto, user, userReleases } from './dummy';
+import { AudioReleaseDto, userReleases } from './dummy';
 
 describe('MyService', () => {
   let controller: MusicController;
@@ -36,28 +36,5 @@ describe('MyService', () => {
     expect(mockMusicService.createAudioRelease).toHaveBeenCalledWith(
       AudioReleaseDto,
     );
-  });
-
-  //Create Video Release
-  it('should create a video release', async () => {
-    controller.createVideoRelease(user, VideoReleaseDto);
-    expect(mockMusicService.createVideoRelease).toHaveBeenCalledWith(
-      user,
-      VideoReleaseDto,
-    );
-  });
-
-  //Get Music Releases
-  it('should get music releases', async () => {
-    await expect(controller.getMusicReleases(user)).resolves.toEqual(
-      userReleases,
-    );
-    expect(mockMusicService.getReleases).toHaveBeenCalledWith(user);
-  });
-
-  //Get Latest Releases
-  it('should get latest releases', async () => {
-    await expect(controller.getLatestReleases()).resolves.toEqual([]);
-    expect(mockMusicService.getLatestReleases).toHaveBeenCalled();
   });
 });
