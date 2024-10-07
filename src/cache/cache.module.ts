@@ -16,7 +16,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         port: configService.get<number>('REDIS_PORT'),
         ttl: configService.get<number>('CACHE_TTL'),
         password: configService.get('REDIS_PASSWORD'),
-        isGlobal: true, // <--- This makes CacheModule global
+        isGlobal: true,
       }),
     }),
   ],

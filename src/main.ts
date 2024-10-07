@@ -12,7 +12,7 @@ async function bootstrap() {
   app.use(bodyParser.urlencoded({ limit: '100mb', extended: true }));
 
   app.enableCors({
-    origin: configService.get('CLIENT_URL'),
+    origin: configService.get('CLIENT_URL') || configService.get('ADMIN_URL'),
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
