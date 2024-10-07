@@ -1,19 +1,24 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MusicController } from './../music.controller';
 import { MusicService } from './../music.service';
-import { AudioReleaseDto, userReleases } from './dummy';
+import { AudioReleaseDto, userReleases, UpdateAudioMockData } from './dummy';
 
 describe('MyService', () => {
   let controller: MusicController;
 
   const mockMusicService = {
     createAudioRelease: jest.fn(),
-    createVideoRelease: jest.fn(),
-    getReleases: jest.fn(() => {
+    getAudioReleasesByUserId: jest.fn(() => {
       return userReleases;
     }),
-    getLatestReleases: jest.fn(() => {
+    getAllAudio: jest.fn(() => {
       return [];
+    }),
+    updateAudioById: jest.fn(() => {
+      return userReleases;
+    }),
+    getAudioById: jest.fn(() => {
+      return userReleases;
     }),
   };
 
@@ -36,5 +41,36 @@ describe('MyService', () => {
     expect(mockMusicService.createAudioRelease).toHaveBeenCalledWith(
       AudioReleaseDto,
     );
+  });
+
+  //Get Audio Releases by User ID
+  it('should get audio releases by user ID', async () => {
+    controller.getAudioReleases({ userId: '1' });
+    expect(mockMusicService.getAudioReleasesByUserId).toHaveBeenCalledWith({
+      userId: '1',
+    });
+  });
+
+  // Fetch All Audio
+  it('should fetch all audio', async () => {
+    controller.fetchAll();
+    expect(mockMusicService.getAllAudio).toHaveBeenCalled();
+  });
+
+  // Update Audio by ID
+  it('should update an audio release by ID', async () => {
+    controller.updateOneById('1', UpdateAudioMockData);
+    expect(mockMusicService.updateAudioById).toHaveBeenCalledWith(
+      UpdateAudioMockData,
+      '1',
+    );
+  });
+
+  // Get Audio by ID
+  it('should get an audio release by ID', async () => {
+    controller.getAudioById({ audioId: '1' });
+    expect(mockMusicService.getAudioById).toHaveBeenCalledWith({
+      audioId: '1',
+    });
   });
 });

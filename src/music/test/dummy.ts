@@ -39,6 +39,14 @@ export const user = {
   role: '',
 };
 
+export const UpdateAudioMockData = {
+  status: '',
+  UPC: '',
+  smartLink: '',
+  ISRC: '',
+  releaseAudioLink: '',
+};
+
 export const userReleases = [
   { AudioReleaseDto: AudioReleaseDto },
   { VideoReleaseDto: VideoReleaseDto },
