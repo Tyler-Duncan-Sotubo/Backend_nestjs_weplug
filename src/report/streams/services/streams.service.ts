@@ -47,7 +47,6 @@ export class StreamsService {
     const { startDate, endDate } = this.calculateDateRange(timeRangeDto);
 
     const streams = await this.fetchStreamsByAudioId(id, startDate, endDate);
-
     const groupedStreams = this.groupStreamsByDsp(streams);
 
     // Store data in cache

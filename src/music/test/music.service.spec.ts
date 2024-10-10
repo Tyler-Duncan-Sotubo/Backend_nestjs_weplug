@@ -21,6 +21,12 @@ describe('MusicService', () => {
     },
   };
 
+  const mockRedisCache = {
+    get: jest.fn(),
+    set: jest.fn(),
+    del: jest.fn(),
+  };
+
   const mockAwsService = {
     uploadImageToS3: jest.fn(),
     uploadAudioToS3: jest.fn(),
@@ -55,7 +61,10 @@ describe('MusicService', () => {
           provide: NotificationService,
           useValue: mockNotificationService,
         },
-        CacheService,
+        {
+          provide: CacheService,
+          useValue: mockRedisCache,
+        },
         ConfigService,
       ],
     }).compile();

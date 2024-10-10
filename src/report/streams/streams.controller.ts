@@ -1,4 +1,13 @@
-import { Controller, Post, Body, Get, Param, Query } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Get,
+  Param,
+  Query,
+  HttpCode,
+  HttpStatus,
+} from '@nestjs/common';
 import { StreamsService } from './services/streams.service';
 import { CreateStreamsDTO } from './dto/create-stream.dto';
 import { TimeRangeDTO } from './dto/time-range.dto';
@@ -11,9 +20,16 @@ export class StreamsController {
     private readonly countryService: CountryService,
   ) {}
 
+  @HttpCode(HttpStatus.CREATED)
   @Post('/streams')
   create(@Body() createStreamDto: CreateStreamsDTO) {
     return this.streamsService.create(createStreamDto);
+  }
+
+  @HttpCode(HttpStatus.CREATED)
+  @Post('/streams/country')
+  createCountryStreams(@Body() createStreamDto: CreateStreamsDTO) {
+    return this.countryService.create(createStreamDto);
   }
 
   @Get('/streams/:id') // Keep the ID in the route
@@ -31,23 +47,8 @@ export class StreamsController {
     return this.streamsService.findAllByAudioStreams(id);
   }
 
-  @Post('/streams/country')
-  createCountryStreams(@Body() createStreamDto: CreateStreamsDTO) {
-    return this.countryService.create(createStreamDto);
-  }
-
   @Get('/streams/country/:id') // Keep the ID in the route
   findAllStreamsCountry(@Param('id') id: string) {
     return this.countryService.findAllCountryStreamsByUserId(id);
   }
-
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateStreamDto: UpdateStreamDto) {
-  //   return this.streamsService.update(+id, updateStreamDto);
-  // }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.streamsService.remove(+id);
-  // }
 }

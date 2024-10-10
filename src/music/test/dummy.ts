@@ -39,7 +39,15 @@ export const user = {
   role: '',
 };
 
-export const userReleases = [
+export const MockUpdateAudio = {
+  status: '',
+  UPC: '',
+  smartLink: '',
+  ISRC: '',
+  releaseAudioLink: '',
+};
+
+export const mockUserReleases = [
   { AudioReleaseDto: AudioReleaseDto },
   { VideoReleaseDto: VideoReleaseDto },
 ];
