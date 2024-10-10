@@ -85,6 +85,9 @@ export class MusicService {
       // send notification
       this.notificationService.sendMusicReleaseEmail();
     }
+
+    await this.cacheService.del(`audio-release-${user.id}`);
+
     return 'Audio Release Created';
   }
 

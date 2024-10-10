@@ -39,7 +39,7 @@ export const user = {
   role: '',
 };
 
-export const UpdateAudioMockData = {
+export const MockUpdateAudio = {
   status: '',
   UPC: '',
   smartLink: '',
@@ -47,7 +47,7 @@ export const UpdateAudioMockData = {
   releaseAudioLink: '',
 };
 
-export const userReleases = [
+export const mockUserReleases = [
   { AudioReleaseDto: AudioReleaseDto },
   { VideoReleaseDto: VideoReleaseDto },
 ];

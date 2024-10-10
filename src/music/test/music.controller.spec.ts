@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MusicController } from './../music.controller';
 import { MusicService } from './../music.service';
-import { AudioReleaseDto, userReleases, UpdateAudioMockData } from './dummy';
+import { AudioReleaseDto, mockUserReleases, MockUpdateAudio } from './dummy';
 
 describe('MyService', () => {
   let controller: MusicController;
@@ -9,16 +9,16 @@ describe('MyService', () => {
   const mockMusicService = {
     createAudioRelease: jest.fn(),
     getAudioReleasesByUserId: jest.fn(() => {
-      return userReleases;
+      return mockUserReleases;
     }),
     getAllAudio: jest.fn(() => {
       return [];
     }),
     updateAudioById: jest.fn(() => {
-      return userReleases;
+      return mockUserReleases;
     }),
     getAudioById: jest.fn(() => {
-      return userReleases;
+      return mockUserReleases;
     }),
   };
 
@@ -59,9 +59,9 @@ describe('MyService', () => {
 
   // Update Audio by ID
   it('should update an audio release by ID', async () => {
-    controller.updateOneById('1', UpdateAudioMockData);
+    controller.updateOneById('1', MockUpdateAudio);
     expect(mockMusicService.updateAudioById).toHaveBeenCalledWith(
-      UpdateAudioMockData,
+      MockUpdateAudio,
       '1',
     );
   });
