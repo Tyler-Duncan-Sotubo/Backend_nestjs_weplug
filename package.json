@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build",
+    "build": "nest build && nest build audio && nest build payment",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "concurrently -c \"bgBlue.bold,bgMagenta.bold\" \"npm run dev-api\" \"npm run dev-audio\" \"npm run dev-payment\"",
     "postinstall": "prisma generate --schema=./apps/audio/prisma/schema.prisma && prisma generate --schema=./apps/payment/prisma/schema.prisma",
