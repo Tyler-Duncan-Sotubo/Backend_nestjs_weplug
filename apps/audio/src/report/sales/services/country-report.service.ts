@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CountriesResponseDTO } from '@app/common/report';
-import { CountryEarnings } from '@prisma/client';
+import { CountryEarnings } from 'apps/audio/prisma/generated/audio-client';
 import { CountryReport } from '../types/report-country-types';
 import { PrismaService } from '../../../../database/prisma.service';
 import { CacheService } from '@app/common/cache/cache.service';

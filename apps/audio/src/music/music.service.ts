@@ -5,11 +5,11 @@ import {
   AudioByIdDto,
   UpdateAudioByIdDto,
 } from 'libs/common/src/music/';
-import { AwsService } from 'libs/common/src/aws/aws.service';
+import { AwsService } from '@app/common/aws/aws.service';
 import { PrismaService } from '../../database/prisma.service';
-import { MusicReleaseService } from 'libs/common/src/mail/musicRelease.service';
-import { NotificationService } from 'libs/common/src/mail/notification.service';
-import { CacheService } from 'libs/common/src/cache/cache.service';
+import { MusicReleaseService } from '@app/common/mail/musicRelease.service';
+import { NotificationService } from '@app/common/mail/notification.service';
+import { CacheService } from '@app/common/cache/cache.service';
 
 export type User = {
   id: string;

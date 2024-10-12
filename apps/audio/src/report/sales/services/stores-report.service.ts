@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { StoresResponseDTO } from '@app/common/report';
 import { PrismaService } from '../../../../database/prisma.service';
 import { ReportType } from '../types/report.type';
-import { Store } from '@prisma/client';
+import { Store } from 'apps/audio/prisma/generated/audio-client';
 import { CacheService } from '@app/common/cache/cache.service';
 
 @Injectable()
