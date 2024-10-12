@@ -4,68 +4,57 @@ import { AwsService } from '@app/common/aws/aws.service';
 import { PrismaService } from '../../../database/prisma.service';
 import { MusicReleaseService } from '@app/common/mail/musicRelease.service';
 import { NotificationService } from '@app/common/mail/notification.service';
-import { ConfigService } from '@nestjs/config';
 import { CacheService } from '@app/common/cache/cache.service';
-import { CacheModule } from '@app/common/cache/cache.module';
-import { mockAudioRelease } from './data';
+import { mockAudioRelease } from './data'; // Mocked data
 
 describe('MusicService', () => {
   let service: MusicService;
 
+  // Mock PrismaService
   const mockPrismaService = {
     audio: {
-      create: jest.fn(), // Mock `create` method
+      create: jest.fn(),
+      findMany: jest.fn(),
+      findUnique: jest.fn(),
+      update: jest.fn(),
     },
     track: {
-      create: jest.fn(), // Mock `create` method for track
+      create: jest.fn(),
     },
   };
 
-  const mockRedisCache = {
+  // Mock CacheService
+  const mockCacheService = {
     get: jest.fn(),
     set: jest.fn(),
     del: jest.fn(),
   };
 
+  // Mock AwsService
   const mockAwsService = {
     uploadImageToS3: jest.fn(),
     uploadAudioToS3: jest.fn(),
   };
 
+  // Mock MusicReleaseService
   const mockMusicReleaseService = {
     sendMusicReleaseEmail: jest.fn(),
   };
 
+  // Mock NotificationService
   const mockNotificationService = {
     sendMusicReleaseEmail: jest.fn(),
   };
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [CacheModule],
       providers: [
         MusicService,
-        {
-          provide: PrismaService,
-          useValue: mockPrismaService, // Use the correct mock here
-        },
-        {
-          provide: AwsService,
-          useValue: mockAwsService,
-        },
-        {
-          provide: MusicReleaseService,
-          useValue: mockMusicReleaseService,
-        },
-        {
-          provide: NotificationService,
-          useValue: mockNotificationService,
-        },
-        {
-          provide: CacheService,
-          useValue: mockRedisCache,
-        },
-        ConfigService,
+        { provide: PrismaService, useValue: mockPrismaService },
+        { provide: AwsService, useValue: mockAwsService },
+        { provide: MusicReleaseService, useValue: mockMusicReleaseService },
+        { provide: NotificationService, useValue: mockNotificationService },
+        { provide: CacheService, useValue: mockCacheService },
       ],
     }).compile();
 
@@ -76,34 +65,75 @@ describe('MusicService', () => {
     expect(service).toBeDefined();
   });
 
-  it('should create an audio release', async () => {
-    // Mocking Prisma audio.create and track.create methods
-    const mockCreateAudio = jest
-      .spyOn(mockPrismaService.audio, 'create')
-      .mockResolvedValueOnce({
+  describe('createAudioRelease', () => {
+    it('should create an audio release and cache it', async () => {
+      const user = { id: '1', name: 'Test User', email: 'test@example.com' };
+
+      // Mock AWS S3 upload
+      mockAwsService.uploadImageToS3.mockResolvedValue('imageUrl');
+      mockAwsService.uploadAudioToS3.mockResolvedValue('audioUrl');
+
+      // Mock Prisma create methods
+      mockPrismaService.audio.create.mockResolvedValueOnce({
         id: 1,
-        releaseAudio: null,
+        releaseAudio: 'audioUrl',
         releaseAudioLink: 'audioLink',
         ISRC: 'ISRC_CODE',
       });
+      mockPrismaService.track.create.mockResolvedValueOnce({});
 
-    const mockCreateTrack = jest
-      .spyOn(mockPrismaService.track, 'create')
-      .mockResolvedValueOnce({});
+      // Call the service method
+      const result = await service.createAudioRelease({
+        ...mockAudioRelease,
+        user,
+      });
 
-    // Mocking AWS service methods
-    const mockUploadImage = jest
-      .spyOn(mockAwsService, 'uploadImageToS3')
-      .mockResolvedValueOnce('imageUrl');
+      // Assert the service's behavior
+      expect(mockAwsService.uploadImageToS3).toHaveBeenCalledWith(
+        user.email,
+        expect.any(String),
+        mockAudioRelease.releaseCover,
+      );
 
-    // Call the method
-    const result = await service.createAudioRelease(mockAudioRelease);
-
-    // Assertions
-    expect(mockCreateAudio).toHaveBeenCalled();
-    expect(mockCreateTrack).toHaveBeenCalled();
-    expect(mockUploadImage).toHaveBeenCalled();
-    expect(mockRedisCache.del).toHaveBeenCalled();
-    expect(result).toEqual('Audio Release Created');
+      expect(mockPrismaService.audio.create).toHaveBeenCalled();
+      expect(mockPrismaService.track.create).toHaveBeenCalled();
+      expect(
+        mockMusicReleaseService.sendMusicReleaseEmail,
+      ).toHaveBeenCalledWith(user.email, user.name);
+      expect(mockCacheService.del).toHaveBeenCalledWith(
+        `audio-release-${user.id}`,
+      );
+      expect(result).toEqual('Audio Release Created');
+    });
   });
+
+  describe('getAudioReleasesByUserId', () => {
+    it('should return cached audio releases if available', async () => {
+      const cacheData = JSON.stringify([{ id: 1, title: 'Test Audio' }]);
+      mockCacheService.get.mockResolvedValueOnce(cacheData);
+
+      const result = await service.getAudioReleasesByUserId({ userId: '1' });
+
+      expect(mockCacheService.get).toHaveBeenCalledWith('audio-release-1');
+      expect(result).toEqual(JSON.parse(cacheData));
+    });
+
+    it('should fetch from database if cache is empty', async () => {
+      mockCacheService.get.mockResolvedValueOnce(null); // No cache
+      const audioReleases = [{ id: 1, title: 'Test Audio' }];
+      mockPrismaService.audio.findMany.mockResolvedValueOnce(audioReleases);
+
+      const result = await service.getAudioReleasesByUserId({ userId: '1' });
+
+      expect(mockCacheService.get).toHaveBeenCalledWith('audio-release-1');
+      expect(mockPrismaService.audio.findMany).toHaveBeenCalled();
+      expect(mockCacheService.set).toHaveBeenCalledWith(
+        'audio-release-1',
+        JSON.stringify(audioReleases),
+      );
+      expect(result).toEqual(audioReleases);
+    });
+  });
+
+  // Other tests for getAudioReleaseById, getAllAudio, updateAudioById, etc.
 });
