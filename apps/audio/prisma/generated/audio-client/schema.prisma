@@ -1,0 +1,147 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/audio-client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL_AUDIO")
+}
+
+model Audio {
+  id               String            @id @default(cuid())
+  userId           String
+  title            String
+  artist           String
+  releaseDate      DateTime          @default(now())
+  primaryGenre     String
+  secondaryGenre   String
+  language         String
+  label            String
+  copyrightHolder  String
+  copyrightYear    String
+  productionHolder String
+  productionYear   String
+  releaseCover     String
+  releaseAudio     String?
+  releaseAudioLink String?
+  lyrics           String?
+  releaseType      String
+  status           String
+  UPC              String            @default("")
+  ISRC             String            @default("")
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @default(now())
+  smartLink        String            @default("")
+  Track            Track[]
+  Streams          Streams[]
+  StreamByCountry  StreamByCountry[]
+  Store            Store[]
+  MonthlyReport    MonthlyReport[]
+  CountryEarnings  CountryEarnings[]
+}
+
+model Track {
+  id               String  @id @default(cuid())
+  audioId          String
+  title            String
+  lyrics           String?
+  productionCredit String?
+  ISRC             String?
+  trackNumber      Int // Track number in the album
+  audioLink        String // URL or path to track audio file
+
+  Audio Audio @relation(fields: [audioId], references: [id])
+}
+
+model DSP {
+  id      String    @id @default(cuid())
+  name    String    @unique
+  streams Streams[]
+}
+
+model Streams {
+  id      String   @id @default(cuid())
+  dspId   String
+  dsp     DSP      @relation(fields: [dspId], references: [id])
+  total   Int
+  date    DateTime
+  Audio   Audio    @relation(fields: [audioId], references: [id])
+  audioId String
+
+  @@unique([dspId, date, audioId]) // Unique constraint to avoid duplicate uploads
+  // index
+  @@index([audioId], name: "unique_streams")
+}
+
+model Country {
+  id               String            @id @default(uuid())
+  name             String            @unique
+  isoCode          String            @unique
+  streamsByCountry StreamByCountry[]
+}
+
+model StreamByCountry {
+  id        String   @id @default(uuid())
+  countryId String
+  country   Country  @relation(fields: [countryId], references: [id])
+  total     Int
+  date      DateTime
+  audioId   String
+  audio     Audio    @relation(fields: [audioId], references: [id])
+
+  // index
+  @@index([audioId], name: "unique_stream_by_country")
+}
+
+// This schema is for Prisma ORM and should be placed in your `schema.prisma` file.
+
+model Store {
+  id             String @id @default(uuid())
+  name           String
+  trackDownloads Int
+  streams        Int
+  totalSales     Int
+  earnings       Float
+  audioId        String
+  audio          Audio  @relation(fields: [audioId], references: [id])
+
+  // index
+  @@index([audioId], name: "unique_store")
+}
+
+model CountryEarnings {
+  id             String @id @default(uuid())
+  name           String
+  trackDownloads Int
+  streams        Int
+  totalSales     Int
+  earnings       Float
+  audioId        String
+  audio          Audio  @relation(fields: [audioId], references: [id])
+
+  // index 
+  @@index([audioId], name: "unique_country_earnings")
+}
+
+model MonthlyReport {
+  id             String @id @default(uuid())
+  month          Int
+  year           Int
+  trackDownloads Int
+  streams        Int
+  totalSales     Int
+  earnings       Float
+  date           String
+  audioId        String
+  audio          Audio  @relation(fields: [audioId], references: [id])
+
+  // Ensure unique reports for each month/year/store/country combo
+  @@index([audioId], name: "unique_monthly_report")
+}
