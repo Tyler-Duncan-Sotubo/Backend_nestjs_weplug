@@ -103,7 +103,7 @@ describe('MusicService', () => {
     expect(mockCreateAudio).toHaveBeenCalled();
     expect(mockCreateTrack).toHaveBeenCalled();
     expect(mockUploadImage).toHaveBeenCalled();
-
+    expect(mockRedisCache.del).toHaveBeenCalled();
     expect(result).toEqual('Audio Release Created');
   });
 });
