@@ -4,7 +4,7 @@ import {
   UserIdDto,
   AudioByIdDto,
   UpdateAudioByIdDto,
-} from 'libs/common/src/dto/music';
+} from 'libs/common/src/music/';
 import { AwsService } from 'libs/common/src/aws/aws.service';
 import { PrismaService } from '../../database/prisma.service';
 import { MusicReleaseService } from 'libs/common/src/mail/musicRelease.service';

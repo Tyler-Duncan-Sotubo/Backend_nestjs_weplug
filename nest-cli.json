@@ -10,15 +10,6 @@
   "monorepo": true,
   "root": "apps/api",
   "projects": {
-    "upload": {
-      "type": "application",
-      "root": "apps/upload",
-      "entryFile": "main",
-      "sourceRoot": "apps/upload/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/upload/tsconfig.app.json"
-      }
-    },
     "api": {
       "type": "application",
       "root": "apps/api",
@@ -44,6 +35,15 @@
       "sourceRoot": "libs/common/src",
       "compilerOptions": {
         "tsConfigPath": "libs/common/tsconfig.lib.json"
+      }
+    },
+    "payment": {
+      "type": "application",
+      "root": "apps/payment",
+      "entryFile": "main",
+      "sourceRoot": "apps/payment/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/payment/tsconfig.app.json"
       }
     }
   }

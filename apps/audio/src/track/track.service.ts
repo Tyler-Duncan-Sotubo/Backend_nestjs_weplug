@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/database/prisma.service';
-import { TrackDto } from './dto/track.dto';
-import { UpdateTrackIdDto } from './dto/update-id.dto';
+import { TrackDto, UpdateTrackIdDto } from '@app/common/track';
+import { PrismaService } from '../../database/prisma.service';
 
 @Injectable()
 export class TrackService {

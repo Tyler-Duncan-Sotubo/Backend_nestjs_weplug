@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaClient as AudioPrismaClient } from '../generated/audio-client';
+import { PrismaClient as AudioPrismaClient } from '../prisma/generated/audio-client';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()

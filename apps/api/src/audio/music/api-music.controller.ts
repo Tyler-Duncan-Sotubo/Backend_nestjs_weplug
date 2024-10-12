@@ -14,7 +14,7 @@ import {
   UserIdDto,
   AudioByIdDto,
   UpdateAudioByIdDto,
-} from 'libs/common/src/dto/music';
+} from 'libs/common/src/music/';
 
 @Controller('api')
 export class ApiMusicController {

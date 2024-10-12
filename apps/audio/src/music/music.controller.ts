@@ -5,40 +5,41 @@ import {
   UserIdDto,
   AudioByIdDto,
   UpdateAudioByIdDto,
-} from 'libs/common/src/dto/music';
-import { MessagePattern } from '@nestjs/microservices';
+  MUSIC_PATTERNS,
+} from 'libs/common/src/music/';
+import { MessagePattern, Payload } from '@nestjs/microservices';
 
 @Controller()
 export class MusicController {
   constructor(private readonly musicService: MusicService) {}
 
-  @MessagePattern('create_audio')
-  async createAudioRelease(dto: AudioReleaseDto) {
+  @MessagePattern(MUSIC_PATTERNS.CREATE)
+  async createAudioRelease(@Payload() dto: AudioReleaseDto) {
     return this.musicService.createAudioRelease(dto);
   }
 
-  @MessagePattern('get_user_audios')
-  async getAudioReleases(dto: UserIdDto) {
+  @MessagePattern(MUSIC_PATTERNS.FIND_ALL_BY_USER)
+  async getAudioReleases(@Payload() dto: UserIdDto) {
     return this.musicService.getAudioReleasesByUserId(dto);
   }
 
-  @MessagePattern('get_all_audios')
+  @MessagePattern(MUSIC_PATTERNS.FIND_ALL)
   async fetchAll() {
     return this.musicService.getAllAudio();
   }
 
-  @MessagePattern('get_audio_by_id')
+  @MessagePattern(MUSIC_PATTERNS.FIND_ONE)
   async getAudioById(dto: AudioByIdDto) {
     return this.musicService.getAudioById(dto);
   }
 
-  @MessagePattern('get_audio_track_by_id')
-  async getAudioReleaseById(dto: AudioByIdDto) {
+  @MessagePattern(MUSIC_PATTERNS.FIND_ONE_TRACK)
+  async getAudioReleaseById(@Payload() dto: AudioByIdDto) {
     return this.musicService.getAudioReleaseById(dto);
   }
 
-  @MessagePattern('update_audio_by_id')
-  async updateOneById(audioId: string, dto: UpdateAudioByIdDto) {
+  @MessagePattern(MUSIC_PATTERNS.UPDATE_ONE)
+  async updateOneById(@Payload() audioId: string, dto: UpdateAudioByIdDto) {
     return this.musicService.updateAudioById(dto, audioId);
   }
 }
