@@ -10,7 +10,7 @@
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "concurrently -c \"bgBlue.bold,bgMagenta.bold\" \"npm run dev-api\" \"npm run dev-audio\" \"npm run dev-payment\"",
     "postinstall": "prisma generate --schema=./apps/audio/prisma/schema.prisma && prisma generate --schema=./apps/payment/prisma/schema.prisma",
-    "prisma:generate": "prisma generate --schema=./apps/audio/prisma/schema.prisma && prisma generate --schema=./apps/payment/prisma/schema.prisma",
+    "prisma:generate": "prisma generate --schema=./apps/audio/prisma/schema.prisma && prisma generate --schema=./apps/payment/prisma/schema.prisma ",
     "start:dev": "concurrently -c \"green.bold,red.bold,blue.bold\" \"npm:dev-*\"  ",
     "dev-api": "nest start --watch api",
     "dev-audio": "nest start --watch audio",
@@ -43,6 +43,7 @@
     "class-validator": "^0.14.1",
     "concurrently": "^9.0.1",
     "joi": "^17.13.3",
+    "node-fetch": "^2.7.0",
     "redis": "^4.7.0",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1"

@@ -5,6 +5,7 @@ import { CacheModule } from '@app/common/cache/cache.module';
 import { HttpModule } from '@nestjs/axios'; // Import HttpModule from @nestjs/axios
 import { ConfigModule } from '@nestjs/config';
 import { IdCheckModule } from './id-check/id-check.module';
+import { PaypalModule } from './paypal/paypal.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { IdCheckModule } from './id-check/id-check.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    PaypalModule,
   ],
   controllers: [RevenueController],
   providers: [RevenueService],

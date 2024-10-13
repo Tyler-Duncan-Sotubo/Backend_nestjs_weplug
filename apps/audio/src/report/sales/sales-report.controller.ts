@@ -11,7 +11,7 @@ import {
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { AudioReportService } from './services/audio-report.service';
 
-@Controller('api/sales-report')
+@Controller()
 export class SalesReportController {
   constructor(
     private readonly service: CountryReportService,
