@@ -59,10 +59,4 @@ export class ApiSalesReportController {
   findAllReportByCountry(@Param('userId') userId: string) {
     return this.salesReportService.fetchCountryReports(userId);
   }
-
-  @HttpCode(HttpStatus.OK)
-  @Get('/audio/:userId')
-  fetchAudioReports(@Param('userId') userId: string) {
-    return this.salesReportService.fetchAudioReports(userId);
-  }
 }

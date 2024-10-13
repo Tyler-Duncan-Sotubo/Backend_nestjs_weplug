@@ -50,8 +50,4 @@ export class ApiSalesReportService {
   fetchCountryReports(userId: string) {
     return this.audioClient.send(SALES_PATTERN.FIND_COUNTRY_SALES, userId);
   }
-
-  fetchAudioReports(userId: string) {
-    return this.audioClient.send('audio-service.fetch-audio-reports', userId);
-  }
 }

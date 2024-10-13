@@ -9,7 +9,6 @@ import {
   SALES_PATTERN,
 } from '@app/common/report';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { AudioReportService } from './services/audio-report.service';
 
 @Controller()
 export class SalesReportController {
@@ -17,7 +16,6 @@ export class SalesReportController {
     private readonly service: CountryReportService,
     private readonly monthlySalesService: MonthlySalesService,
     private readonly salesReportService: StoresReportService,
-    private readonly audioReportService: AudioReportService,
   ) {}
 
   @MessagePattern(SALES_PATTERN.CREATE_MONTHLY_SALES)
@@ -53,10 +51,5 @@ export class SalesReportController {
   @MessagePattern(SALES_PATTERN.FIND_STORE_SALES)
   findAllReportByStore(@Payload() userId: string) {
     return this.salesReportService.fetchStoreReports(userId);
-  }
-
-  @MessagePattern('audio-service.fetch-audio-reports')
-  async fetchAudioReports(@Payload() userId: string) {
-    return this.audioReportService.fetchUserAudioReports(userId);
   }
 }

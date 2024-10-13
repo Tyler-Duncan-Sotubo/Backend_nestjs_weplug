@@ -1,18 +1,20 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { HttpService } from '@nestjs/axios'; // Correct import
-import { firstValueFrom } from 'rxjs'; // To convert Observable to Promise
+import { Injectable } from '@nestjs/common';
 import { CacheService } from '@app/common/cache/cache.service';
-import { ConfigService } from '@nestjs/config'; // Adjust import based on your project structure
 
 @Injectable()
 export class RevenueService {
   constructor(
-    private readonly httpService: HttpService,
     private readonly cacheService: CacheService, // Inject cache service for caching logic
-    private readonly configService: ConfigService, // Inject ConfigService for environment variables
   ) {}
 
   async accumulateEarningsForUser(userId: string) {
+    // Cache key for monthly reports from Audio service
+    const cacheKey = `monthly-report-${userId}`;
+    // Fetch monthly reports from cache
+    const months = await this.cacheService.get(cacheKey);
+    const monthlyReports = JSON.parse(months);
+
+    // Cache keys for total earnings and monthly reports
     const cacheKeyTotalEarnings = `user:${userId}:totalEarnings`;
     const cacheKeyMonthlyReports = `user:${userId}:monthlyReports`;
 
@@ -33,8 +35,6 @@ export class RevenueService {
       };
     }
 
-    // Fetch audio reports from the Audio Service
-    const monthlyReports = await this.getAudioReportsFromAudioService(userId);
     if (!monthlyReports || monthlyReports.length === 0) {
       return { message: 'No audio reports found for this user.', earnings: 0 };
     }
@@ -66,22 +66,6 @@ export class RevenueService {
       earnings: totalEarnings,
       monthlyReports: aggregatedMonthlyReports,
     };
-  }
-
-  async getAudioReportsFromAudioService(userId: string) {
-    const baseUrl = this.configService.get<string>('SERVER_URL');
-    const audioServiceUrl = `${baseUrl}/api/sales-report/audio/${userId}`; // API Gateway URL
-    try {
-      const response = await firstValueFrom(
-        this.httpService.get(audioServiceUrl),
-      );
-      return response.data; // This contains the monthly reports from the Audio Service
-    } catch (error) {
-      Logger.error(
-        `Error fetching audio reports for user ${userId}: ${error.message}`,
-      );
-      throw new Error('Failed to fetch audio reports.');
-    }
   }
 
   async processAudioReports(userId: string, monthlyReports: any[]) {
