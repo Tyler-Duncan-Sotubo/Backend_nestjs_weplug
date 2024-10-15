@@ -217,7 +217,7 @@ export class MusicService {
     return audio;
   }
 
-  async updateAudioById(dto: UpdateAudioByIdDto, audioId: string) {
+  async updateAudioById(audioId: string, dto: UpdateAudioByIdDto) {
     const audio = await this.prisma.audio.update({
       where: {
         id: audioId,
@@ -226,8 +226,6 @@ export class MusicService {
         ...dto,
       },
     });
-
-    console.log(audio);
 
     return audio;
   }

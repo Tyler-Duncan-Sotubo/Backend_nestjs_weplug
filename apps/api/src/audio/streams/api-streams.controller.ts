@@ -33,7 +33,6 @@ export class ApiStreamsController {
     @Param('audioId') audioId: string,
     @Query() timeRangeDto: TimeRangeDTO,
   ) {
-    console.log(timeRangeDto);
     return this.streamsService.findOneById(audioId, timeRangeDto);
   }
 

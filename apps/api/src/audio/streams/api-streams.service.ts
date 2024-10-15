@@ -37,7 +37,7 @@ export class ApiStreamsService {
   findAllStreamsByUserId(userId: string, timeRangeDto: TimeRangeDTO) {
     return this.audioClient.send(STREAMS_PATTERN.FIND_ALL_STREAMS_BY_USER_ID, {
       userId,
-      timeRangeDto,
+      timeRangeDto, // This is the time range for the streams
     });
   }
 

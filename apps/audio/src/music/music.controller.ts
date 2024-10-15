@@ -39,7 +39,9 @@ export class MusicController {
   }
 
   @MessagePattern(MUSIC_PATTERNS.UPDATE_ONE)
-  async updateOneById(@Payload() audioId: string, dto: UpdateAudioByIdDto) {
-    return this.musicService.updateAudioById(dto, audioId);
+  async updateOneById(
+    @Payload() payload: { audioId: string; dto: UpdateAudioByIdDto },
+  ) {
+    return this.musicService.updateAudioById(payload.audioId, payload.dto);
   }
 }
