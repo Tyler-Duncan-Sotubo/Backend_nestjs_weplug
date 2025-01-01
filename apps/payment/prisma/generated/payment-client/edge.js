@@ -142,7 +142,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/tylerhome/Desktop/Weplug/backend/apps/payment/prisma/generated/payment-client",
+      "value": "/Users/tylerhome/Desktop/dev/Weplug/backend/apps/payment/prisma/generated/payment-client",
       "fromEnvVar": null
     },
     "config": {
@@ -153,10 +153,14 @@ const config = {
         "fromEnvVar": null,
         "value": "darwin-arm64",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "debian-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/tylerhome/Desktop/Weplug/backend/apps/payment/prisma/schema.prisma",
+    "sourceFilePath": "/Users/tylerhome/Desktop/dev/Weplug/backend/apps/payment/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -179,8 +183,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/payment-client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL_PAYMENT\")\n}\n\nmodel Document {\n  id         String   @id @default(cuid())\n  userId     String\n  fileUrl    String\n  isVerified Boolean  @default(false)\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @updatedAt\n}\n\nmodel Payout {\n  id        String   @id @default(cuid())\n  userId    String\n  amount    Float\n  status    String   @default(\"pending\")\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel Revenue {\n  id            String   @id @default(uuid())\n  month         Int\n  year          Int\n  userId        String // Link to the User\n  totalEarnings Float\n  paid          Boolean  @default(false) // Indicates if the revenue has been paid out\n  createdAt     DateTime @default(now()) // Timestamp for when the revenue record was created\n}\n",
-  "inlineSchemaHash": "f85ff7dcbb15963b9c786ca9127618f83478c1fa7009d307a2c34f240331f823",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  binaryTargets = [\"native\", \"debian-openssl-3.0.x\"]\n  output        = \"./generated/payment-client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL_PAYMENT\")\n}\n\nmodel Document {\n  id         String   @id @default(cuid())\n  userId     String\n  fileUrl    String\n  isVerified Boolean  @default(false)\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @updatedAt\n}\n\nmodel Payout {\n  id        String   @id @default(cuid())\n  userId    String\n  amount    Float\n  status    String   @default(\"pending\")\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel Revenue {\n  id            String   @id @default(uuid())\n  month         Int\n  year          Int\n  userId        String // Link to the User\n  totalEarnings Float\n  paid          Boolean  @default(false) // Indicates if the revenue has been paid out\n  createdAt     DateTime @default(now()) // Timestamp for when the revenue record was created\n}\n",
+  "inlineSchemaHash": "1575c0f8fb6f3cd8cf9ce9e519ecb47c5cd61aca2fad565ad756446f7aae916d",
   "copyEngine": true
 }
 config.dirname = '/'
