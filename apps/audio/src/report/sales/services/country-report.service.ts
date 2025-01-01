@@ -157,7 +157,7 @@ export class CountryReportService {
 
   // Fetch the country earnings and manually map the country ID from the Country table
   private async getCountryEarningsWithCountryIds(audioIds: string[]) {
-    const earnings = await this.prisma.countryEarnings.findMany({
+    const earnings = await this.prisma.salesByCountry.findMany({
       where: { audioId: { in: audioIds } },
       select: {
         name: true,

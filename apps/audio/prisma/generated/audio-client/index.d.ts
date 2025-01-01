@@ -58,6 +58,21 @@ export type CountryEarnings = $Result.DefaultSelection<Prisma.$CountryEarningsPa
  * 
  */
 export type MonthlyReport = $Result.DefaultSelection<Prisma.$MonthlyReportPayload>
+/**
+ * Model SalesByStore
+ * 
+ */
+export type SalesByStore = $Result.DefaultSelection<Prisma.$SalesByStorePayload>
+/**
+ * Model SalesByCountry
+ * 
+ */
+export type SalesByCountry = $Result.DefaultSelection<Prisma.$SalesByCountryPayload>
+/**
+ * Model SalesByMonth
+ * 
+ */
+export type SalesByMonth = $Result.DefaultSelection<Prisma.$SalesByMonthPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -270,6 +285,36 @@ export class PrismaClient<
     * ```
     */
   get monthlyReport(): Prisma.MonthlyReportDelegate<ExtArgs>;
+
+  /**
+   * `prisma.salesByStore`: Exposes CRUD operations for the **SalesByStore** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SalesByStores
+    * const salesByStores = await prisma.salesByStore.findMany()
+    * ```
+    */
+  get salesByStore(): Prisma.SalesByStoreDelegate<ExtArgs>;
+
+  /**
+   * `prisma.salesByCountry`: Exposes CRUD operations for the **SalesByCountry** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SalesByCountries
+    * const salesByCountries = await prisma.salesByCountry.findMany()
+    * ```
+    */
+  get salesByCountry(): Prisma.SalesByCountryDelegate<ExtArgs>;
+
+  /**
+   * `prisma.salesByMonth`: Exposes CRUD operations for the **SalesByMonth** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SalesByMonths
+    * const salesByMonths = await prisma.salesByMonth.findMany()
+    * ```
+    */
+  get salesByMonth(): Prisma.SalesByMonthDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -755,7 +800,10 @@ export namespace Prisma {
     StreamByCountry: 'StreamByCountry',
     Store: 'Store',
     CountryEarnings: 'CountryEarnings',
-    MonthlyReport: 'MonthlyReport'
+    MonthlyReport: 'MonthlyReport',
+    SalesByStore: 'SalesByStore',
+    SalesByCountry: 'SalesByCountry',
+    SalesByMonth: 'SalesByMonth'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -771,7 +819,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "audio" | "track" | "dSP" | "streams" | "country" | "streamByCountry" | "store" | "countryEarnings" | "monthlyReport"
+      modelProps: "audio" | "track" | "dSP" | "streams" | "country" | "streamByCountry" | "store" | "countryEarnings" | "monthlyReport" | "salesByStore" | "salesByCountry" | "salesByMonth"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1405,6 +1453,216 @@ export namespace Prisma {
           }
         }
       }
+      SalesByStore: {
+        payload: Prisma.$SalesByStorePayload<ExtArgs>
+        fields: Prisma.SalesByStoreFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SalesByStoreFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByStorePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SalesByStoreFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByStorePayload>
+          }
+          findFirst: {
+            args: Prisma.SalesByStoreFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByStorePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SalesByStoreFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByStorePayload>
+          }
+          findMany: {
+            args: Prisma.SalesByStoreFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByStorePayload>[]
+          }
+          create: {
+            args: Prisma.SalesByStoreCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByStorePayload>
+          }
+          createMany: {
+            args: Prisma.SalesByStoreCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SalesByStoreCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByStorePayload>[]
+          }
+          delete: {
+            args: Prisma.SalesByStoreDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByStorePayload>
+          }
+          update: {
+            args: Prisma.SalesByStoreUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByStorePayload>
+          }
+          deleteMany: {
+            args: Prisma.SalesByStoreDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SalesByStoreUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.SalesByStoreUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByStorePayload>
+          }
+          aggregate: {
+            args: Prisma.SalesByStoreAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSalesByStore>
+          }
+          groupBy: {
+            args: Prisma.SalesByStoreGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SalesByStoreGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SalesByStoreCountArgs<ExtArgs>
+            result: $Utils.Optional<SalesByStoreCountAggregateOutputType> | number
+          }
+        }
+      }
+      SalesByCountry: {
+        payload: Prisma.$SalesByCountryPayload<ExtArgs>
+        fields: Prisma.SalesByCountryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SalesByCountryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByCountryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SalesByCountryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByCountryPayload>
+          }
+          findFirst: {
+            args: Prisma.SalesByCountryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByCountryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SalesByCountryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByCountryPayload>
+          }
+          findMany: {
+            args: Prisma.SalesByCountryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByCountryPayload>[]
+          }
+          create: {
+            args: Prisma.SalesByCountryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByCountryPayload>
+          }
+          createMany: {
+            args: Prisma.SalesByCountryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SalesByCountryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByCountryPayload>[]
+          }
+          delete: {
+            args: Prisma.SalesByCountryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByCountryPayload>
+          }
+          update: {
+            args: Prisma.SalesByCountryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByCountryPayload>
+          }
+          deleteMany: {
+            args: Prisma.SalesByCountryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SalesByCountryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.SalesByCountryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByCountryPayload>
+          }
+          aggregate: {
+            args: Prisma.SalesByCountryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSalesByCountry>
+          }
+          groupBy: {
+            args: Prisma.SalesByCountryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SalesByCountryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SalesByCountryCountArgs<ExtArgs>
+            result: $Utils.Optional<SalesByCountryCountAggregateOutputType> | number
+          }
+        }
+      }
+      SalesByMonth: {
+        payload: Prisma.$SalesByMonthPayload<ExtArgs>
+        fields: Prisma.SalesByMonthFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SalesByMonthFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByMonthPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SalesByMonthFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByMonthPayload>
+          }
+          findFirst: {
+            args: Prisma.SalesByMonthFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByMonthPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SalesByMonthFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByMonthPayload>
+          }
+          findMany: {
+            args: Prisma.SalesByMonthFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByMonthPayload>[]
+          }
+          create: {
+            args: Prisma.SalesByMonthCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByMonthPayload>
+          }
+          createMany: {
+            args: Prisma.SalesByMonthCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SalesByMonthCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByMonthPayload>[]
+          }
+          delete: {
+            args: Prisma.SalesByMonthDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByMonthPayload>
+          }
+          update: {
+            args: Prisma.SalesByMonthUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByMonthPayload>
+          }
+          deleteMany: {
+            args: Prisma.SalesByMonthDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SalesByMonthUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.SalesByMonthUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesByMonthPayload>
+          }
+          aggregate: {
+            args: Prisma.SalesByMonthAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSalesByMonth>
+          }
+          groupBy: {
+            args: Prisma.SalesByMonthGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SalesByMonthGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SalesByMonthCountArgs<ExtArgs>
+            result: $Utils.Optional<SalesByMonthCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1572,6 +1830,9 @@ export namespace Prisma {
     Store: number
     MonthlyReport: number
     CountryEarnings: number
+    SalesByStore: number
+    SalesByCountry: number
+    SalesByMonth: number
   }
 
   export type AudioCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1581,6 +1842,9 @@ export namespace Prisma {
     Store?: boolean | AudioCountOutputTypeCountStoreArgs
     MonthlyReport?: boolean | AudioCountOutputTypeCountMonthlyReportArgs
     CountryEarnings?: boolean | AudioCountOutputTypeCountCountryEarningsArgs
+    SalesByStore?: boolean | AudioCountOutputTypeCountSalesByStoreArgs
+    SalesByCountry?: boolean | AudioCountOutputTypeCountSalesByCountryArgs
+    SalesByMonth?: boolean | AudioCountOutputTypeCountSalesByMonthArgs
   }
 
   // Custom InputTypes
@@ -1634,6 +1898,27 @@ export namespace Prisma {
    */
   export type AudioCountOutputTypeCountCountryEarningsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CountryEarningsWhereInput
+  }
+
+  /**
+   * AudioCountOutputType without action
+   */
+  export type AudioCountOutputTypeCountSalesByStoreArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SalesByStoreWhereInput
+  }
+
+  /**
+   * AudioCountOutputType without action
+   */
+  export type AudioCountOutputTypeCountSalesByCountryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SalesByCountryWhereInput
+  }
+
+  /**
+   * AudioCountOutputType without action
+   */
+  export type AudioCountOutputTypeCountSalesByMonthArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SalesByMonthWhereInput
   }
 
 
@@ -2025,6 +2310,9 @@ export namespace Prisma {
     Store?: boolean | Audio$StoreArgs<ExtArgs>
     MonthlyReport?: boolean | Audio$MonthlyReportArgs<ExtArgs>
     CountryEarnings?: boolean | Audio$CountryEarningsArgs<ExtArgs>
+    SalesByStore?: boolean | Audio$SalesByStoreArgs<ExtArgs>
+    SalesByCountry?: boolean | Audio$SalesByCountryArgs<ExtArgs>
+    SalesByMonth?: boolean | Audio$SalesByMonthArgs<ExtArgs>
     _count?: boolean | AudioCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["audio"]>
 
@@ -2089,6 +2377,9 @@ export namespace Prisma {
     Store?: boolean | Audio$StoreArgs<ExtArgs>
     MonthlyReport?: boolean | Audio$MonthlyReportArgs<ExtArgs>
     CountryEarnings?: boolean | Audio$CountryEarningsArgs<ExtArgs>
+    SalesByStore?: boolean | Audio$SalesByStoreArgs<ExtArgs>
+    SalesByCountry?: boolean | Audio$SalesByCountryArgs<ExtArgs>
+    SalesByMonth?: boolean | Audio$SalesByMonthArgs<ExtArgs>
     _count?: boolean | AudioCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type AudioIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2102,6 +2393,9 @@ export namespace Prisma {
       Store: Prisma.$StorePayload<ExtArgs>[]
       MonthlyReport: Prisma.$MonthlyReportPayload<ExtArgs>[]
       CountryEarnings: Prisma.$CountryEarningsPayload<ExtArgs>[]
+      SalesByStore: Prisma.$SalesByStorePayload<ExtArgs>[]
+      SalesByCountry: Prisma.$SalesByCountryPayload<ExtArgs>[]
+      SalesByMonth: Prisma.$SalesByMonthPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2498,6 +2792,9 @@ export namespace Prisma {
     Store<T extends Audio$StoreArgs<ExtArgs> = {}>(args?: Subset<T, Audio$StoreArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findMany"> | Null>
     MonthlyReport<T extends Audio$MonthlyReportArgs<ExtArgs> = {}>(args?: Subset<T, Audio$MonthlyReportArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MonthlyReportPayload<ExtArgs>, T, "findMany"> | Null>
     CountryEarnings<T extends Audio$CountryEarningsArgs<ExtArgs> = {}>(args?: Subset<T, Audio$CountryEarningsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CountryEarningsPayload<ExtArgs>, T, "findMany"> | Null>
+    SalesByStore<T extends Audio$SalesByStoreArgs<ExtArgs> = {}>(args?: Subset<T, Audio$SalesByStoreArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesByStorePayload<ExtArgs>, T, "findMany"> | Null>
+    SalesByCountry<T extends Audio$SalesByCountryArgs<ExtArgs> = {}>(args?: Subset<T, Audio$SalesByCountryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesByCountryPayload<ExtArgs>, T, "findMany"> | Null>
+    SalesByMonth<T extends Audio$SalesByMonthArgs<ExtArgs> = {}>(args?: Subset<T, Audio$SalesByMonthArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesByMonthPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2982,6 +3279,66 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CountryEarningsScalarFieldEnum | CountryEarningsScalarFieldEnum[]
+  }
+
+  /**
+   * Audio.SalesByStore
+   */
+  export type Audio$SalesByStoreArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByStore
+     */
+    select?: SalesByStoreSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByStoreInclude<ExtArgs> | null
+    where?: SalesByStoreWhereInput
+    orderBy?: SalesByStoreOrderByWithRelationInput | SalesByStoreOrderByWithRelationInput[]
+    cursor?: SalesByStoreWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SalesByStoreScalarFieldEnum | SalesByStoreScalarFieldEnum[]
+  }
+
+  /**
+   * Audio.SalesByCountry
+   */
+  export type Audio$SalesByCountryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByCountry
+     */
+    select?: SalesByCountrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByCountryInclude<ExtArgs> | null
+    where?: SalesByCountryWhereInput
+    orderBy?: SalesByCountryOrderByWithRelationInput | SalesByCountryOrderByWithRelationInput[]
+    cursor?: SalesByCountryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SalesByCountryScalarFieldEnum | SalesByCountryScalarFieldEnum[]
+  }
+
+  /**
+   * Audio.SalesByMonth
+   */
+  export type Audio$SalesByMonthArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByMonth
+     */
+    select?: SalesByMonthSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByMonthInclude<ExtArgs> | null
+    where?: SalesByMonthWhereInput
+    orderBy?: SalesByMonthOrderByWithRelationInput | SalesByMonthOrderByWithRelationInput[]
+    cursor?: SalesByMonthWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SalesByMonthScalarFieldEnum | SalesByMonthScalarFieldEnum[]
   }
 
   /**
@@ -10826,6 +11183,3083 @@ export namespace Prisma {
 
 
   /**
+   * Model SalesByStore
+   */
+
+  export type AggregateSalesByStore = {
+    _count: SalesByStoreCountAggregateOutputType | null
+    _avg: SalesByStoreAvgAggregateOutputType | null
+    _sum: SalesByStoreSumAggregateOutputType | null
+    _min: SalesByStoreMinAggregateOutputType | null
+    _max: SalesByStoreMaxAggregateOutputType | null
+  }
+
+  export type SalesByStoreAvgAggregateOutputType = {
+    trackDownloads: number | null
+    streams: number | null
+    totalSales: number | null
+    earnings: number | null
+  }
+
+  export type SalesByStoreSumAggregateOutputType = {
+    trackDownloads: number | null
+    streams: number | null
+    totalSales: number | null
+    earnings: number | null
+  }
+
+  export type SalesByStoreMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    ISRC: string | null
+    trackDownloads: number | null
+    streams: number | null
+    totalSales: number | null
+    earnings: number | null
+    audioId: string | null
+  }
+
+  export type SalesByStoreMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    ISRC: string | null
+    trackDownloads: number | null
+    streams: number | null
+    totalSales: number | null
+    earnings: number | null
+    audioId: string | null
+  }
+
+  export type SalesByStoreCountAggregateOutputType = {
+    id: number
+    name: number
+    ISRC: number
+    trackDownloads: number
+    streams: number
+    totalSales: number
+    earnings: number
+    audioId: number
+    _all: number
+  }
+
+
+  export type SalesByStoreAvgAggregateInputType = {
+    trackDownloads?: true
+    streams?: true
+    totalSales?: true
+    earnings?: true
+  }
+
+  export type SalesByStoreSumAggregateInputType = {
+    trackDownloads?: true
+    streams?: true
+    totalSales?: true
+    earnings?: true
+  }
+
+  export type SalesByStoreMinAggregateInputType = {
+    id?: true
+    name?: true
+    ISRC?: true
+    trackDownloads?: true
+    streams?: true
+    totalSales?: true
+    earnings?: true
+    audioId?: true
+  }
+
+  export type SalesByStoreMaxAggregateInputType = {
+    id?: true
+    name?: true
+    ISRC?: true
+    trackDownloads?: true
+    streams?: true
+    totalSales?: true
+    earnings?: true
+    audioId?: true
+  }
+
+  export type SalesByStoreCountAggregateInputType = {
+    id?: true
+    name?: true
+    ISRC?: true
+    trackDownloads?: true
+    streams?: true
+    totalSales?: true
+    earnings?: true
+    audioId?: true
+    _all?: true
+  }
+
+  export type SalesByStoreAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SalesByStore to aggregate.
+     */
+    where?: SalesByStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesByStores to fetch.
+     */
+    orderBy?: SalesByStoreOrderByWithRelationInput | SalesByStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SalesByStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesByStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesByStores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SalesByStores
+    **/
+    _count?: true | SalesByStoreCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SalesByStoreAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SalesByStoreSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SalesByStoreMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SalesByStoreMaxAggregateInputType
+  }
+
+  export type GetSalesByStoreAggregateType<T extends SalesByStoreAggregateArgs> = {
+        [P in keyof T & keyof AggregateSalesByStore]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSalesByStore[P]>
+      : GetScalarType<T[P], AggregateSalesByStore[P]>
+  }
+
+
+
+
+  export type SalesByStoreGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SalesByStoreWhereInput
+    orderBy?: SalesByStoreOrderByWithAggregationInput | SalesByStoreOrderByWithAggregationInput[]
+    by: SalesByStoreScalarFieldEnum[] | SalesByStoreScalarFieldEnum
+    having?: SalesByStoreScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SalesByStoreCountAggregateInputType | true
+    _avg?: SalesByStoreAvgAggregateInputType
+    _sum?: SalesByStoreSumAggregateInputType
+    _min?: SalesByStoreMinAggregateInputType
+    _max?: SalesByStoreMaxAggregateInputType
+  }
+
+  export type SalesByStoreGroupByOutputType = {
+    id: string
+    name: string
+    ISRC: string
+    trackDownloads: number
+    streams: number
+    totalSales: number
+    earnings: number
+    audioId: string
+    _count: SalesByStoreCountAggregateOutputType | null
+    _avg: SalesByStoreAvgAggregateOutputType | null
+    _sum: SalesByStoreSumAggregateOutputType | null
+    _min: SalesByStoreMinAggregateOutputType | null
+    _max: SalesByStoreMaxAggregateOutputType | null
+  }
+
+  type GetSalesByStoreGroupByPayload<T extends SalesByStoreGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SalesByStoreGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SalesByStoreGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SalesByStoreGroupByOutputType[P]>
+            : GetScalarType<T[P], SalesByStoreGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SalesByStoreSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    ISRC?: boolean
+    trackDownloads?: boolean
+    streams?: boolean
+    totalSales?: boolean
+    earnings?: boolean
+    audioId?: boolean
+    audio?: boolean | AudioDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["salesByStore"]>
+
+  export type SalesByStoreSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    ISRC?: boolean
+    trackDownloads?: boolean
+    streams?: boolean
+    totalSales?: boolean
+    earnings?: boolean
+    audioId?: boolean
+    audio?: boolean | AudioDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["salesByStore"]>
+
+  export type SalesByStoreSelectScalar = {
+    id?: boolean
+    name?: boolean
+    ISRC?: boolean
+    trackDownloads?: boolean
+    streams?: boolean
+    totalSales?: boolean
+    earnings?: boolean
+    audioId?: boolean
+  }
+
+  export type SalesByStoreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    audio?: boolean | AudioDefaultArgs<ExtArgs>
+  }
+  export type SalesByStoreIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    audio?: boolean | AudioDefaultArgs<ExtArgs>
+  }
+
+  export type $SalesByStorePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SalesByStore"
+    objects: {
+      audio: Prisma.$AudioPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      ISRC: string
+      trackDownloads: number
+      streams: number
+      totalSales: number
+      earnings: number
+      audioId: string
+    }, ExtArgs["result"]["salesByStore"]>
+    composites: {}
+  }
+
+  type SalesByStoreGetPayload<S extends boolean | null | undefined | SalesByStoreDefaultArgs> = $Result.GetResult<Prisma.$SalesByStorePayload, S>
+
+  type SalesByStoreCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<SalesByStoreFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: SalesByStoreCountAggregateInputType | true
+    }
+
+  export interface SalesByStoreDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SalesByStore'], meta: { name: 'SalesByStore' } }
+    /**
+     * Find zero or one SalesByStore that matches the filter.
+     * @param {SalesByStoreFindUniqueArgs} args - Arguments to find a SalesByStore
+     * @example
+     * // Get one SalesByStore
+     * const salesByStore = await prisma.salesByStore.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SalesByStoreFindUniqueArgs>(args: SelectSubset<T, SalesByStoreFindUniqueArgs<ExtArgs>>): Prisma__SalesByStoreClient<$Result.GetResult<Prisma.$SalesByStorePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one SalesByStore that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {SalesByStoreFindUniqueOrThrowArgs} args - Arguments to find a SalesByStore
+     * @example
+     * // Get one SalesByStore
+     * const salesByStore = await prisma.salesByStore.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SalesByStoreFindUniqueOrThrowArgs>(args: SelectSubset<T, SalesByStoreFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SalesByStoreClient<$Result.GetResult<Prisma.$SalesByStorePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first SalesByStore that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByStoreFindFirstArgs} args - Arguments to find a SalesByStore
+     * @example
+     * // Get one SalesByStore
+     * const salesByStore = await prisma.salesByStore.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SalesByStoreFindFirstArgs>(args?: SelectSubset<T, SalesByStoreFindFirstArgs<ExtArgs>>): Prisma__SalesByStoreClient<$Result.GetResult<Prisma.$SalesByStorePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first SalesByStore that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByStoreFindFirstOrThrowArgs} args - Arguments to find a SalesByStore
+     * @example
+     * // Get one SalesByStore
+     * const salesByStore = await prisma.salesByStore.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SalesByStoreFindFirstOrThrowArgs>(args?: SelectSubset<T, SalesByStoreFindFirstOrThrowArgs<ExtArgs>>): Prisma__SalesByStoreClient<$Result.GetResult<Prisma.$SalesByStorePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more SalesByStores that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByStoreFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SalesByStores
+     * const salesByStores = await prisma.salesByStore.findMany()
+     * 
+     * // Get first 10 SalesByStores
+     * const salesByStores = await prisma.salesByStore.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const salesByStoreWithIdOnly = await prisma.salesByStore.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SalesByStoreFindManyArgs>(args?: SelectSubset<T, SalesByStoreFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesByStorePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a SalesByStore.
+     * @param {SalesByStoreCreateArgs} args - Arguments to create a SalesByStore.
+     * @example
+     * // Create one SalesByStore
+     * const SalesByStore = await prisma.salesByStore.create({
+     *   data: {
+     *     // ... data to create a SalesByStore
+     *   }
+     * })
+     * 
+     */
+    create<T extends SalesByStoreCreateArgs>(args: SelectSubset<T, SalesByStoreCreateArgs<ExtArgs>>): Prisma__SalesByStoreClient<$Result.GetResult<Prisma.$SalesByStorePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many SalesByStores.
+     * @param {SalesByStoreCreateManyArgs} args - Arguments to create many SalesByStores.
+     * @example
+     * // Create many SalesByStores
+     * const salesByStore = await prisma.salesByStore.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SalesByStoreCreateManyArgs>(args?: SelectSubset<T, SalesByStoreCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SalesByStores and returns the data saved in the database.
+     * @param {SalesByStoreCreateManyAndReturnArgs} args - Arguments to create many SalesByStores.
+     * @example
+     * // Create many SalesByStores
+     * const salesByStore = await prisma.salesByStore.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SalesByStores and only return the `id`
+     * const salesByStoreWithIdOnly = await prisma.salesByStore.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SalesByStoreCreateManyAndReturnArgs>(args?: SelectSubset<T, SalesByStoreCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesByStorePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a SalesByStore.
+     * @param {SalesByStoreDeleteArgs} args - Arguments to delete one SalesByStore.
+     * @example
+     * // Delete one SalesByStore
+     * const SalesByStore = await prisma.salesByStore.delete({
+     *   where: {
+     *     // ... filter to delete one SalesByStore
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SalesByStoreDeleteArgs>(args: SelectSubset<T, SalesByStoreDeleteArgs<ExtArgs>>): Prisma__SalesByStoreClient<$Result.GetResult<Prisma.$SalesByStorePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one SalesByStore.
+     * @param {SalesByStoreUpdateArgs} args - Arguments to update one SalesByStore.
+     * @example
+     * // Update one SalesByStore
+     * const salesByStore = await prisma.salesByStore.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SalesByStoreUpdateArgs>(args: SelectSubset<T, SalesByStoreUpdateArgs<ExtArgs>>): Prisma__SalesByStoreClient<$Result.GetResult<Prisma.$SalesByStorePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more SalesByStores.
+     * @param {SalesByStoreDeleteManyArgs} args - Arguments to filter SalesByStores to delete.
+     * @example
+     * // Delete a few SalesByStores
+     * const { count } = await prisma.salesByStore.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SalesByStoreDeleteManyArgs>(args?: SelectSubset<T, SalesByStoreDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SalesByStores.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByStoreUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SalesByStores
+     * const salesByStore = await prisma.salesByStore.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SalesByStoreUpdateManyArgs>(args: SelectSubset<T, SalesByStoreUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one SalesByStore.
+     * @param {SalesByStoreUpsertArgs} args - Arguments to update or create a SalesByStore.
+     * @example
+     * // Update or create a SalesByStore
+     * const salesByStore = await prisma.salesByStore.upsert({
+     *   create: {
+     *     // ... data to create a SalesByStore
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SalesByStore we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SalesByStoreUpsertArgs>(args: SelectSubset<T, SalesByStoreUpsertArgs<ExtArgs>>): Prisma__SalesByStoreClient<$Result.GetResult<Prisma.$SalesByStorePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of SalesByStores.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByStoreCountArgs} args - Arguments to filter SalesByStores to count.
+     * @example
+     * // Count the number of SalesByStores
+     * const count = await prisma.salesByStore.count({
+     *   where: {
+     *     // ... the filter for the SalesByStores we want to count
+     *   }
+     * })
+    **/
+    count<T extends SalesByStoreCountArgs>(
+      args?: Subset<T, SalesByStoreCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SalesByStoreCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SalesByStore.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByStoreAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SalesByStoreAggregateArgs>(args: Subset<T, SalesByStoreAggregateArgs>): Prisma.PrismaPromise<GetSalesByStoreAggregateType<T>>
+
+    /**
+     * Group by SalesByStore.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByStoreGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SalesByStoreGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SalesByStoreGroupByArgs['orderBy'] }
+        : { orderBy?: SalesByStoreGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SalesByStoreGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSalesByStoreGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SalesByStore model
+   */
+  readonly fields: SalesByStoreFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SalesByStore.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SalesByStoreClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    audio<T extends AudioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AudioDefaultArgs<ExtArgs>>): Prisma__AudioClient<$Result.GetResult<Prisma.$AudioPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SalesByStore model
+   */ 
+  interface SalesByStoreFieldRefs {
+    readonly id: FieldRef<"SalesByStore", 'String'>
+    readonly name: FieldRef<"SalesByStore", 'String'>
+    readonly ISRC: FieldRef<"SalesByStore", 'String'>
+    readonly trackDownloads: FieldRef<"SalesByStore", 'Int'>
+    readonly streams: FieldRef<"SalesByStore", 'Int'>
+    readonly totalSales: FieldRef<"SalesByStore", 'Int'>
+    readonly earnings: FieldRef<"SalesByStore", 'Float'>
+    readonly audioId: FieldRef<"SalesByStore", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SalesByStore findUnique
+   */
+  export type SalesByStoreFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByStore
+     */
+    select?: SalesByStoreSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesByStore to fetch.
+     */
+    where: SalesByStoreWhereUniqueInput
+  }
+
+  /**
+   * SalesByStore findUniqueOrThrow
+   */
+  export type SalesByStoreFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByStore
+     */
+    select?: SalesByStoreSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesByStore to fetch.
+     */
+    where: SalesByStoreWhereUniqueInput
+  }
+
+  /**
+   * SalesByStore findFirst
+   */
+  export type SalesByStoreFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByStore
+     */
+    select?: SalesByStoreSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesByStore to fetch.
+     */
+    where?: SalesByStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesByStores to fetch.
+     */
+    orderBy?: SalesByStoreOrderByWithRelationInput | SalesByStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SalesByStores.
+     */
+    cursor?: SalesByStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesByStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesByStores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SalesByStores.
+     */
+    distinct?: SalesByStoreScalarFieldEnum | SalesByStoreScalarFieldEnum[]
+  }
+
+  /**
+   * SalesByStore findFirstOrThrow
+   */
+  export type SalesByStoreFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByStore
+     */
+    select?: SalesByStoreSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesByStore to fetch.
+     */
+    where?: SalesByStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesByStores to fetch.
+     */
+    orderBy?: SalesByStoreOrderByWithRelationInput | SalesByStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SalesByStores.
+     */
+    cursor?: SalesByStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesByStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesByStores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SalesByStores.
+     */
+    distinct?: SalesByStoreScalarFieldEnum | SalesByStoreScalarFieldEnum[]
+  }
+
+  /**
+   * SalesByStore findMany
+   */
+  export type SalesByStoreFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByStore
+     */
+    select?: SalesByStoreSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesByStores to fetch.
+     */
+    where?: SalesByStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesByStores to fetch.
+     */
+    orderBy?: SalesByStoreOrderByWithRelationInput | SalesByStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SalesByStores.
+     */
+    cursor?: SalesByStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesByStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesByStores.
+     */
+    skip?: number
+    distinct?: SalesByStoreScalarFieldEnum | SalesByStoreScalarFieldEnum[]
+  }
+
+  /**
+   * SalesByStore create
+   */
+  export type SalesByStoreCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByStore
+     */
+    select?: SalesByStoreSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByStoreInclude<ExtArgs> | null
+    /**
+     * The data needed to create a SalesByStore.
+     */
+    data: XOR<SalesByStoreCreateInput, SalesByStoreUncheckedCreateInput>
+  }
+
+  /**
+   * SalesByStore createMany
+   */
+  export type SalesByStoreCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SalesByStores.
+     */
+    data: SalesByStoreCreateManyInput | SalesByStoreCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SalesByStore createManyAndReturn
+   */
+  export type SalesByStoreCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByStore
+     */
+    select?: SalesByStoreSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many SalesByStores.
+     */
+    data: SalesByStoreCreateManyInput | SalesByStoreCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByStoreIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SalesByStore update
+   */
+  export type SalesByStoreUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByStore
+     */
+    select?: SalesByStoreSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByStoreInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SalesByStore.
+     */
+    data: XOR<SalesByStoreUpdateInput, SalesByStoreUncheckedUpdateInput>
+    /**
+     * Choose, which SalesByStore to update.
+     */
+    where: SalesByStoreWhereUniqueInput
+  }
+
+  /**
+   * SalesByStore updateMany
+   */
+  export type SalesByStoreUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SalesByStores.
+     */
+    data: XOR<SalesByStoreUpdateManyMutationInput, SalesByStoreUncheckedUpdateManyInput>
+    /**
+     * Filter which SalesByStores to update
+     */
+    where?: SalesByStoreWhereInput
+  }
+
+  /**
+   * SalesByStore upsert
+   */
+  export type SalesByStoreUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByStore
+     */
+    select?: SalesByStoreSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByStoreInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SalesByStore to update in case it exists.
+     */
+    where: SalesByStoreWhereUniqueInput
+    /**
+     * In case the SalesByStore found by the `where` argument doesn't exist, create a new SalesByStore with this data.
+     */
+    create: XOR<SalesByStoreCreateInput, SalesByStoreUncheckedCreateInput>
+    /**
+     * In case the SalesByStore was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SalesByStoreUpdateInput, SalesByStoreUncheckedUpdateInput>
+  }
+
+  /**
+   * SalesByStore delete
+   */
+  export type SalesByStoreDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByStore
+     */
+    select?: SalesByStoreSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByStoreInclude<ExtArgs> | null
+    /**
+     * Filter which SalesByStore to delete.
+     */
+    where: SalesByStoreWhereUniqueInput
+  }
+
+  /**
+   * SalesByStore deleteMany
+   */
+  export type SalesByStoreDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SalesByStores to delete
+     */
+    where?: SalesByStoreWhereInput
+  }
+
+  /**
+   * SalesByStore without action
+   */
+  export type SalesByStoreDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByStore
+     */
+    select?: SalesByStoreSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByStoreInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SalesByCountry
+   */
+
+  export type AggregateSalesByCountry = {
+    _count: SalesByCountryCountAggregateOutputType | null
+    _avg: SalesByCountryAvgAggregateOutputType | null
+    _sum: SalesByCountrySumAggregateOutputType | null
+    _min: SalesByCountryMinAggregateOutputType | null
+    _max: SalesByCountryMaxAggregateOutputType | null
+  }
+
+  export type SalesByCountryAvgAggregateOutputType = {
+    trackDownloads: number | null
+    streams: number | null
+    totalSales: number | null
+    earnings: number | null
+  }
+
+  export type SalesByCountrySumAggregateOutputType = {
+    trackDownloads: number | null
+    streams: number | null
+    totalSales: number | null
+    earnings: number | null
+  }
+
+  export type SalesByCountryMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    trackDownloads: number | null
+    ISRC: string | null
+    streams: number | null
+    totalSales: number | null
+    earnings: number | null
+    audioId: string | null
+  }
+
+  export type SalesByCountryMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    trackDownloads: number | null
+    ISRC: string | null
+    streams: number | null
+    totalSales: number | null
+    earnings: number | null
+    audioId: string | null
+  }
+
+  export type SalesByCountryCountAggregateOutputType = {
+    id: number
+    name: number
+    trackDownloads: number
+    ISRC: number
+    streams: number
+    totalSales: number
+    earnings: number
+    audioId: number
+    _all: number
+  }
+
+
+  export type SalesByCountryAvgAggregateInputType = {
+    trackDownloads?: true
+    streams?: true
+    totalSales?: true
+    earnings?: true
+  }
+
+  export type SalesByCountrySumAggregateInputType = {
+    trackDownloads?: true
+    streams?: true
+    totalSales?: true
+    earnings?: true
+  }
+
+  export type SalesByCountryMinAggregateInputType = {
+    id?: true
+    name?: true
+    trackDownloads?: true
+    ISRC?: true
+    streams?: true
+    totalSales?: true
+    earnings?: true
+    audioId?: true
+  }
+
+  export type SalesByCountryMaxAggregateInputType = {
+    id?: true
+    name?: true
+    trackDownloads?: true
+    ISRC?: true
+    streams?: true
+    totalSales?: true
+    earnings?: true
+    audioId?: true
+  }
+
+  export type SalesByCountryCountAggregateInputType = {
+    id?: true
+    name?: true
+    trackDownloads?: true
+    ISRC?: true
+    streams?: true
+    totalSales?: true
+    earnings?: true
+    audioId?: true
+    _all?: true
+  }
+
+  export type SalesByCountryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SalesByCountry to aggregate.
+     */
+    where?: SalesByCountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesByCountries to fetch.
+     */
+    orderBy?: SalesByCountryOrderByWithRelationInput | SalesByCountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SalesByCountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesByCountries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesByCountries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SalesByCountries
+    **/
+    _count?: true | SalesByCountryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SalesByCountryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SalesByCountrySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SalesByCountryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SalesByCountryMaxAggregateInputType
+  }
+
+  export type GetSalesByCountryAggregateType<T extends SalesByCountryAggregateArgs> = {
+        [P in keyof T & keyof AggregateSalesByCountry]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSalesByCountry[P]>
+      : GetScalarType<T[P], AggregateSalesByCountry[P]>
+  }
+
+
+
+
+  export type SalesByCountryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SalesByCountryWhereInput
+    orderBy?: SalesByCountryOrderByWithAggregationInput | SalesByCountryOrderByWithAggregationInput[]
+    by: SalesByCountryScalarFieldEnum[] | SalesByCountryScalarFieldEnum
+    having?: SalesByCountryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SalesByCountryCountAggregateInputType | true
+    _avg?: SalesByCountryAvgAggregateInputType
+    _sum?: SalesByCountrySumAggregateInputType
+    _min?: SalesByCountryMinAggregateInputType
+    _max?: SalesByCountryMaxAggregateInputType
+  }
+
+  export type SalesByCountryGroupByOutputType = {
+    id: string
+    name: string
+    trackDownloads: number
+    ISRC: string
+    streams: number
+    totalSales: number
+    earnings: number
+    audioId: string
+    _count: SalesByCountryCountAggregateOutputType | null
+    _avg: SalesByCountryAvgAggregateOutputType | null
+    _sum: SalesByCountrySumAggregateOutputType | null
+    _min: SalesByCountryMinAggregateOutputType | null
+    _max: SalesByCountryMaxAggregateOutputType | null
+  }
+
+  type GetSalesByCountryGroupByPayload<T extends SalesByCountryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SalesByCountryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SalesByCountryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SalesByCountryGroupByOutputType[P]>
+            : GetScalarType<T[P], SalesByCountryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SalesByCountrySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    trackDownloads?: boolean
+    ISRC?: boolean
+    streams?: boolean
+    totalSales?: boolean
+    earnings?: boolean
+    audioId?: boolean
+    audio?: boolean | AudioDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["salesByCountry"]>
+
+  export type SalesByCountrySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    trackDownloads?: boolean
+    ISRC?: boolean
+    streams?: boolean
+    totalSales?: boolean
+    earnings?: boolean
+    audioId?: boolean
+    audio?: boolean | AudioDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["salesByCountry"]>
+
+  export type SalesByCountrySelectScalar = {
+    id?: boolean
+    name?: boolean
+    trackDownloads?: boolean
+    ISRC?: boolean
+    streams?: boolean
+    totalSales?: boolean
+    earnings?: boolean
+    audioId?: boolean
+  }
+
+  export type SalesByCountryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    audio?: boolean | AudioDefaultArgs<ExtArgs>
+  }
+  export type SalesByCountryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    audio?: boolean | AudioDefaultArgs<ExtArgs>
+  }
+
+  export type $SalesByCountryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SalesByCountry"
+    objects: {
+      audio: Prisma.$AudioPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      trackDownloads: number
+      ISRC: string
+      streams: number
+      totalSales: number
+      earnings: number
+      audioId: string
+    }, ExtArgs["result"]["salesByCountry"]>
+    composites: {}
+  }
+
+  type SalesByCountryGetPayload<S extends boolean | null | undefined | SalesByCountryDefaultArgs> = $Result.GetResult<Prisma.$SalesByCountryPayload, S>
+
+  type SalesByCountryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<SalesByCountryFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: SalesByCountryCountAggregateInputType | true
+    }
+
+  export interface SalesByCountryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SalesByCountry'], meta: { name: 'SalesByCountry' } }
+    /**
+     * Find zero or one SalesByCountry that matches the filter.
+     * @param {SalesByCountryFindUniqueArgs} args - Arguments to find a SalesByCountry
+     * @example
+     * // Get one SalesByCountry
+     * const salesByCountry = await prisma.salesByCountry.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SalesByCountryFindUniqueArgs>(args: SelectSubset<T, SalesByCountryFindUniqueArgs<ExtArgs>>): Prisma__SalesByCountryClient<$Result.GetResult<Prisma.$SalesByCountryPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one SalesByCountry that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {SalesByCountryFindUniqueOrThrowArgs} args - Arguments to find a SalesByCountry
+     * @example
+     * // Get one SalesByCountry
+     * const salesByCountry = await prisma.salesByCountry.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SalesByCountryFindUniqueOrThrowArgs>(args: SelectSubset<T, SalesByCountryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SalesByCountryClient<$Result.GetResult<Prisma.$SalesByCountryPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first SalesByCountry that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByCountryFindFirstArgs} args - Arguments to find a SalesByCountry
+     * @example
+     * // Get one SalesByCountry
+     * const salesByCountry = await prisma.salesByCountry.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SalesByCountryFindFirstArgs>(args?: SelectSubset<T, SalesByCountryFindFirstArgs<ExtArgs>>): Prisma__SalesByCountryClient<$Result.GetResult<Prisma.$SalesByCountryPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first SalesByCountry that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByCountryFindFirstOrThrowArgs} args - Arguments to find a SalesByCountry
+     * @example
+     * // Get one SalesByCountry
+     * const salesByCountry = await prisma.salesByCountry.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SalesByCountryFindFirstOrThrowArgs>(args?: SelectSubset<T, SalesByCountryFindFirstOrThrowArgs<ExtArgs>>): Prisma__SalesByCountryClient<$Result.GetResult<Prisma.$SalesByCountryPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more SalesByCountries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByCountryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SalesByCountries
+     * const salesByCountries = await prisma.salesByCountry.findMany()
+     * 
+     * // Get first 10 SalesByCountries
+     * const salesByCountries = await prisma.salesByCountry.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const salesByCountryWithIdOnly = await prisma.salesByCountry.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SalesByCountryFindManyArgs>(args?: SelectSubset<T, SalesByCountryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesByCountryPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a SalesByCountry.
+     * @param {SalesByCountryCreateArgs} args - Arguments to create a SalesByCountry.
+     * @example
+     * // Create one SalesByCountry
+     * const SalesByCountry = await prisma.salesByCountry.create({
+     *   data: {
+     *     // ... data to create a SalesByCountry
+     *   }
+     * })
+     * 
+     */
+    create<T extends SalesByCountryCreateArgs>(args: SelectSubset<T, SalesByCountryCreateArgs<ExtArgs>>): Prisma__SalesByCountryClient<$Result.GetResult<Prisma.$SalesByCountryPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many SalesByCountries.
+     * @param {SalesByCountryCreateManyArgs} args - Arguments to create many SalesByCountries.
+     * @example
+     * // Create many SalesByCountries
+     * const salesByCountry = await prisma.salesByCountry.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SalesByCountryCreateManyArgs>(args?: SelectSubset<T, SalesByCountryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SalesByCountries and returns the data saved in the database.
+     * @param {SalesByCountryCreateManyAndReturnArgs} args - Arguments to create many SalesByCountries.
+     * @example
+     * // Create many SalesByCountries
+     * const salesByCountry = await prisma.salesByCountry.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SalesByCountries and only return the `id`
+     * const salesByCountryWithIdOnly = await prisma.salesByCountry.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SalesByCountryCreateManyAndReturnArgs>(args?: SelectSubset<T, SalesByCountryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesByCountryPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a SalesByCountry.
+     * @param {SalesByCountryDeleteArgs} args - Arguments to delete one SalesByCountry.
+     * @example
+     * // Delete one SalesByCountry
+     * const SalesByCountry = await prisma.salesByCountry.delete({
+     *   where: {
+     *     // ... filter to delete one SalesByCountry
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SalesByCountryDeleteArgs>(args: SelectSubset<T, SalesByCountryDeleteArgs<ExtArgs>>): Prisma__SalesByCountryClient<$Result.GetResult<Prisma.$SalesByCountryPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one SalesByCountry.
+     * @param {SalesByCountryUpdateArgs} args - Arguments to update one SalesByCountry.
+     * @example
+     * // Update one SalesByCountry
+     * const salesByCountry = await prisma.salesByCountry.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SalesByCountryUpdateArgs>(args: SelectSubset<T, SalesByCountryUpdateArgs<ExtArgs>>): Prisma__SalesByCountryClient<$Result.GetResult<Prisma.$SalesByCountryPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more SalesByCountries.
+     * @param {SalesByCountryDeleteManyArgs} args - Arguments to filter SalesByCountries to delete.
+     * @example
+     * // Delete a few SalesByCountries
+     * const { count } = await prisma.salesByCountry.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SalesByCountryDeleteManyArgs>(args?: SelectSubset<T, SalesByCountryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SalesByCountries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByCountryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SalesByCountries
+     * const salesByCountry = await prisma.salesByCountry.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SalesByCountryUpdateManyArgs>(args: SelectSubset<T, SalesByCountryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one SalesByCountry.
+     * @param {SalesByCountryUpsertArgs} args - Arguments to update or create a SalesByCountry.
+     * @example
+     * // Update or create a SalesByCountry
+     * const salesByCountry = await prisma.salesByCountry.upsert({
+     *   create: {
+     *     // ... data to create a SalesByCountry
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SalesByCountry we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SalesByCountryUpsertArgs>(args: SelectSubset<T, SalesByCountryUpsertArgs<ExtArgs>>): Prisma__SalesByCountryClient<$Result.GetResult<Prisma.$SalesByCountryPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of SalesByCountries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByCountryCountArgs} args - Arguments to filter SalesByCountries to count.
+     * @example
+     * // Count the number of SalesByCountries
+     * const count = await prisma.salesByCountry.count({
+     *   where: {
+     *     // ... the filter for the SalesByCountries we want to count
+     *   }
+     * })
+    **/
+    count<T extends SalesByCountryCountArgs>(
+      args?: Subset<T, SalesByCountryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SalesByCountryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SalesByCountry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByCountryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SalesByCountryAggregateArgs>(args: Subset<T, SalesByCountryAggregateArgs>): Prisma.PrismaPromise<GetSalesByCountryAggregateType<T>>
+
+    /**
+     * Group by SalesByCountry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByCountryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SalesByCountryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SalesByCountryGroupByArgs['orderBy'] }
+        : { orderBy?: SalesByCountryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SalesByCountryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSalesByCountryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SalesByCountry model
+   */
+  readonly fields: SalesByCountryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SalesByCountry.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SalesByCountryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    audio<T extends AudioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AudioDefaultArgs<ExtArgs>>): Prisma__AudioClient<$Result.GetResult<Prisma.$AudioPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SalesByCountry model
+   */ 
+  interface SalesByCountryFieldRefs {
+    readonly id: FieldRef<"SalesByCountry", 'String'>
+    readonly name: FieldRef<"SalesByCountry", 'String'>
+    readonly trackDownloads: FieldRef<"SalesByCountry", 'Int'>
+    readonly ISRC: FieldRef<"SalesByCountry", 'String'>
+    readonly streams: FieldRef<"SalesByCountry", 'Int'>
+    readonly totalSales: FieldRef<"SalesByCountry", 'Int'>
+    readonly earnings: FieldRef<"SalesByCountry", 'Float'>
+    readonly audioId: FieldRef<"SalesByCountry", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SalesByCountry findUnique
+   */
+  export type SalesByCountryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByCountry
+     */
+    select?: SalesByCountrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByCountryInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesByCountry to fetch.
+     */
+    where: SalesByCountryWhereUniqueInput
+  }
+
+  /**
+   * SalesByCountry findUniqueOrThrow
+   */
+  export type SalesByCountryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByCountry
+     */
+    select?: SalesByCountrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByCountryInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesByCountry to fetch.
+     */
+    where: SalesByCountryWhereUniqueInput
+  }
+
+  /**
+   * SalesByCountry findFirst
+   */
+  export type SalesByCountryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByCountry
+     */
+    select?: SalesByCountrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByCountryInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesByCountry to fetch.
+     */
+    where?: SalesByCountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesByCountries to fetch.
+     */
+    orderBy?: SalesByCountryOrderByWithRelationInput | SalesByCountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SalesByCountries.
+     */
+    cursor?: SalesByCountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesByCountries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesByCountries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SalesByCountries.
+     */
+    distinct?: SalesByCountryScalarFieldEnum | SalesByCountryScalarFieldEnum[]
+  }
+
+  /**
+   * SalesByCountry findFirstOrThrow
+   */
+  export type SalesByCountryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByCountry
+     */
+    select?: SalesByCountrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByCountryInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesByCountry to fetch.
+     */
+    where?: SalesByCountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesByCountries to fetch.
+     */
+    orderBy?: SalesByCountryOrderByWithRelationInput | SalesByCountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SalesByCountries.
+     */
+    cursor?: SalesByCountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesByCountries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesByCountries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SalesByCountries.
+     */
+    distinct?: SalesByCountryScalarFieldEnum | SalesByCountryScalarFieldEnum[]
+  }
+
+  /**
+   * SalesByCountry findMany
+   */
+  export type SalesByCountryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByCountry
+     */
+    select?: SalesByCountrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByCountryInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesByCountries to fetch.
+     */
+    where?: SalesByCountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesByCountries to fetch.
+     */
+    orderBy?: SalesByCountryOrderByWithRelationInput | SalesByCountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SalesByCountries.
+     */
+    cursor?: SalesByCountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesByCountries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesByCountries.
+     */
+    skip?: number
+    distinct?: SalesByCountryScalarFieldEnum | SalesByCountryScalarFieldEnum[]
+  }
+
+  /**
+   * SalesByCountry create
+   */
+  export type SalesByCountryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByCountry
+     */
+    select?: SalesByCountrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByCountryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a SalesByCountry.
+     */
+    data: XOR<SalesByCountryCreateInput, SalesByCountryUncheckedCreateInput>
+  }
+
+  /**
+   * SalesByCountry createMany
+   */
+  export type SalesByCountryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SalesByCountries.
+     */
+    data: SalesByCountryCreateManyInput | SalesByCountryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SalesByCountry createManyAndReturn
+   */
+  export type SalesByCountryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByCountry
+     */
+    select?: SalesByCountrySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many SalesByCountries.
+     */
+    data: SalesByCountryCreateManyInput | SalesByCountryCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByCountryIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SalesByCountry update
+   */
+  export type SalesByCountryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByCountry
+     */
+    select?: SalesByCountrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByCountryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SalesByCountry.
+     */
+    data: XOR<SalesByCountryUpdateInput, SalesByCountryUncheckedUpdateInput>
+    /**
+     * Choose, which SalesByCountry to update.
+     */
+    where: SalesByCountryWhereUniqueInput
+  }
+
+  /**
+   * SalesByCountry updateMany
+   */
+  export type SalesByCountryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SalesByCountries.
+     */
+    data: XOR<SalesByCountryUpdateManyMutationInput, SalesByCountryUncheckedUpdateManyInput>
+    /**
+     * Filter which SalesByCountries to update
+     */
+    where?: SalesByCountryWhereInput
+  }
+
+  /**
+   * SalesByCountry upsert
+   */
+  export type SalesByCountryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByCountry
+     */
+    select?: SalesByCountrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByCountryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SalesByCountry to update in case it exists.
+     */
+    where: SalesByCountryWhereUniqueInput
+    /**
+     * In case the SalesByCountry found by the `where` argument doesn't exist, create a new SalesByCountry with this data.
+     */
+    create: XOR<SalesByCountryCreateInput, SalesByCountryUncheckedCreateInput>
+    /**
+     * In case the SalesByCountry was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SalesByCountryUpdateInput, SalesByCountryUncheckedUpdateInput>
+  }
+
+  /**
+   * SalesByCountry delete
+   */
+  export type SalesByCountryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByCountry
+     */
+    select?: SalesByCountrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByCountryInclude<ExtArgs> | null
+    /**
+     * Filter which SalesByCountry to delete.
+     */
+    where: SalesByCountryWhereUniqueInput
+  }
+
+  /**
+   * SalesByCountry deleteMany
+   */
+  export type SalesByCountryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SalesByCountries to delete
+     */
+    where?: SalesByCountryWhereInput
+  }
+
+  /**
+   * SalesByCountry without action
+   */
+  export type SalesByCountryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByCountry
+     */
+    select?: SalesByCountrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByCountryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SalesByMonth
+   */
+
+  export type AggregateSalesByMonth = {
+    _count: SalesByMonthCountAggregateOutputType | null
+    _avg: SalesByMonthAvgAggregateOutputType | null
+    _sum: SalesByMonthSumAggregateOutputType | null
+    _min: SalesByMonthMinAggregateOutputType | null
+    _max: SalesByMonthMaxAggregateOutputType | null
+  }
+
+  export type SalesByMonthAvgAggregateOutputType = {
+    month: number | null
+    year: number | null
+    trackDownloads: number | null
+    streams: number | null
+    totalSales: number | null
+    earnings: number | null
+  }
+
+  export type SalesByMonthSumAggregateOutputType = {
+    month: number | null
+    year: number | null
+    trackDownloads: number | null
+    streams: number | null
+    totalSales: number | null
+    earnings: number | null
+  }
+
+  export type SalesByMonthMinAggregateOutputType = {
+    id: string | null
+    month: number | null
+    year: number | null
+    trackDownloads: number | null
+    streams: number | null
+    ISRC: string | null
+    totalSales: number | null
+    earnings: number | null
+    date: string | null
+    audioId: string | null
+  }
+
+  export type SalesByMonthMaxAggregateOutputType = {
+    id: string | null
+    month: number | null
+    year: number | null
+    trackDownloads: number | null
+    streams: number | null
+    ISRC: string | null
+    totalSales: number | null
+    earnings: number | null
+    date: string | null
+    audioId: string | null
+  }
+
+  export type SalesByMonthCountAggregateOutputType = {
+    id: number
+    month: number
+    year: number
+    trackDownloads: number
+    streams: number
+    ISRC: number
+    totalSales: number
+    earnings: number
+    date: number
+    audioId: number
+    _all: number
+  }
+
+
+  export type SalesByMonthAvgAggregateInputType = {
+    month?: true
+    year?: true
+    trackDownloads?: true
+    streams?: true
+    totalSales?: true
+    earnings?: true
+  }
+
+  export type SalesByMonthSumAggregateInputType = {
+    month?: true
+    year?: true
+    trackDownloads?: true
+    streams?: true
+    totalSales?: true
+    earnings?: true
+  }
+
+  export type SalesByMonthMinAggregateInputType = {
+    id?: true
+    month?: true
+    year?: true
+    trackDownloads?: true
+    streams?: true
+    ISRC?: true
+    totalSales?: true
+    earnings?: true
+    date?: true
+    audioId?: true
+  }
+
+  export type SalesByMonthMaxAggregateInputType = {
+    id?: true
+    month?: true
+    year?: true
+    trackDownloads?: true
+    streams?: true
+    ISRC?: true
+    totalSales?: true
+    earnings?: true
+    date?: true
+    audioId?: true
+  }
+
+  export type SalesByMonthCountAggregateInputType = {
+    id?: true
+    month?: true
+    year?: true
+    trackDownloads?: true
+    streams?: true
+    ISRC?: true
+    totalSales?: true
+    earnings?: true
+    date?: true
+    audioId?: true
+    _all?: true
+  }
+
+  export type SalesByMonthAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SalesByMonth to aggregate.
+     */
+    where?: SalesByMonthWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesByMonths to fetch.
+     */
+    orderBy?: SalesByMonthOrderByWithRelationInput | SalesByMonthOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SalesByMonthWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesByMonths from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesByMonths.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SalesByMonths
+    **/
+    _count?: true | SalesByMonthCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SalesByMonthAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SalesByMonthSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SalesByMonthMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SalesByMonthMaxAggregateInputType
+  }
+
+  export type GetSalesByMonthAggregateType<T extends SalesByMonthAggregateArgs> = {
+        [P in keyof T & keyof AggregateSalesByMonth]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSalesByMonth[P]>
+      : GetScalarType<T[P], AggregateSalesByMonth[P]>
+  }
+
+
+
+
+  export type SalesByMonthGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SalesByMonthWhereInput
+    orderBy?: SalesByMonthOrderByWithAggregationInput | SalesByMonthOrderByWithAggregationInput[]
+    by: SalesByMonthScalarFieldEnum[] | SalesByMonthScalarFieldEnum
+    having?: SalesByMonthScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SalesByMonthCountAggregateInputType | true
+    _avg?: SalesByMonthAvgAggregateInputType
+    _sum?: SalesByMonthSumAggregateInputType
+    _min?: SalesByMonthMinAggregateInputType
+    _max?: SalesByMonthMaxAggregateInputType
+  }
+
+  export type SalesByMonthGroupByOutputType = {
+    id: string
+    month: number
+    year: number
+    trackDownloads: number
+    streams: number
+    ISRC: string
+    totalSales: number
+    earnings: number
+    date: string
+    audioId: string
+    _count: SalesByMonthCountAggregateOutputType | null
+    _avg: SalesByMonthAvgAggregateOutputType | null
+    _sum: SalesByMonthSumAggregateOutputType | null
+    _min: SalesByMonthMinAggregateOutputType | null
+    _max: SalesByMonthMaxAggregateOutputType | null
+  }
+
+  type GetSalesByMonthGroupByPayload<T extends SalesByMonthGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SalesByMonthGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SalesByMonthGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SalesByMonthGroupByOutputType[P]>
+            : GetScalarType<T[P], SalesByMonthGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SalesByMonthSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    month?: boolean
+    year?: boolean
+    trackDownloads?: boolean
+    streams?: boolean
+    ISRC?: boolean
+    totalSales?: boolean
+    earnings?: boolean
+    date?: boolean
+    audioId?: boolean
+    audio?: boolean | AudioDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["salesByMonth"]>
+
+  export type SalesByMonthSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    month?: boolean
+    year?: boolean
+    trackDownloads?: boolean
+    streams?: boolean
+    ISRC?: boolean
+    totalSales?: boolean
+    earnings?: boolean
+    date?: boolean
+    audioId?: boolean
+    audio?: boolean | AudioDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["salesByMonth"]>
+
+  export type SalesByMonthSelectScalar = {
+    id?: boolean
+    month?: boolean
+    year?: boolean
+    trackDownloads?: boolean
+    streams?: boolean
+    ISRC?: boolean
+    totalSales?: boolean
+    earnings?: boolean
+    date?: boolean
+    audioId?: boolean
+  }
+
+  export type SalesByMonthInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    audio?: boolean | AudioDefaultArgs<ExtArgs>
+  }
+  export type SalesByMonthIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    audio?: boolean | AudioDefaultArgs<ExtArgs>
+  }
+
+  export type $SalesByMonthPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SalesByMonth"
+    objects: {
+      audio: Prisma.$AudioPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      month: number
+      year: number
+      trackDownloads: number
+      streams: number
+      ISRC: string
+      totalSales: number
+      earnings: number
+      date: string
+      audioId: string
+    }, ExtArgs["result"]["salesByMonth"]>
+    composites: {}
+  }
+
+  type SalesByMonthGetPayload<S extends boolean | null | undefined | SalesByMonthDefaultArgs> = $Result.GetResult<Prisma.$SalesByMonthPayload, S>
+
+  type SalesByMonthCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<SalesByMonthFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: SalesByMonthCountAggregateInputType | true
+    }
+
+  export interface SalesByMonthDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SalesByMonth'], meta: { name: 'SalesByMonth' } }
+    /**
+     * Find zero or one SalesByMonth that matches the filter.
+     * @param {SalesByMonthFindUniqueArgs} args - Arguments to find a SalesByMonth
+     * @example
+     * // Get one SalesByMonth
+     * const salesByMonth = await prisma.salesByMonth.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SalesByMonthFindUniqueArgs>(args: SelectSubset<T, SalesByMonthFindUniqueArgs<ExtArgs>>): Prisma__SalesByMonthClient<$Result.GetResult<Prisma.$SalesByMonthPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one SalesByMonth that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {SalesByMonthFindUniqueOrThrowArgs} args - Arguments to find a SalesByMonth
+     * @example
+     * // Get one SalesByMonth
+     * const salesByMonth = await prisma.salesByMonth.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SalesByMonthFindUniqueOrThrowArgs>(args: SelectSubset<T, SalesByMonthFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SalesByMonthClient<$Result.GetResult<Prisma.$SalesByMonthPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first SalesByMonth that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByMonthFindFirstArgs} args - Arguments to find a SalesByMonth
+     * @example
+     * // Get one SalesByMonth
+     * const salesByMonth = await prisma.salesByMonth.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SalesByMonthFindFirstArgs>(args?: SelectSubset<T, SalesByMonthFindFirstArgs<ExtArgs>>): Prisma__SalesByMonthClient<$Result.GetResult<Prisma.$SalesByMonthPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first SalesByMonth that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByMonthFindFirstOrThrowArgs} args - Arguments to find a SalesByMonth
+     * @example
+     * // Get one SalesByMonth
+     * const salesByMonth = await prisma.salesByMonth.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SalesByMonthFindFirstOrThrowArgs>(args?: SelectSubset<T, SalesByMonthFindFirstOrThrowArgs<ExtArgs>>): Prisma__SalesByMonthClient<$Result.GetResult<Prisma.$SalesByMonthPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more SalesByMonths that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByMonthFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SalesByMonths
+     * const salesByMonths = await prisma.salesByMonth.findMany()
+     * 
+     * // Get first 10 SalesByMonths
+     * const salesByMonths = await prisma.salesByMonth.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const salesByMonthWithIdOnly = await prisma.salesByMonth.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SalesByMonthFindManyArgs>(args?: SelectSubset<T, SalesByMonthFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesByMonthPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a SalesByMonth.
+     * @param {SalesByMonthCreateArgs} args - Arguments to create a SalesByMonth.
+     * @example
+     * // Create one SalesByMonth
+     * const SalesByMonth = await prisma.salesByMonth.create({
+     *   data: {
+     *     // ... data to create a SalesByMonth
+     *   }
+     * })
+     * 
+     */
+    create<T extends SalesByMonthCreateArgs>(args: SelectSubset<T, SalesByMonthCreateArgs<ExtArgs>>): Prisma__SalesByMonthClient<$Result.GetResult<Prisma.$SalesByMonthPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many SalesByMonths.
+     * @param {SalesByMonthCreateManyArgs} args - Arguments to create many SalesByMonths.
+     * @example
+     * // Create many SalesByMonths
+     * const salesByMonth = await prisma.salesByMonth.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SalesByMonthCreateManyArgs>(args?: SelectSubset<T, SalesByMonthCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SalesByMonths and returns the data saved in the database.
+     * @param {SalesByMonthCreateManyAndReturnArgs} args - Arguments to create many SalesByMonths.
+     * @example
+     * // Create many SalesByMonths
+     * const salesByMonth = await prisma.salesByMonth.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SalesByMonths and only return the `id`
+     * const salesByMonthWithIdOnly = await prisma.salesByMonth.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SalesByMonthCreateManyAndReturnArgs>(args?: SelectSubset<T, SalesByMonthCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesByMonthPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a SalesByMonth.
+     * @param {SalesByMonthDeleteArgs} args - Arguments to delete one SalesByMonth.
+     * @example
+     * // Delete one SalesByMonth
+     * const SalesByMonth = await prisma.salesByMonth.delete({
+     *   where: {
+     *     // ... filter to delete one SalesByMonth
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SalesByMonthDeleteArgs>(args: SelectSubset<T, SalesByMonthDeleteArgs<ExtArgs>>): Prisma__SalesByMonthClient<$Result.GetResult<Prisma.$SalesByMonthPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one SalesByMonth.
+     * @param {SalesByMonthUpdateArgs} args - Arguments to update one SalesByMonth.
+     * @example
+     * // Update one SalesByMonth
+     * const salesByMonth = await prisma.salesByMonth.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SalesByMonthUpdateArgs>(args: SelectSubset<T, SalesByMonthUpdateArgs<ExtArgs>>): Prisma__SalesByMonthClient<$Result.GetResult<Prisma.$SalesByMonthPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more SalesByMonths.
+     * @param {SalesByMonthDeleteManyArgs} args - Arguments to filter SalesByMonths to delete.
+     * @example
+     * // Delete a few SalesByMonths
+     * const { count } = await prisma.salesByMonth.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SalesByMonthDeleteManyArgs>(args?: SelectSubset<T, SalesByMonthDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SalesByMonths.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByMonthUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SalesByMonths
+     * const salesByMonth = await prisma.salesByMonth.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SalesByMonthUpdateManyArgs>(args: SelectSubset<T, SalesByMonthUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one SalesByMonth.
+     * @param {SalesByMonthUpsertArgs} args - Arguments to update or create a SalesByMonth.
+     * @example
+     * // Update or create a SalesByMonth
+     * const salesByMonth = await prisma.salesByMonth.upsert({
+     *   create: {
+     *     // ... data to create a SalesByMonth
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SalesByMonth we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SalesByMonthUpsertArgs>(args: SelectSubset<T, SalesByMonthUpsertArgs<ExtArgs>>): Prisma__SalesByMonthClient<$Result.GetResult<Prisma.$SalesByMonthPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of SalesByMonths.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByMonthCountArgs} args - Arguments to filter SalesByMonths to count.
+     * @example
+     * // Count the number of SalesByMonths
+     * const count = await prisma.salesByMonth.count({
+     *   where: {
+     *     // ... the filter for the SalesByMonths we want to count
+     *   }
+     * })
+    **/
+    count<T extends SalesByMonthCountArgs>(
+      args?: Subset<T, SalesByMonthCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SalesByMonthCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SalesByMonth.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByMonthAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SalesByMonthAggregateArgs>(args: Subset<T, SalesByMonthAggregateArgs>): Prisma.PrismaPromise<GetSalesByMonthAggregateType<T>>
+
+    /**
+     * Group by SalesByMonth.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesByMonthGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SalesByMonthGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SalesByMonthGroupByArgs['orderBy'] }
+        : { orderBy?: SalesByMonthGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SalesByMonthGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSalesByMonthGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SalesByMonth model
+   */
+  readonly fields: SalesByMonthFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SalesByMonth.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SalesByMonthClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    audio<T extends AudioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AudioDefaultArgs<ExtArgs>>): Prisma__AudioClient<$Result.GetResult<Prisma.$AudioPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SalesByMonth model
+   */ 
+  interface SalesByMonthFieldRefs {
+    readonly id: FieldRef<"SalesByMonth", 'String'>
+    readonly month: FieldRef<"SalesByMonth", 'Int'>
+    readonly year: FieldRef<"SalesByMonth", 'Int'>
+    readonly trackDownloads: FieldRef<"SalesByMonth", 'Int'>
+    readonly streams: FieldRef<"SalesByMonth", 'Int'>
+    readonly ISRC: FieldRef<"SalesByMonth", 'String'>
+    readonly totalSales: FieldRef<"SalesByMonth", 'Int'>
+    readonly earnings: FieldRef<"SalesByMonth", 'Float'>
+    readonly date: FieldRef<"SalesByMonth", 'String'>
+    readonly audioId: FieldRef<"SalesByMonth", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SalesByMonth findUnique
+   */
+  export type SalesByMonthFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByMonth
+     */
+    select?: SalesByMonthSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByMonthInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesByMonth to fetch.
+     */
+    where: SalesByMonthWhereUniqueInput
+  }
+
+  /**
+   * SalesByMonth findUniqueOrThrow
+   */
+  export type SalesByMonthFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByMonth
+     */
+    select?: SalesByMonthSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByMonthInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesByMonth to fetch.
+     */
+    where: SalesByMonthWhereUniqueInput
+  }
+
+  /**
+   * SalesByMonth findFirst
+   */
+  export type SalesByMonthFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByMonth
+     */
+    select?: SalesByMonthSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByMonthInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesByMonth to fetch.
+     */
+    where?: SalesByMonthWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesByMonths to fetch.
+     */
+    orderBy?: SalesByMonthOrderByWithRelationInput | SalesByMonthOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SalesByMonths.
+     */
+    cursor?: SalesByMonthWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesByMonths from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesByMonths.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SalesByMonths.
+     */
+    distinct?: SalesByMonthScalarFieldEnum | SalesByMonthScalarFieldEnum[]
+  }
+
+  /**
+   * SalesByMonth findFirstOrThrow
+   */
+  export type SalesByMonthFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByMonth
+     */
+    select?: SalesByMonthSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByMonthInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesByMonth to fetch.
+     */
+    where?: SalesByMonthWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesByMonths to fetch.
+     */
+    orderBy?: SalesByMonthOrderByWithRelationInput | SalesByMonthOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SalesByMonths.
+     */
+    cursor?: SalesByMonthWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesByMonths from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesByMonths.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SalesByMonths.
+     */
+    distinct?: SalesByMonthScalarFieldEnum | SalesByMonthScalarFieldEnum[]
+  }
+
+  /**
+   * SalesByMonth findMany
+   */
+  export type SalesByMonthFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByMonth
+     */
+    select?: SalesByMonthSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByMonthInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesByMonths to fetch.
+     */
+    where?: SalesByMonthWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesByMonths to fetch.
+     */
+    orderBy?: SalesByMonthOrderByWithRelationInput | SalesByMonthOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SalesByMonths.
+     */
+    cursor?: SalesByMonthWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesByMonths from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesByMonths.
+     */
+    skip?: number
+    distinct?: SalesByMonthScalarFieldEnum | SalesByMonthScalarFieldEnum[]
+  }
+
+  /**
+   * SalesByMonth create
+   */
+  export type SalesByMonthCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByMonth
+     */
+    select?: SalesByMonthSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByMonthInclude<ExtArgs> | null
+    /**
+     * The data needed to create a SalesByMonth.
+     */
+    data: XOR<SalesByMonthCreateInput, SalesByMonthUncheckedCreateInput>
+  }
+
+  /**
+   * SalesByMonth createMany
+   */
+  export type SalesByMonthCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SalesByMonths.
+     */
+    data: SalesByMonthCreateManyInput | SalesByMonthCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SalesByMonth createManyAndReturn
+   */
+  export type SalesByMonthCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByMonth
+     */
+    select?: SalesByMonthSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many SalesByMonths.
+     */
+    data: SalesByMonthCreateManyInput | SalesByMonthCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByMonthIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SalesByMonth update
+   */
+  export type SalesByMonthUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByMonth
+     */
+    select?: SalesByMonthSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByMonthInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SalesByMonth.
+     */
+    data: XOR<SalesByMonthUpdateInput, SalesByMonthUncheckedUpdateInput>
+    /**
+     * Choose, which SalesByMonth to update.
+     */
+    where: SalesByMonthWhereUniqueInput
+  }
+
+  /**
+   * SalesByMonth updateMany
+   */
+  export type SalesByMonthUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SalesByMonths.
+     */
+    data: XOR<SalesByMonthUpdateManyMutationInput, SalesByMonthUncheckedUpdateManyInput>
+    /**
+     * Filter which SalesByMonths to update
+     */
+    where?: SalesByMonthWhereInput
+  }
+
+  /**
+   * SalesByMonth upsert
+   */
+  export type SalesByMonthUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByMonth
+     */
+    select?: SalesByMonthSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByMonthInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SalesByMonth to update in case it exists.
+     */
+    where: SalesByMonthWhereUniqueInput
+    /**
+     * In case the SalesByMonth found by the `where` argument doesn't exist, create a new SalesByMonth with this data.
+     */
+    create: XOR<SalesByMonthCreateInput, SalesByMonthUncheckedCreateInput>
+    /**
+     * In case the SalesByMonth was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SalesByMonthUpdateInput, SalesByMonthUncheckedUpdateInput>
+  }
+
+  /**
+   * SalesByMonth delete
+   */
+  export type SalesByMonthDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByMonth
+     */
+    select?: SalesByMonthSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByMonthInclude<ExtArgs> | null
+    /**
+     * Filter which SalesByMonth to delete.
+     */
+    where: SalesByMonthWhereUniqueInput
+  }
+
+  /**
+   * SalesByMonth deleteMany
+   */
+  export type SalesByMonthDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SalesByMonths to delete
+     */
+    where?: SalesByMonthWhereInput
+  }
+
+  /**
+   * SalesByMonth without action
+   */
+  export type SalesByMonthDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesByMonth
+     */
+    select?: SalesByMonthSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesByMonthInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -10963,6 +14397,50 @@ export namespace Prisma {
   export type MonthlyReportScalarFieldEnum = (typeof MonthlyReportScalarFieldEnum)[keyof typeof MonthlyReportScalarFieldEnum]
 
 
+  export const SalesByStoreScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    ISRC: 'ISRC',
+    trackDownloads: 'trackDownloads',
+    streams: 'streams',
+    totalSales: 'totalSales',
+    earnings: 'earnings',
+    audioId: 'audioId'
+  };
+
+  export type SalesByStoreScalarFieldEnum = (typeof SalesByStoreScalarFieldEnum)[keyof typeof SalesByStoreScalarFieldEnum]
+
+
+  export const SalesByCountryScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    trackDownloads: 'trackDownloads',
+    ISRC: 'ISRC',
+    streams: 'streams',
+    totalSales: 'totalSales',
+    earnings: 'earnings',
+    audioId: 'audioId'
+  };
+
+  export type SalesByCountryScalarFieldEnum = (typeof SalesByCountryScalarFieldEnum)[keyof typeof SalesByCountryScalarFieldEnum]
+
+
+  export const SalesByMonthScalarFieldEnum: {
+    id: 'id',
+    month: 'month',
+    year: 'year',
+    trackDownloads: 'trackDownloads',
+    streams: 'streams',
+    ISRC: 'ISRC',
+    totalSales: 'totalSales',
+    earnings: 'earnings',
+    date: 'date',
+    audioId: 'audioId'
+  };
+
+  export type SalesByMonthScalarFieldEnum = (typeof SalesByMonthScalarFieldEnum)[keyof typeof SalesByMonthScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -11085,6 +14563,9 @@ export namespace Prisma {
     Store?: StoreListRelationFilter
     MonthlyReport?: MonthlyReportListRelationFilter
     CountryEarnings?: CountryEarningsListRelationFilter
+    SalesByStore?: SalesByStoreListRelationFilter
+    SalesByCountry?: SalesByCountryListRelationFilter
+    SalesByMonth?: SalesByMonthListRelationFilter
   }
 
   export type AudioOrderByWithRelationInput = {
@@ -11118,6 +14599,9 @@ export namespace Prisma {
     Store?: StoreOrderByRelationAggregateInput
     MonthlyReport?: MonthlyReportOrderByRelationAggregateInput
     CountryEarnings?: CountryEarningsOrderByRelationAggregateInput
+    SalesByStore?: SalesByStoreOrderByRelationAggregateInput
+    SalesByCountry?: SalesByCountryOrderByRelationAggregateInput
+    SalesByMonth?: SalesByMonthOrderByRelationAggregateInput
   }
 
   export type AudioWhereUniqueInput = Prisma.AtLeast<{
@@ -11154,6 +14638,9 @@ export namespace Prisma {
     Store?: StoreListRelationFilter
     MonthlyReport?: MonthlyReportListRelationFilter
     CountryEarnings?: CountryEarningsListRelationFilter
+    SalesByStore?: SalesByStoreListRelationFilter
+    SalesByCountry?: SalesByCountryListRelationFilter
+    SalesByMonth?: SalesByMonthListRelationFilter
   }, "id">
 
   export type AudioOrderByWithAggregationInput = {
@@ -11705,6 +15192,232 @@ export namespace Prisma {
     audioId?: StringWithAggregatesFilter<"MonthlyReport"> | string
   }
 
+  export type SalesByStoreWhereInput = {
+    AND?: SalesByStoreWhereInput | SalesByStoreWhereInput[]
+    OR?: SalesByStoreWhereInput[]
+    NOT?: SalesByStoreWhereInput | SalesByStoreWhereInput[]
+    id?: StringFilter<"SalesByStore"> | string
+    name?: StringFilter<"SalesByStore"> | string
+    ISRC?: StringFilter<"SalesByStore"> | string
+    trackDownloads?: IntFilter<"SalesByStore"> | number
+    streams?: IntFilter<"SalesByStore"> | number
+    totalSales?: IntFilter<"SalesByStore"> | number
+    earnings?: FloatFilter<"SalesByStore"> | number
+    audioId?: StringFilter<"SalesByStore"> | string
+    audio?: XOR<AudioRelationFilter, AudioWhereInput>
+  }
+
+  export type SalesByStoreOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    ISRC?: SortOrder
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+    audioId?: SortOrder
+    audio?: AudioOrderByWithRelationInput
+  }
+
+  export type SalesByStoreWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: SalesByStoreWhereInput | SalesByStoreWhereInput[]
+    OR?: SalesByStoreWhereInput[]
+    NOT?: SalesByStoreWhereInput | SalesByStoreWhereInput[]
+    name?: StringFilter<"SalesByStore"> | string
+    ISRC?: StringFilter<"SalesByStore"> | string
+    trackDownloads?: IntFilter<"SalesByStore"> | number
+    streams?: IntFilter<"SalesByStore"> | number
+    totalSales?: IntFilter<"SalesByStore"> | number
+    earnings?: FloatFilter<"SalesByStore"> | number
+    audioId?: StringFilter<"SalesByStore"> | string
+    audio?: XOR<AudioRelationFilter, AudioWhereInput>
+  }, "id">
+
+  export type SalesByStoreOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    ISRC?: SortOrder
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+    audioId?: SortOrder
+    _count?: SalesByStoreCountOrderByAggregateInput
+    _avg?: SalesByStoreAvgOrderByAggregateInput
+    _max?: SalesByStoreMaxOrderByAggregateInput
+    _min?: SalesByStoreMinOrderByAggregateInput
+    _sum?: SalesByStoreSumOrderByAggregateInput
+  }
+
+  export type SalesByStoreScalarWhereWithAggregatesInput = {
+    AND?: SalesByStoreScalarWhereWithAggregatesInput | SalesByStoreScalarWhereWithAggregatesInput[]
+    OR?: SalesByStoreScalarWhereWithAggregatesInput[]
+    NOT?: SalesByStoreScalarWhereWithAggregatesInput | SalesByStoreScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SalesByStore"> | string
+    name?: StringWithAggregatesFilter<"SalesByStore"> | string
+    ISRC?: StringWithAggregatesFilter<"SalesByStore"> | string
+    trackDownloads?: IntWithAggregatesFilter<"SalesByStore"> | number
+    streams?: IntWithAggregatesFilter<"SalesByStore"> | number
+    totalSales?: IntWithAggregatesFilter<"SalesByStore"> | number
+    earnings?: FloatWithAggregatesFilter<"SalesByStore"> | number
+    audioId?: StringWithAggregatesFilter<"SalesByStore"> | string
+  }
+
+  export type SalesByCountryWhereInput = {
+    AND?: SalesByCountryWhereInput | SalesByCountryWhereInput[]
+    OR?: SalesByCountryWhereInput[]
+    NOT?: SalesByCountryWhereInput | SalesByCountryWhereInput[]
+    id?: StringFilter<"SalesByCountry"> | string
+    name?: StringFilter<"SalesByCountry"> | string
+    trackDownloads?: IntFilter<"SalesByCountry"> | number
+    ISRC?: StringFilter<"SalesByCountry"> | string
+    streams?: IntFilter<"SalesByCountry"> | number
+    totalSales?: IntFilter<"SalesByCountry"> | number
+    earnings?: FloatFilter<"SalesByCountry"> | number
+    audioId?: StringFilter<"SalesByCountry"> | string
+    audio?: XOR<AudioRelationFilter, AudioWhereInput>
+  }
+
+  export type SalesByCountryOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    trackDownloads?: SortOrder
+    ISRC?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+    audioId?: SortOrder
+    audio?: AudioOrderByWithRelationInput
+  }
+
+  export type SalesByCountryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: SalesByCountryWhereInput | SalesByCountryWhereInput[]
+    OR?: SalesByCountryWhereInput[]
+    NOT?: SalesByCountryWhereInput | SalesByCountryWhereInput[]
+    name?: StringFilter<"SalesByCountry"> | string
+    trackDownloads?: IntFilter<"SalesByCountry"> | number
+    ISRC?: StringFilter<"SalesByCountry"> | string
+    streams?: IntFilter<"SalesByCountry"> | number
+    totalSales?: IntFilter<"SalesByCountry"> | number
+    earnings?: FloatFilter<"SalesByCountry"> | number
+    audioId?: StringFilter<"SalesByCountry"> | string
+    audio?: XOR<AudioRelationFilter, AudioWhereInput>
+  }, "id">
+
+  export type SalesByCountryOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    trackDownloads?: SortOrder
+    ISRC?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+    audioId?: SortOrder
+    _count?: SalesByCountryCountOrderByAggregateInput
+    _avg?: SalesByCountryAvgOrderByAggregateInput
+    _max?: SalesByCountryMaxOrderByAggregateInput
+    _min?: SalesByCountryMinOrderByAggregateInput
+    _sum?: SalesByCountrySumOrderByAggregateInput
+  }
+
+  export type SalesByCountryScalarWhereWithAggregatesInput = {
+    AND?: SalesByCountryScalarWhereWithAggregatesInput | SalesByCountryScalarWhereWithAggregatesInput[]
+    OR?: SalesByCountryScalarWhereWithAggregatesInput[]
+    NOT?: SalesByCountryScalarWhereWithAggregatesInput | SalesByCountryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SalesByCountry"> | string
+    name?: StringWithAggregatesFilter<"SalesByCountry"> | string
+    trackDownloads?: IntWithAggregatesFilter<"SalesByCountry"> | number
+    ISRC?: StringWithAggregatesFilter<"SalesByCountry"> | string
+    streams?: IntWithAggregatesFilter<"SalesByCountry"> | number
+    totalSales?: IntWithAggregatesFilter<"SalesByCountry"> | number
+    earnings?: FloatWithAggregatesFilter<"SalesByCountry"> | number
+    audioId?: StringWithAggregatesFilter<"SalesByCountry"> | string
+  }
+
+  export type SalesByMonthWhereInput = {
+    AND?: SalesByMonthWhereInput | SalesByMonthWhereInput[]
+    OR?: SalesByMonthWhereInput[]
+    NOT?: SalesByMonthWhereInput | SalesByMonthWhereInput[]
+    id?: StringFilter<"SalesByMonth"> | string
+    month?: IntFilter<"SalesByMonth"> | number
+    year?: IntFilter<"SalesByMonth"> | number
+    trackDownloads?: IntFilter<"SalesByMonth"> | number
+    streams?: IntFilter<"SalesByMonth"> | number
+    ISRC?: StringFilter<"SalesByMonth"> | string
+    totalSales?: IntFilter<"SalesByMonth"> | number
+    earnings?: FloatFilter<"SalesByMonth"> | number
+    date?: StringFilter<"SalesByMonth"> | string
+    audioId?: StringFilter<"SalesByMonth"> | string
+    audio?: XOR<AudioRelationFilter, AudioWhereInput>
+  }
+
+  export type SalesByMonthOrderByWithRelationInput = {
+    id?: SortOrder
+    month?: SortOrder
+    year?: SortOrder
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    ISRC?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+    date?: SortOrder
+    audioId?: SortOrder
+    audio?: AudioOrderByWithRelationInput
+  }
+
+  export type SalesByMonthWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: SalesByMonthWhereInput | SalesByMonthWhereInput[]
+    OR?: SalesByMonthWhereInput[]
+    NOT?: SalesByMonthWhereInput | SalesByMonthWhereInput[]
+    month?: IntFilter<"SalesByMonth"> | number
+    year?: IntFilter<"SalesByMonth"> | number
+    trackDownloads?: IntFilter<"SalesByMonth"> | number
+    streams?: IntFilter<"SalesByMonth"> | number
+    ISRC?: StringFilter<"SalesByMonth"> | string
+    totalSales?: IntFilter<"SalesByMonth"> | number
+    earnings?: FloatFilter<"SalesByMonth"> | number
+    date?: StringFilter<"SalesByMonth"> | string
+    audioId?: StringFilter<"SalesByMonth"> | string
+    audio?: XOR<AudioRelationFilter, AudioWhereInput>
+  }, "id">
+
+  export type SalesByMonthOrderByWithAggregationInput = {
+    id?: SortOrder
+    month?: SortOrder
+    year?: SortOrder
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    ISRC?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+    date?: SortOrder
+    audioId?: SortOrder
+    _count?: SalesByMonthCountOrderByAggregateInput
+    _avg?: SalesByMonthAvgOrderByAggregateInput
+    _max?: SalesByMonthMaxOrderByAggregateInput
+    _min?: SalesByMonthMinOrderByAggregateInput
+    _sum?: SalesByMonthSumOrderByAggregateInput
+  }
+
+  export type SalesByMonthScalarWhereWithAggregatesInput = {
+    AND?: SalesByMonthScalarWhereWithAggregatesInput | SalesByMonthScalarWhereWithAggregatesInput[]
+    OR?: SalesByMonthScalarWhereWithAggregatesInput[]
+    NOT?: SalesByMonthScalarWhereWithAggregatesInput | SalesByMonthScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SalesByMonth"> | string
+    month?: IntWithAggregatesFilter<"SalesByMonth"> | number
+    year?: IntWithAggregatesFilter<"SalesByMonth"> | number
+    trackDownloads?: IntWithAggregatesFilter<"SalesByMonth"> | number
+    streams?: IntWithAggregatesFilter<"SalesByMonth"> | number
+    ISRC?: StringWithAggregatesFilter<"SalesByMonth"> | string
+    totalSales?: IntWithAggregatesFilter<"SalesByMonth"> | number
+    earnings?: FloatWithAggregatesFilter<"SalesByMonth"> | number
+    date?: StringWithAggregatesFilter<"SalesByMonth"> | string
+    audioId?: StringWithAggregatesFilter<"SalesByMonth"> | string
+  }
+
   export type AudioCreateInput = {
     id?: string
     userId: string
@@ -11736,6 +15449,9 @@ export namespace Prisma {
     Store?: StoreCreateNestedManyWithoutAudioInput
     MonthlyReport?: MonthlyReportCreateNestedManyWithoutAudioInput
     CountryEarnings?: CountryEarningsCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthCreateNestedManyWithoutAudioInput
   }
 
   export type AudioUncheckedCreateInput = {
@@ -11769,6 +15485,9 @@ export namespace Prisma {
     Store?: StoreUncheckedCreateNestedManyWithoutAudioInput
     MonthlyReport?: MonthlyReportUncheckedCreateNestedManyWithoutAudioInput
     CountryEarnings?: CountryEarningsUncheckedCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreUncheckedCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryUncheckedCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthUncheckedCreateNestedManyWithoutAudioInput
   }
 
   export type AudioUpdateInput = {
@@ -11802,6 +15521,9 @@ export namespace Prisma {
     Store?: StoreUpdateManyWithoutAudioNestedInput
     MonthlyReport?: MonthlyReportUpdateManyWithoutAudioNestedInput
     CountryEarnings?: CountryEarningsUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUpdateManyWithoutAudioNestedInput
   }
 
   export type AudioUncheckedUpdateInput = {
@@ -11835,6 +15557,9 @@ export namespace Prisma {
     Store?: StoreUncheckedUpdateManyWithoutAudioNestedInput
     MonthlyReport?: MonthlyReportUncheckedUpdateManyWithoutAudioNestedInput
     CountryEarnings?: CountryEarningsUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUncheckedUpdateManyWithoutAudioNestedInput
   }
 
   export type AudioCreateManyInput = {
@@ -12408,6 +16133,248 @@ export namespace Prisma {
     audioId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type SalesByStoreCreateInput = {
+    id?: string
+    name: string
+    ISRC: string
+    trackDownloads: number
+    streams: number
+    totalSales: number
+    earnings: number
+    audio: AudioCreateNestedOneWithoutSalesByStoreInput
+  }
+
+  export type SalesByStoreUncheckedCreateInput = {
+    id?: string
+    name: string
+    ISRC: string
+    trackDownloads: number
+    streams: number
+    totalSales: number
+    earnings: number
+    audioId: string
+  }
+
+  export type SalesByStoreUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    ISRC?: StringFieldUpdateOperationsInput | string
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    streams?: IntFieldUpdateOperationsInput | number
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+    audio?: AudioUpdateOneRequiredWithoutSalesByStoreNestedInput
+  }
+
+  export type SalesByStoreUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    ISRC?: StringFieldUpdateOperationsInput | string
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    streams?: IntFieldUpdateOperationsInput | number
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+    audioId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SalesByStoreCreateManyInput = {
+    id?: string
+    name: string
+    ISRC: string
+    trackDownloads: number
+    streams: number
+    totalSales: number
+    earnings: number
+    audioId: string
+  }
+
+  export type SalesByStoreUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    ISRC?: StringFieldUpdateOperationsInput | string
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    streams?: IntFieldUpdateOperationsInput | number
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type SalesByStoreUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    ISRC?: StringFieldUpdateOperationsInput | string
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    streams?: IntFieldUpdateOperationsInput | number
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+    audioId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SalesByCountryCreateInput = {
+    id?: string
+    name: string
+    trackDownloads: number
+    ISRC: string
+    streams: number
+    totalSales: number
+    earnings: number
+    audio: AudioCreateNestedOneWithoutSalesByCountryInput
+  }
+
+  export type SalesByCountryUncheckedCreateInput = {
+    id?: string
+    name: string
+    trackDownloads: number
+    ISRC: string
+    streams: number
+    totalSales: number
+    earnings: number
+    audioId: string
+  }
+
+  export type SalesByCountryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    ISRC?: StringFieldUpdateOperationsInput | string
+    streams?: IntFieldUpdateOperationsInput | number
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+    audio?: AudioUpdateOneRequiredWithoutSalesByCountryNestedInput
+  }
+
+  export type SalesByCountryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    ISRC?: StringFieldUpdateOperationsInput | string
+    streams?: IntFieldUpdateOperationsInput | number
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+    audioId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SalesByCountryCreateManyInput = {
+    id?: string
+    name: string
+    trackDownloads: number
+    ISRC: string
+    streams: number
+    totalSales: number
+    earnings: number
+    audioId: string
+  }
+
+  export type SalesByCountryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    ISRC?: StringFieldUpdateOperationsInput | string
+    streams?: IntFieldUpdateOperationsInput | number
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type SalesByCountryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    ISRC?: StringFieldUpdateOperationsInput | string
+    streams?: IntFieldUpdateOperationsInput | number
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+    audioId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SalesByMonthCreateInput = {
+    id?: string
+    month: number
+    year: number
+    trackDownloads: number
+    streams: number
+    ISRC: string
+    totalSales: number
+    earnings: number
+    date: string
+    audio: AudioCreateNestedOneWithoutSalesByMonthInput
+  }
+
+  export type SalesByMonthUncheckedCreateInput = {
+    id?: string
+    month: number
+    year: number
+    trackDownloads: number
+    streams: number
+    ISRC: string
+    totalSales: number
+    earnings: number
+    date: string
+    audioId: string
+  }
+
+  export type SalesByMonthUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    month?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    streams?: IntFieldUpdateOperationsInput | number
+    ISRC?: StringFieldUpdateOperationsInput | string
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+    date?: StringFieldUpdateOperationsInput | string
+    audio?: AudioUpdateOneRequiredWithoutSalesByMonthNestedInput
+  }
+
+  export type SalesByMonthUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    month?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    streams?: IntFieldUpdateOperationsInput | number
+    ISRC?: StringFieldUpdateOperationsInput | string
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+    date?: StringFieldUpdateOperationsInput | string
+    audioId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SalesByMonthCreateManyInput = {
+    id?: string
+    month: number
+    year: number
+    trackDownloads: number
+    streams: number
+    ISRC: string
+    totalSales: number
+    earnings: number
+    date: string
+    audioId: string
+  }
+
+  export type SalesByMonthUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    month?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    streams?: IntFieldUpdateOperationsInput | number
+    ISRC?: StringFieldUpdateOperationsInput | string
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+    date?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SalesByMonthUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    month?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    streams?: IntFieldUpdateOperationsInput | number
+    ISRC?: StringFieldUpdateOperationsInput | string
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+    date?: StringFieldUpdateOperationsInput | string
+    audioId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -12485,6 +16452,24 @@ export namespace Prisma {
     none?: CountryEarningsWhereInput
   }
 
+  export type SalesByStoreListRelationFilter = {
+    every?: SalesByStoreWhereInput
+    some?: SalesByStoreWhereInput
+    none?: SalesByStoreWhereInput
+  }
+
+  export type SalesByCountryListRelationFilter = {
+    every?: SalesByCountryWhereInput
+    some?: SalesByCountryWhereInput
+    none?: SalesByCountryWhereInput
+  }
+
+  export type SalesByMonthListRelationFilter = {
+    every?: SalesByMonthWhereInput
+    some?: SalesByMonthWhereInput
+    none?: SalesByMonthWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -12511,6 +16496,18 @@ export namespace Prisma {
   }
 
   export type CountryEarningsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SalesByStoreOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SalesByCountryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SalesByMonthOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -13000,6 +16997,157 @@ export namespace Prisma {
     earnings?: SortOrder
   }
 
+  export type SalesByStoreCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    ISRC?: SortOrder
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+    audioId?: SortOrder
+  }
+
+  export type SalesByStoreAvgOrderByAggregateInput = {
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+  }
+
+  export type SalesByStoreMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    ISRC?: SortOrder
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+    audioId?: SortOrder
+  }
+
+  export type SalesByStoreMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    ISRC?: SortOrder
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+    audioId?: SortOrder
+  }
+
+  export type SalesByStoreSumOrderByAggregateInput = {
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+  }
+
+  export type SalesByCountryCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    trackDownloads?: SortOrder
+    ISRC?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+    audioId?: SortOrder
+  }
+
+  export type SalesByCountryAvgOrderByAggregateInput = {
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+  }
+
+  export type SalesByCountryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    trackDownloads?: SortOrder
+    ISRC?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+    audioId?: SortOrder
+  }
+
+  export type SalesByCountryMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    trackDownloads?: SortOrder
+    ISRC?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+    audioId?: SortOrder
+  }
+
+  export type SalesByCountrySumOrderByAggregateInput = {
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+  }
+
+  export type SalesByMonthCountOrderByAggregateInput = {
+    id?: SortOrder
+    month?: SortOrder
+    year?: SortOrder
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    ISRC?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+    date?: SortOrder
+    audioId?: SortOrder
+  }
+
+  export type SalesByMonthAvgOrderByAggregateInput = {
+    month?: SortOrder
+    year?: SortOrder
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+  }
+
+  export type SalesByMonthMaxOrderByAggregateInput = {
+    id?: SortOrder
+    month?: SortOrder
+    year?: SortOrder
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    ISRC?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+    date?: SortOrder
+    audioId?: SortOrder
+  }
+
+  export type SalesByMonthMinOrderByAggregateInput = {
+    id?: SortOrder
+    month?: SortOrder
+    year?: SortOrder
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    ISRC?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+    date?: SortOrder
+    audioId?: SortOrder
+  }
+
+  export type SalesByMonthSumOrderByAggregateInput = {
+    month?: SortOrder
+    year?: SortOrder
+    trackDownloads?: SortOrder
+    streams?: SortOrder
+    totalSales?: SortOrder
+    earnings?: SortOrder
+  }
+
   export type TrackCreateNestedManyWithoutAudioInput = {
     create?: XOR<TrackCreateWithoutAudioInput, TrackUncheckedCreateWithoutAudioInput> | TrackCreateWithoutAudioInput[] | TrackUncheckedCreateWithoutAudioInput[]
     connectOrCreate?: TrackCreateOrConnectWithoutAudioInput | TrackCreateOrConnectWithoutAudioInput[]
@@ -13042,6 +17190,27 @@ export namespace Prisma {
     connect?: CountryEarningsWhereUniqueInput | CountryEarningsWhereUniqueInput[]
   }
 
+  export type SalesByStoreCreateNestedManyWithoutAudioInput = {
+    create?: XOR<SalesByStoreCreateWithoutAudioInput, SalesByStoreUncheckedCreateWithoutAudioInput> | SalesByStoreCreateWithoutAudioInput[] | SalesByStoreUncheckedCreateWithoutAudioInput[]
+    connectOrCreate?: SalesByStoreCreateOrConnectWithoutAudioInput | SalesByStoreCreateOrConnectWithoutAudioInput[]
+    createMany?: SalesByStoreCreateManyAudioInputEnvelope
+    connect?: SalesByStoreWhereUniqueInput | SalesByStoreWhereUniqueInput[]
+  }
+
+  export type SalesByCountryCreateNestedManyWithoutAudioInput = {
+    create?: XOR<SalesByCountryCreateWithoutAudioInput, SalesByCountryUncheckedCreateWithoutAudioInput> | SalesByCountryCreateWithoutAudioInput[] | SalesByCountryUncheckedCreateWithoutAudioInput[]
+    connectOrCreate?: SalesByCountryCreateOrConnectWithoutAudioInput | SalesByCountryCreateOrConnectWithoutAudioInput[]
+    createMany?: SalesByCountryCreateManyAudioInputEnvelope
+    connect?: SalesByCountryWhereUniqueInput | SalesByCountryWhereUniqueInput[]
+  }
+
+  export type SalesByMonthCreateNestedManyWithoutAudioInput = {
+    create?: XOR<SalesByMonthCreateWithoutAudioInput, SalesByMonthUncheckedCreateWithoutAudioInput> | SalesByMonthCreateWithoutAudioInput[] | SalesByMonthUncheckedCreateWithoutAudioInput[]
+    connectOrCreate?: SalesByMonthCreateOrConnectWithoutAudioInput | SalesByMonthCreateOrConnectWithoutAudioInput[]
+    createMany?: SalesByMonthCreateManyAudioInputEnvelope
+    connect?: SalesByMonthWhereUniqueInput | SalesByMonthWhereUniqueInput[]
+  }
+
   export type TrackUncheckedCreateNestedManyWithoutAudioInput = {
     create?: XOR<TrackCreateWithoutAudioInput, TrackUncheckedCreateWithoutAudioInput> | TrackCreateWithoutAudioInput[] | TrackUncheckedCreateWithoutAudioInput[]
     connectOrCreate?: TrackCreateOrConnectWithoutAudioInput | TrackCreateOrConnectWithoutAudioInput[]
@@ -13082,6 +17251,27 @@ export namespace Prisma {
     connectOrCreate?: CountryEarningsCreateOrConnectWithoutAudioInput | CountryEarningsCreateOrConnectWithoutAudioInput[]
     createMany?: CountryEarningsCreateManyAudioInputEnvelope
     connect?: CountryEarningsWhereUniqueInput | CountryEarningsWhereUniqueInput[]
+  }
+
+  export type SalesByStoreUncheckedCreateNestedManyWithoutAudioInput = {
+    create?: XOR<SalesByStoreCreateWithoutAudioInput, SalesByStoreUncheckedCreateWithoutAudioInput> | SalesByStoreCreateWithoutAudioInput[] | SalesByStoreUncheckedCreateWithoutAudioInput[]
+    connectOrCreate?: SalesByStoreCreateOrConnectWithoutAudioInput | SalesByStoreCreateOrConnectWithoutAudioInput[]
+    createMany?: SalesByStoreCreateManyAudioInputEnvelope
+    connect?: SalesByStoreWhereUniqueInput | SalesByStoreWhereUniqueInput[]
+  }
+
+  export type SalesByCountryUncheckedCreateNestedManyWithoutAudioInput = {
+    create?: XOR<SalesByCountryCreateWithoutAudioInput, SalesByCountryUncheckedCreateWithoutAudioInput> | SalesByCountryCreateWithoutAudioInput[] | SalesByCountryUncheckedCreateWithoutAudioInput[]
+    connectOrCreate?: SalesByCountryCreateOrConnectWithoutAudioInput | SalesByCountryCreateOrConnectWithoutAudioInput[]
+    createMany?: SalesByCountryCreateManyAudioInputEnvelope
+    connect?: SalesByCountryWhereUniqueInput | SalesByCountryWhereUniqueInput[]
+  }
+
+  export type SalesByMonthUncheckedCreateNestedManyWithoutAudioInput = {
+    create?: XOR<SalesByMonthCreateWithoutAudioInput, SalesByMonthUncheckedCreateWithoutAudioInput> | SalesByMonthCreateWithoutAudioInput[] | SalesByMonthUncheckedCreateWithoutAudioInput[]
+    connectOrCreate?: SalesByMonthCreateOrConnectWithoutAudioInput | SalesByMonthCreateOrConnectWithoutAudioInput[]
+    createMany?: SalesByMonthCreateManyAudioInputEnvelope
+    connect?: SalesByMonthWhereUniqueInput | SalesByMonthWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -13180,6 +17370,48 @@ export namespace Prisma {
     deleteMany?: CountryEarningsScalarWhereInput | CountryEarningsScalarWhereInput[]
   }
 
+  export type SalesByStoreUpdateManyWithoutAudioNestedInput = {
+    create?: XOR<SalesByStoreCreateWithoutAudioInput, SalesByStoreUncheckedCreateWithoutAudioInput> | SalesByStoreCreateWithoutAudioInput[] | SalesByStoreUncheckedCreateWithoutAudioInput[]
+    connectOrCreate?: SalesByStoreCreateOrConnectWithoutAudioInput | SalesByStoreCreateOrConnectWithoutAudioInput[]
+    upsert?: SalesByStoreUpsertWithWhereUniqueWithoutAudioInput | SalesByStoreUpsertWithWhereUniqueWithoutAudioInput[]
+    createMany?: SalesByStoreCreateManyAudioInputEnvelope
+    set?: SalesByStoreWhereUniqueInput | SalesByStoreWhereUniqueInput[]
+    disconnect?: SalesByStoreWhereUniqueInput | SalesByStoreWhereUniqueInput[]
+    delete?: SalesByStoreWhereUniqueInput | SalesByStoreWhereUniqueInput[]
+    connect?: SalesByStoreWhereUniqueInput | SalesByStoreWhereUniqueInput[]
+    update?: SalesByStoreUpdateWithWhereUniqueWithoutAudioInput | SalesByStoreUpdateWithWhereUniqueWithoutAudioInput[]
+    updateMany?: SalesByStoreUpdateManyWithWhereWithoutAudioInput | SalesByStoreUpdateManyWithWhereWithoutAudioInput[]
+    deleteMany?: SalesByStoreScalarWhereInput | SalesByStoreScalarWhereInput[]
+  }
+
+  export type SalesByCountryUpdateManyWithoutAudioNestedInput = {
+    create?: XOR<SalesByCountryCreateWithoutAudioInput, SalesByCountryUncheckedCreateWithoutAudioInput> | SalesByCountryCreateWithoutAudioInput[] | SalesByCountryUncheckedCreateWithoutAudioInput[]
+    connectOrCreate?: SalesByCountryCreateOrConnectWithoutAudioInput | SalesByCountryCreateOrConnectWithoutAudioInput[]
+    upsert?: SalesByCountryUpsertWithWhereUniqueWithoutAudioInput | SalesByCountryUpsertWithWhereUniqueWithoutAudioInput[]
+    createMany?: SalesByCountryCreateManyAudioInputEnvelope
+    set?: SalesByCountryWhereUniqueInput | SalesByCountryWhereUniqueInput[]
+    disconnect?: SalesByCountryWhereUniqueInput | SalesByCountryWhereUniqueInput[]
+    delete?: SalesByCountryWhereUniqueInput | SalesByCountryWhereUniqueInput[]
+    connect?: SalesByCountryWhereUniqueInput | SalesByCountryWhereUniqueInput[]
+    update?: SalesByCountryUpdateWithWhereUniqueWithoutAudioInput | SalesByCountryUpdateWithWhereUniqueWithoutAudioInput[]
+    updateMany?: SalesByCountryUpdateManyWithWhereWithoutAudioInput | SalesByCountryUpdateManyWithWhereWithoutAudioInput[]
+    deleteMany?: SalesByCountryScalarWhereInput | SalesByCountryScalarWhereInput[]
+  }
+
+  export type SalesByMonthUpdateManyWithoutAudioNestedInput = {
+    create?: XOR<SalesByMonthCreateWithoutAudioInput, SalesByMonthUncheckedCreateWithoutAudioInput> | SalesByMonthCreateWithoutAudioInput[] | SalesByMonthUncheckedCreateWithoutAudioInput[]
+    connectOrCreate?: SalesByMonthCreateOrConnectWithoutAudioInput | SalesByMonthCreateOrConnectWithoutAudioInput[]
+    upsert?: SalesByMonthUpsertWithWhereUniqueWithoutAudioInput | SalesByMonthUpsertWithWhereUniqueWithoutAudioInput[]
+    createMany?: SalesByMonthCreateManyAudioInputEnvelope
+    set?: SalesByMonthWhereUniqueInput | SalesByMonthWhereUniqueInput[]
+    disconnect?: SalesByMonthWhereUniqueInput | SalesByMonthWhereUniqueInput[]
+    delete?: SalesByMonthWhereUniqueInput | SalesByMonthWhereUniqueInput[]
+    connect?: SalesByMonthWhereUniqueInput | SalesByMonthWhereUniqueInput[]
+    update?: SalesByMonthUpdateWithWhereUniqueWithoutAudioInput | SalesByMonthUpdateWithWhereUniqueWithoutAudioInput[]
+    updateMany?: SalesByMonthUpdateManyWithWhereWithoutAudioInput | SalesByMonthUpdateManyWithWhereWithoutAudioInput[]
+    deleteMany?: SalesByMonthScalarWhereInput | SalesByMonthScalarWhereInput[]
+  }
+
   export type TrackUncheckedUpdateManyWithoutAudioNestedInput = {
     create?: XOR<TrackCreateWithoutAudioInput, TrackUncheckedCreateWithoutAudioInput> | TrackCreateWithoutAudioInput[] | TrackUncheckedCreateWithoutAudioInput[]
     connectOrCreate?: TrackCreateOrConnectWithoutAudioInput | TrackCreateOrConnectWithoutAudioInput[]
@@ -13262,6 +17494,48 @@ export namespace Prisma {
     update?: CountryEarningsUpdateWithWhereUniqueWithoutAudioInput | CountryEarningsUpdateWithWhereUniqueWithoutAudioInput[]
     updateMany?: CountryEarningsUpdateManyWithWhereWithoutAudioInput | CountryEarningsUpdateManyWithWhereWithoutAudioInput[]
     deleteMany?: CountryEarningsScalarWhereInput | CountryEarningsScalarWhereInput[]
+  }
+
+  export type SalesByStoreUncheckedUpdateManyWithoutAudioNestedInput = {
+    create?: XOR<SalesByStoreCreateWithoutAudioInput, SalesByStoreUncheckedCreateWithoutAudioInput> | SalesByStoreCreateWithoutAudioInput[] | SalesByStoreUncheckedCreateWithoutAudioInput[]
+    connectOrCreate?: SalesByStoreCreateOrConnectWithoutAudioInput | SalesByStoreCreateOrConnectWithoutAudioInput[]
+    upsert?: SalesByStoreUpsertWithWhereUniqueWithoutAudioInput | SalesByStoreUpsertWithWhereUniqueWithoutAudioInput[]
+    createMany?: SalesByStoreCreateManyAudioInputEnvelope
+    set?: SalesByStoreWhereUniqueInput | SalesByStoreWhereUniqueInput[]
+    disconnect?: SalesByStoreWhereUniqueInput | SalesByStoreWhereUniqueInput[]
+    delete?: SalesByStoreWhereUniqueInput | SalesByStoreWhereUniqueInput[]
+    connect?: SalesByStoreWhereUniqueInput | SalesByStoreWhereUniqueInput[]
+    update?: SalesByStoreUpdateWithWhereUniqueWithoutAudioInput | SalesByStoreUpdateWithWhereUniqueWithoutAudioInput[]
+    updateMany?: SalesByStoreUpdateManyWithWhereWithoutAudioInput | SalesByStoreUpdateManyWithWhereWithoutAudioInput[]
+    deleteMany?: SalesByStoreScalarWhereInput | SalesByStoreScalarWhereInput[]
+  }
+
+  export type SalesByCountryUncheckedUpdateManyWithoutAudioNestedInput = {
+    create?: XOR<SalesByCountryCreateWithoutAudioInput, SalesByCountryUncheckedCreateWithoutAudioInput> | SalesByCountryCreateWithoutAudioInput[] | SalesByCountryUncheckedCreateWithoutAudioInput[]
+    connectOrCreate?: SalesByCountryCreateOrConnectWithoutAudioInput | SalesByCountryCreateOrConnectWithoutAudioInput[]
+    upsert?: SalesByCountryUpsertWithWhereUniqueWithoutAudioInput | SalesByCountryUpsertWithWhereUniqueWithoutAudioInput[]
+    createMany?: SalesByCountryCreateManyAudioInputEnvelope
+    set?: SalesByCountryWhereUniqueInput | SalesByCountryWhereUniqueInput[]
+    disconnect?: SalesByCountryWhereUniqueInput | SalesByCountryWhereUniqueInput[]
+    delete?: SalesByCountryWhereUniqueInput | SalesByCountryWhereUniqueInput[]
+    connect?: SalesByCountryWhereUniqueInput | SalesByCountryWhereUniqueInput[]
+    update?: SalesByCountryUpdateWithWhereUniqueWithoutAudioInput | SalesByCountryUpdateWithWhereUniqueWithoutAudioInput[]
+    updateMany?: SalesByCountryUpdateManyWithWhereWithoutAudioInput | SalesByCountryUpdateManyWithWhereWithoutAudioInput[]
+    deleteMany?: SalesByCountryScalarWhereInput | SalesByCountryScalarWhereInput[]
+  }
+
+  export type SalesByMonthUncheckedUpdateManyWithoutAudioNestedInput = {
+    create?: XOR<SalesByMonthCreateWithoutAudioInput, SalesByMonthUncheckedCreateWithoutAudioInput> | SalesByMonthCreateWithoutAudioInput[] | SalesByMonthUncheckedCreateWithoutAudioInput[]
+    connectOrCreate?: SalesByMonthCreateOrConnectWithoutAudioInput | SalesByMonthCreateOrConnectWithoutAudioInput[]
+    upsert?: SalesByMonthUpsertWithWhereUniqueWithoutAudioInput | SalesByMonthUpsertWithWhereUniqueWithoutAudioInput[]
+    createMany?: SalesByMonthCreateManyAudioInputEnvelope
+    set?: SalesByMonthWhereUniqueInput | SalesByMonthWhereUniqueInput[]
+    disconnect?: SalesByMonthWhereUniqueInput | SalesByMonthWhereUniqueInput[]
+    delete?: SalesByMonthWhereUniqueInput | SalesByMonthWhereUniqueInput[]
+    connect?: SalesByMonthWhereUniqueInput | SalesByMonthWhereUniqueInput[]
+    update?: SalesByMonthUpdateWithWhereUniqueWithoutAudioInput | SalesByMonthUpdateWithWhereUniqueWithoutAudioInput[]
+    updateMany?: SalesByMonthUpdateManyWithWhereWithoutAudioInput | SalesByMonthUpdateManyWithWhereWithoutAudioInput[]
+    deleteMany?: SalesByMonthScalarWhereInput | SalesByMonthScalarWhereInput[]
   }
 
   export type AudioCreateNestedOneWithoutTrackInput = {
@@ -13474,6 +17748,48 @@ export namespace Prisma {
     upsert?: AudioUpsertWithoutMonthlyReportInput
     connect?: AudioWhereUniqueInput
     update?: XOR<XOR<AudioUpdateToOneWithWhereWithoutMonthlyReportInput, AudioUpdateWithoutMonthlyReportInput>, AudioUncheckedUpdateWithoutMonthlyReportInput>
+  }
+
+  export type AudioCreateNestedOneWithoutSalesByStoreInput = {
+    create?: XOR<AudioCreateWithoutSalesByStoreInput, AudioUncheckedCreateWithoutSalesByStoreInput>
+    connectOrCreate?: AudioCreateOrConnectWithoutSalesByStoreInput
+    connect?: AudioWhereUniqueInput
+  }
+
+  export type AudioUpdateOneRequiredWithoutSalesByStoreNestedInput = {
+    create?: XOR<AudioCreateWithoutSalesByStoreInput, AudioUncheckedCreateWithoutSalesByStoreInput>
+    connectOrCreate?: AudioCreateOrConnectWithoutSalesByStoreInput
+    upsert?: AudioUpsertWithoutSalesByStoreInput
+    connect?: AudioWhereUniqueInput
+    update?: XOR<XOR<AudioUpdateToOneWithWhereWithoutSalesByStoreInput, AudioUpdateWithoutSalesByStoreInput>, AudioUncheckedUpdateWithoutSalesByStoreInput>
+  }
+
+  export type AudioCreateNestedOneWithoutSalesByCountryInput = {
+    create?: XOR<AudioCreateWithoutSalesByCountryInput, AudioUncheckedCreateWithoutSalesByCountryInput>
+    connectOrCreate?: AudioCreateOrConnectWithoutSalesByCountryInput
+    connect?: AudioWhereUniqueInput
+  }
+
+  export type AudioUpdateOneRequiredWithoutSalesByCountryNestedInput = {
+    create?: XOR<AudioCreateWithoutSalesByCountryInput, AudioUncheckedCreateWithoutSalesByCountryInput>
+    connectOrCreate?: AudioCreateOrConnectWithoutSalesByCountryInput
+    upsert?: AudioUpsertWithoutSalesByCountryInput
+    connect?: AudioWhereUniqueInput
+    update?: XOR<XOR<AudioUpdateToOneWithWhereWithoutSalesByCountryInput, AudioUpdateWithoutSalesByCountryInput>, AudioUncheckedUpdateWithoutSalesByCountryInput>
+  }
+
+  export type AudioCreateNestedOneWithoutSalesByMonthInput = {
+    create?: XOR<AudioCreateWithoutSalesByMonthInput, AudioUncheckedCreateWithoutSalesByMonthInput>
+    connectOrCreate?: AudioCreateOrConnectWithoutSalesByMonthInput
+    connect?: AudioWhereUniqueInput
+  }
+
+  export type AudioUpdateOneRequiredWithoutSalesByMonthNestedInput = {
+    create?: XOR<AudioCreateWithoutSalesByMonthInput, AudioUncheckedCreateWithoutSalesByMonthInput>
+    connectOrCreate?: AudioCreateOrConnectWithoutSalesByMonthInput
+    upsert?: AudioUpsertWithoutSalesByMonthInput
+    connect?: AudioWhereUniqueInput
+    update?: XOR<XOR<AudioUpdateToOneWithWhereWithoutSalesByMonthInput, AudioUpdateWithoutSalesByMonthInput>, AudioUncheckedUpdateWithoutSalesByMonthInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -13794,6 +18110,100 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type SalesByStoreCreateWithoutAudioInput = {
+    id?: string
+    name: string
+    ISRC: string
+    trackDownloads: number
+    streams: number
+    totalSales: number
+    earnings: number
+  }
+
+  export type SalesByStoreUncheckedCreateWithoutAudioInput = {
+    id?: string
+    name: string
+    ISRC: string
+    trackDownloads: number
+    streams: number
+    totalSales: number
+    earnings: number
+  }
+
+  export type SalesByStoreCreateOrConnectWithoutAudioInput = {
+    where: SalesByStoreWhereUniqueInput
+    create: XOR<SalesByStoreCreateWithoutAudioInput, SalesByStoreUncheckedCreateWithoutAudioInput>
+  }
+
+  export type SalesByStoreCreateManyAudioInputEnvelope = {
+    data: SalesByStoreCreateManyAudioInput | SalesByStoreCreateManyAudioInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SalesByCountryCreateWithoutAudioInput = {
+    id?: string
+    name: string
+    trackDownloads: number
+    ISRC: string
+    streams: number
+    totalSales: number
+    earnings: number
+  }
+
+  export type SalesByCountryUncheckedCreateWithoutAudioInput = {
+    id?: string
+    name: string
+    trackDownloads: number
+    ISRC: string
+    streams: number
+    totalSales: number
+    earnings: number
+  }
+
+  export type SalesByCountryCreateOrConnectWithoutAudioInput = {
+    where: SalesByCountryWhereUniqueInput
+    create: XOR<SalesByCountryCreateWithoutAudioInput, SalesByCountryUncheckedCreateWithoutAudioInput>
+  }
+
+  export type SalesByCountryCreateManyAudioInputEnvelope = {
+    data: SalesByCountryCreateManyAudioInput | SalesByCountryCreateManyAudioInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SalesByMonthCreateWithoutAudioInput = {
+    id?: string
+    month: number
+    year: number
+    trackDownloads: number
+    streams: number
+    ISRC: string
+    totalSales: number
+    earnings: number
+    date: string
+  }
+
+  export type SalesByMonthUncheckedCreateWithoutAudioInput = {
+    id?: string
+    month: number
+    year: number
+    trackDownloads: number
+    streams: number
+    ISRC: string
+    totalSales: number
+    earnings: number
+    date: string
+  }
+
+  export type SalesByMonthCreateOrConnectWithoutAudioInput = {
+    where: SalesByMonthWhereUniqueInput
+    create: XOR<SalesByMonthCreateWithoutAudioInput, SalesByMonthUncheckedCreateWithoutAudioInput>
+  }
+
+  export type SalesByMonthCreateManyAudioInputEnvelope = {
+    data: SalesByMonthCreateManyAudioInput | SalesByMonthCreateManyAudioInput[]
+    skipDuplicates?: boolean
+  }
+
   export type TrackUpsertWithWhereUniqueWithoutAudioInput = {
     where: TrackWhereUniqueInput
     update: XOR<TrackUpdateWithoutAudioInput, TrackUncheckedUpdateWithoutAudioInput>
@@ -13967,6 +18377,98 @@ export namespace Prisma {
     audioId?: StringFilter<"CountryEarnings"> | string
   }
 
+  export type SalesByStoreUpsertWithWhereUniqueWithoutAudioInput = {
+    where: SalesByStoreWhereUniqueInput
+    update: XOR<SalesByStoreUpdateWithoutAudioInput, SalesByStoreUncheckedUpdateWithoutAudioInput>
+    create: XOR<SalesByStoreCreateWithoutAudioInput, SalesByStoreUncheckedCreateWithoutAudioInput>
+  }
+
+  export type SalesByStoreUpdateWithWhereUniqueWithoutAudioInput = {
+    where: SalesByStoreWhereUniqueInput
+    data: XOR<SalesByStoreUpdateWithoutAudioInput, SalesByStoreUncheckedUpdateWithoutAudioInput>
+  }
+
+  export type SalesByStoreUpdateManyWithWhereWithoutAudioInput = {
+    where: SalesByStoreScalarWhereInput
+    data: XOR<SalesByStoreUpdateManyMutationInput, SalesByStoreUncheckedUpdateManyWithoutAudioInput>
+  }
+
+  export type SalesByStoreScalarWhereInput = {
+    AND?: SalesByStoreScalarWhereInput | SalesByStoreScalarWhereInput[]
+    OR?: SalesByStoreScalarWhereInput[]
+    NOT?: SalesByStoreScalarWhereInput | SalesByStoreScalarWhereInput[]
+    id?: StringFilter<"SalesByStore"> | string
+    name?: StringFilter<"SalesByStore"> | string
+    ISRC?: StringFilter<"SalesByStore"> | string
+    trackDownloads?: IntFilter<"SalesByStore"> | number
+    streams?: IntFilter<"SalesByStore"> | number
+    totalSales?: IntFilter<"SalesByStore"> | number
+    earnings?: FloatFilter<"SalesByStore"> | number
+    audioId?: StringFilter<"SalesByStore"> | string
+  }
+
+  export type SalesByCountryUpsertWithWhereUniqueWithoutAudioInput = {
+    where: SalesByCountryWhereUniqueInput
+    update: XOR<SalesByCountryUpdateWithoutAudioInput, SalesByCountryUncheckedUpdateWithoutAudioInput>
+    create: XOR<SalesByCountryCreateWithoutAudioInput, SalesByCountryUncheckedCreateWithoutAudioInput>
+  }
+
+  export type SalesByCountryUpdateWithWhereUniqueWithoutAudioInput = {
+    where: SalesByCountryWhereUniqueInput
+    data: XOR<SalesByCountryUpdateWithoutAudioInput, SalesByCountryUncheckedUpdateWithoutAudioInput>
+  }
+
+  export type SalesByCountryUpdateManyWithWhereWithoutAudioInput = {
+    where: SalesByCountryScalarWhereInput
+    data: XOR<SalesByCountryUpdateManyMutationInput, SalesByCountryUncheckedUpdateManyWithoutAudioInput>
+  }
+
+  export type SalesByCountryScalarWhereInput = {
+    AND?: SalesByCountryScalarWhereInput | SalesByCountryScalarWhereInput[]
+    OR?: SalesByCountryScalarWhereInput[]
+    NOT?: SalesByCountryScalarWhereInput | SalesByCountryScalarWhereInput[]
+    id?: StringFilter<"SalesByCountry"> | string
+    name?: StringFilter<"SalesByCountry"> | string
+    trackDownloads?: IntFilter<"SalesByCountry"> | number
+    ISRC?: StringFilter<"SalesByCountry"> | string
+    streams?: IntFilter<"SalesByCountry"> | number
+    totalSales?: IntFilter<"SalesByCountry"> | number
+    earnings?: FloatFilter<"SalesByCountry"> | number
+    audioId?: StringFilter<"SalesByCountry"> | string
+  }
+
+  export type SalesByMonthUpsertWithWhereUniqueWithoutAudioInput = {
+    where: SalesByMonthWhereUniqueInput
+    update: XOR<SalesByMonthUpdateWithoutAudioInput, SalesByMonthUncheckedUpdateWithoutAudioInput>
+    create: XOR<SalesByMonthCreateWithoutAudioInput, SalesByMonthUncheckedCreateWithoutAudioInput>
+  }
+
+  export type SalesByMonthUpdateWithWhereUniqueWithoutAudioInput = {
+    where: SalesByMonthWhereUniqueInput
+    data: XOR<SalesByMonthUpdateWithoutAudioInput, SalesByMonthUncheckedUpdateWithoutAudioInput>
+  }
+
+  export type SalesByMonthUpdateManyWithWhereWithoutAudioInput = {
+    where: SalesByMonthScalarWhereInput
+    data: XOR<SalesByMonthUpdateManyMutationInput, SalesByMonthUncheckedUpdateManyWithoutAudioInput>
+  }
+
+  export type SalesByMonthScalarWhereInput = {
+    AND?: SalesByMonthScalarWhereInput | SalesByMonthScalarWhereInput[]
+    OR?: SalesByMonthScalarWhereInput[]
+    NOT?: SalesByMonthScalarWhereInput | SalesByMonthScalarWhereInput[]
+    id?: StringFilter<"SalesByMonth"> | string
+    month?: IntFilter<"SalesByMonth"> | number
+    year?: IntFilter<"SalesByMonth"> | number
+    trackDownloads?: IntFilter<"SalesByMonth"> | number
+    streams?: IntFilter<"SalesByMonth"> | number
+    ISRC?: StringFilter<"SalesByMonth"> | string
+    totalSales?: IntFilter<"SalesByMonth"> | number
+    earnings?: FloatFilter<"SalesByMonth"> | number
+    date?: StringFilter<"SalesByMonth"> | string
+    audioId?: StringFilter<"SalesByMonth"> | string
+  }
+
   export type AudioCreateWithoutTrackInput = {
     id?: string
     userId: string
@@ -13997,6 +18499,9 @@ export namespace Prisma {
     Store?: StoreCreateNestedManyWithoutAudioInput
     MonthlyReport?: MonthlyReportCreateNestedManyWithoutAudioInput
     CountryEarnings?: CountryEarningsCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthCreateNestedManyWithoutAudioInput
   }
 
   export type AudioUncheckedCreateWithoutTrackInput = {
@@ -14029,6 +18534,9 @@ export namespace Prisma {
     Store?: StoreUncheckedCreateNestedManyWithoutAudioInput
     MonthlyReport?: MonthlyReportUncheckedCreateNestedManyWithoutAudioInput
     CountryEarnings?: CountryEarningsUncheckedCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreUncheckedCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryUncheckedCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthUncheckedCreateNestedManyWithoutAudioInput
   }
 
   export type AudioCreateOrConnectWithoutTrackInput = {
@@ -14077,6 +18585,9 @@ export namespace Prisma {
     Store?: StoreUpdateManyWithoutAudioNestedInput
     MonthlyReport?: MonthlyReportUpdateManyWithoutAudioNestedInput
     CountryEarnings?: CountryEarningsUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUpdateManyWithoutAudioNestedInput
   }
 
   export type AudioUncheckedUpdateWithoutTrackInput = {
@@ -14109,6 +18620,9 @@ export namespace Prisma {
     Store?: StoreUncheckedUpdateManyWithoutAudioNestedInput
     MonthlyReport?: MonthlyReportUncheckedUpdateManyWithoutAudioNestedInput
     CountryEarnings?: CountryEarningsUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUncheckedUpdateManyWithoutAudioNestedInput
   }
 
   export type StreamsCreateWithoutDspInput = {
@@ -14196,6 +18710,9 @@ export namespace Prisma {
     Store?: StoreCreateNestedManyWithoutAudioInput
     MonthlyReport?: MonthlyReportCreateNestedManyWithoutAudioInput
     CountryEarnings?: CountryEarningsCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthCreateNestedManyWithoutAudioInput
   }
 
   export type AudioUncheckedCreateWithoutStreamsInput = {
@@ -14228,6 +18745,9 @@ export namespace Prisma {
     Store?: StoreUncheckedCreateNestedManyWithoutAudioInput
     MonthlyReport?: MonthlyReportUncheckedCreateNestedManyWithoutAudioInput
     CountryEarnings?: CountryEarningsUncheckedCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreUncheckedCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryUncheckedCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthUncheckedCreateNestedManyWithoutAudioInput
   }
 
   export type AudioCreateOrConnectWithoutStreamsInput = {
@@ -14297,6 +18817,9 @@ export namespace Prisma {
     Store?: StoreUpdateManyWithoutAudioNestedInput
     MonthlyReport?: MonthlyReportUpdateManyWithoutAudioNestedInput
     CountryEarnings?: CountryEarningsUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUpdateManyWithoutAudioNestedInput
   }
 
   export type AudioUncheckedUpdateWithoutStreamsInput = {
@@ -14329,6 +18852,9 @@ export namespace Prisma {
     Store?: StoreUncheckedUpdateManyWithoutAudioNestedInput
     MonthlyReport?: MonthlyReportUncheckedUpdateManyWithoutAudioNestedInput
     CountryEarnings?: CountryEarningsUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUncheckedUpdateManyWithoutAudioNestedInput
   }
 
   export type StreamByCountryCreateWithoutCountryInput = {
@@ -14418,6 +18944,9 @@ export namespace Prisma {
     Store?: StoreCreateNestedManyWithoutAudioInput
     MonthlyReport?: MonthlyReportCreateNestedManyWithoutAudioInput
     CountryEarnings?: CountryEarningsCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthCreateNestedManyWithoutAudioInput
   }
 
   export type AudioUncheckedCreateWithoutStreamByCountryInput = {
@@ -14450,6 +18979,9 @@ export namespace Prisma {
     Store?: StoreUncheckedCreateNestedManyWithoutAudioInput
     MonthlyReport?: MonthlyReportUncheckedCreateNestedManyWithoutAudioInput
     CountryEarnings?: CountryEarningsUncheckedCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreUncheckedCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryUncheckedCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthUncheckedCreateNestedManyWithoutAudioInput
   }
 
   export type AudioCreateOrConnectWithoutStreamByCountryInput = {
@@ -14521,6 +19053,9 @@ export namespace Prisma {
     Store?: StoreUpdateManyWithoutAudioNestedInput
     MonthlyReport?: MonthlyReportUpdateManyWithoutAudioNestedInput
     CountryEarnings?: CountryEarningsUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUpdateManyWithoutAudioNestedInput
   }
 
   export type AudioUncheckedUpdateWithoutStreamByCountryInput = {
@@ -14553,6 +19088,9 @@ export namespace Prisma {
     Store?: StoreUncheckedUpdateManyWithoutAudioNestedInput
     MonthlyReport?: MonthlyReportUncheckedUpdateManyWithoutAudioNestedInput
     CountryEarnings?: CountryEarningsUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUncheckedUpdateManyWithoutAudioNestedInput
   }
 
   export type AudioCreateWithoutStoreInput = {
@@ -14585,6 +19123,9 @@ export namespace Prisma {
     StreamByCountry?: StreamByCountryCreateNestedManyWithoutAudioInput
     MonthlyReport?: MonthlyReportCreateNestedManyWithoutAudioInput
     CountryEarnings?: CountryEarningsCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthCreateNestedManyWithoutAudioInput
   }
 
   export type AudioUncheckedCreateWithoutStoreInput = {
@@ -14617,6 +19158,9 @@ export namespace Prisma {
     StreamByCountry?: StreamByCountryUncheckedCreateNestedManyWithoutAudioInput
     MonthlyReport?: MonthlyReportUncheckedCreateNestedManyWithoutAudioInput
     CountryEarnings?: CountryEarningsUncheckedCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreUncheckedCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryUncheckedCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthUncheckedCreateNestedManyWithoutAudioInput
   }
 
   export type AudioCreateOrConnectWithoutStoreInput = {
@@ -14665,6 +19209,9 @@ export namespace Prisma {
     StreamByCountry?: StreamByCountryUpdateManyWithoutAudioNestedInput
     MonthlyReport?: MonthlyReportUpdateManyWithoutAudioNestedInput
     CountryEarnings?: CountryEarningsUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUpdateManyWithoutAudioNestedInput
   }
 
   export type AudioUncheckedUpdateWithoutStoreInput = {
@@ -14697,6 +19244,9 @@ export namespace Prisma {
     StreamByCountry?: StreamByCountryUncheckedUpdateManyWithoutAudioNestedInput
     MonthlyReport?: MonthlyReportUncheckedUpdateManyWithoutAudioNestedInput
     CountryEarnings?: CountryEarningsUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUncheckedUpdateManyWithoutAudioNestedInput
   }
 
   export type AudioCreateWithoutCountryEarningsInput = {
@@ -14729,6 +19279,9 @@ export namespace Prisma {
     StreamByCountry?: StreamByCountryCreateNestedManyWithoutAudioInput
     Store?: StoreCreateNestedManyWithoutAudioInput
     MonthlyReport?: MonthlyReportCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthCreateNestedManyWithoutAudioInput
   }
 
   export type AudioUncheckedCreateWithoutCountryEarningsInput = {
@@ -14761,6 +19314,9 @@ export namespace Prisma {
     StreamByCountry?: StreamByCountryUncheckedCreateNestedManyWithoutAudioInput
     Store?: StoreUncheckedCreateNestedManyWithoutAudioInput
     MonthlyReport?: MonthlyReportUncheckedCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreUncheckedCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryUncheckedCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthUncheckedCreateNestedManyWithoutAudioInput
   }
 
   export type AudioCreateOrConnectWithoutCountryEarningsInput = {
@@ -14809,6 +19365,9 @@ export namespace Prisma {
     StreamByCountry?: StreamByCountryUpdateManyWithoutAudioNestedInput
     Store?: StoreUpdateManyWithoutAudioNestedInput
     MonthlyReport?: MonthlyReportUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUpdateManyWithoutAudioNestedInput
   }
 
   export type AudioUncheckedUpdateWithoutCountryEarningsInput = {
@@ -14841,6 +19400,9 @@ export namespace Prisma {
     StreamByCountry?: StreamByCountryUncheckedUpdateManyWithoutAudioNestedInput
     Store?: StoreUncheckedUpdateManyWithoutAudioNestedInput
     MonthlyReport?: MonthlyReportUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUncheckedUpdateManyWithoutAudioNestedInput
   }
 
   export type AudioCreateWithoutMonthlyReportInput = {
@@ -14873,6 +19435,9 @@ export namespace Prisma {
     StreamByCountry?: StreamByCountryCreateNestedManyWithoutAudioInput
     Store?: StoreCreateNestedManyWithoutAudioInput
     CountryEarnings?: CountryEarningsCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthCreateNestedManyWithoutAudioInput
   }
 
   export type AudioUncheckedCreateWithoutMonthlyReportInput = {
@@ -14905,6 +19470,9 @@ export namespace Prisma {
     StreamByCountry?: StreamByCountryUncheckedCreateNestedManyWithoutAudioInput
     Store?: StoreUncheckedCreateNestedManyWithoutAudioInput
     CountryEarnings?: CountryEarningsUncheckedCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreUncheckedCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryUncheckedCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthUncheckedCreateNestedManyWithoutAudioInput
   }
 
   export type AudioCreateOrConnectWithoutMonthlyReportInput = {
@@ -14953,6 +19521,9 @@ export namespace Prisma {
     StreamByCountry?: StreamByCountryUpdateManyWithoutAudioNestedInput
     Store?: StoreUpdateManyWithoutAudioNestedInput
     CountryEarnings?: CountryEarningsUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUpdateManyWithoutAudioNestedInput
   }
 
   export type AudioUncheckedUpdateWithoutMonthlyReportInput = {
@@ -14985,6 +19556,477 @@ export namespace Prisma {
     StreamByCountry?: StreamByCountryUncheckedUpdateManyWithoutAudioNestedInput
     Store?: StoreUncheckedUpdateManyWithoutAudioNestedInput
     CountryEarnings?: CountryEarningsUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUncheckedUpdateManyWithoutAudioNestedInput
+  }
+
+  export type AudioCreateWithoutSalesByStoreInput = {
+    id?: string
+    userId: string
+    title: string
+    artist: string
+    releaseDate?: Date | string
+    primaryGenre: string
+    secondaryGenre: string
+    language: string
+    label: string
+    copyrightHolder: string
+    copyrightYear: string
+    productionHolder: string
+    productionYear: string
+    releaseCover: string
+    releaseAudio?: string | null
+    releaseAudioLink?: string | null
+    lyrics?: string | null
+    releaseType: string
+    status: string
+    UPC?: string
+    ISRC?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    smartLink?: string
+    Track?: TrackCreateNestedManyWithoutAudioInput
+    Streams?: StreamsCreateNestedManyWithoutAudioInput
+    StreamByCountry?: StreamByCountryCreateNestedManyWithoutAudioInput
+    Store?: StoreCreateNestedManyWithoutAudioInput
+    MonthlyReport?: MonthlyReportCreateNestedManyWithoutAudioInput
+    CountryEarnings?: CountryEarningsCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthCreateNestedManyWithoutAudioInput
+  }
+
+  export type AudioUncheckedCreateWithoutSalesByStoreInput = {
+    id?: string
+    userId: string
+    title: string
+    artist: string
+    releaseDate?: Date | string
+    primaryGenre: string
+    secondaryGenre: string
+    language: string
+    label: string
+    copyrightHolder: string
+    copyrightYear: string
+    productionHolder: string
+    productionYear: string
+    releaseCover: string
+    releaseAudio?: string | null
+    releaseAudioLink?: string | null
+    lyrics?: string | null
+    releaseType: string
+    status: string
+    UPC?: string
+    ISRC?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    smartLink?: string
+    Track?: TrackUncheckedCreateNestedManyWithoutAudioInput
+    Streams?: StreamsUncheckedCreateNestedManyWithoutAudioInput
+    StreamByCountry?: StreamByCountryUncheckedCreateNestedManyWithoutAudioInput
+    Store?: StoreUncheckedCreateNestedManyWithoutAudioInput
+    MonthlyReport?: MonthlyReportUncheckedCreateNestedManyWithoutAudioInput
+    CountryEarnings?: CountryEarningsUncheckedCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryUncheckedCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthUncheckedCreateNestedManyWithoutAudioInput
+  }
+
+  export type AudioCreateOrConnectWithoutSalesByStoreInput = {
+    where: AudioWhereUniqueInput
+    create: XOR<AudioCreateWithoutSalesByStoreInput, AudioUncheckedCreateWithoutSalesByStoreInput>
+  }
+
+  export type AudioUpsertWithoutSalesByStoreInput = {
+    update: XOR<AudioUpdateWithoutSalesByStoreInput, AudioUncheckedUpdateWithoutSalesByStoreInput>
+    create: XOR<AudioCreateWithoutSalesByStoreInput, AudioUncheckedCreateWithoutSalesByStoreInput>
+    where?: AudioWhereInput
+  }
+
+  export type AudioUpdateToOneWithWhereWithoutSalesByStoreInput = {
+    where?: AudioWhereInput
+    data: XOR<AudioUpdateWithoutSalesByStoreInput, AudioUncheckedUpdateWithoutSalesByStoreInput>
+  }
+
+  export type AudioUpdateWithoutSalesByStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    releaseDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    primaryGenre?: StringFieldUpdateOperationsInput | string
+    secondaryGenre?: StringFieldUpdateOperationsInput | string
+    language?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    copyrightHolder?: StringFieldUpdateOperationsInput | string
+    copyrightYear?: StringFieldUpdateOperationsInput | string
+    productionHolder?: StringFieldUpdateOperationsInput | string
+    productionYear?: StringFieldUpdateOperationsInput | string
+    releaseCover?: StringFieldUpdateOperationsInput | string
+    releaseAudio?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseAudioLink?: NullableStringFieldUpdateOperationsInput | string | null
+    lyrics?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    UPC?: StringFieldUpdateOperationsInput | string
+    ISRC?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    smartLink?: StringFieldUpdateOperationsInput | string
+    Track?: TrackUpdateManyWithoutAudioNestedInput
+    Streams?: StreamsUpdateManyWithoutAudioNestedInput
+    StreamByCountry?: StreamByCountryUpdateManyWithoutAudioNestedInput
+    Store?: StoreUpdateManyWithoutAudioNestedInput
+    MonthlyReport?: MonthlyReportUpdateManyWithoutAudioNestedInput
+    CountryEarnings?: CountryEarningsUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUpdateManyWithoutAudioNestedInput
+  }
+
+  export type AudioUncheckedUpdateWithoutSalesByStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    releaseDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    primaryGenre?: StringFieldUpdateOperationsInput | string
+    secondaryGenre?: StringFieldUpdateOperationsInput | string
+    language?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    copyrightHolder?: StringFieldUpdateOperationsInput | string
+    copyrightYear?: StringFieldUpdateOperationsInput | string
+    productionHolder?: StringFieldUpdateOperationsInput | string
+    productionYear?: StringFieldUpdateOperationsInput | string
+    releaseCover?: StringFieldUpdateOperationsInput | string
+    releaseAudio?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseAudioLink?: NullableStringFieldUpdateOperationsInput | string | null
+    lyrics?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    UPC?: StringFieldUpdateOperationsInput | string
+    ISRC?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    smartLink?: StringFieldUpdateOperationsInput | string
+    Track?: TrackUncheckedUpdateManyWithoutAudioNestedInput
+    Streams?: StreamsUncheckedUpdateManyWithoutAudioNestedInput
+    StreamByCountry?: StreamByCountryUncheckedUpdateManyWithoutAudioNestedInput
+    Store?: StoreUncheckedUpdateManyWithoutAudioNestedInput
+    MonthlyReport?: MonthlyReportUncheckedUpdateManyWithoutAudioNestedInput
+    CountryEarnings?: CountryEarningsUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUncheckedUpdateManyWithoutAudioNestedInput
+  }
+
+  export type AudioCreateWithoutSalesByCountryInput = {
+    id?: string
+    userId: string
+    title: string
+    artist: string
+    releaseDate?: Date | string
+    primaryGenre: string
+    secondaryGenre: string
+    language: string
+    label: string
+    copyrightHolder: string
+    copyrightYear: string
+    productionHolder: string
+    productionYear: string
+    releaseCover: string
+    releaseAudio?: string | null
+    releaseAudioLink?: string | null
+    lyrics?: string | null
+    releaseType: string
+    status: string
+    UPC?: string
+    ISRC?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    smartLink?: string
+    Track?: TrackCreateNestedManyWithoutAudioInput
+    Streams?: StreamsCreateNestedManyWithoutAudioInput
+    StreamByCountry?: StreamByCountryCreateNestedManyWithoutAudioInput
+    Store?: StoreCreateNestedManyWithoutAudioInput
+    MonthlyReport?: MonthlyReportCreateNestedManyWithoutAudioInput
+    CountryEarnings?: CountryEarningsCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthCreateNestedManyWithoutAudioInput
+  }
+
+  export type AudioUncheckedCreateWithoutSalesByCountryInput = {
+    id?: string
+    userId: string
+    title: string
+    artist: string
+    releaseDate?: Date | string
+    primaryGenre: string
+    secondaryGenre: string
+    language: string
+    label: string
+    copyrightHolder: string
+    copyrightYear: string
+    productionHolder: string
+    productionYear: string
+    releaseCover: string
+    releaseAudio?: string | null
+    releaseAudioLink?: string | null
+    lyrics?: string | null
+    releaseType: string
+    status: string
+    UPC?: string
+    ISRC?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    smartLink?: string
+    Track?: TrackUncheckedCreateNestedManyWithoutAudioInput
+    Streams?: StreamsUncheckedCreateNestedManyWithoutAudioInput
+    StreamByCountry?: StreamByCountryUncheckedCreateNestedManyWithoutAudioInput
+    Store?: StoreUncheckedCreateNestedManyWithoutAudioInput
+    MonthlyReport?: MonthlyReportUncheckedCreateNestedManyWithoutAudioInput
+    CountryEarnings?: CountryEarningsUncheckedCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreUncheckedCreateNestedManyWithoutAudioInput
+    SalesByMonth?: SalesByMonthUncheckedCreateNestedManyWithoutAudioInput
+  }
+
+  export type AudioCreateOrConnectWithoutSalesByCountryInput = {
+    where: AudioWhereUniqueInput
+    create: XOR<AudioCreateWithoutSalesByCountryInput, AudioUncheckedCreateWithoutSalesByCountryInput>
+  }
+
+  export type AudioUpsertWithoutSalesByCountryInput = {
+    update: XOR<AudioUpdateWithoutSalesByCountryInput, AudioUncheckedUpdateWithoutSalesByCountryInput>
+    create: XOR<AudioCreateWithoutSalesByCountryInput, AudioUncheckedCreateWithoutSalesByCountryInput>
+    where?: AudioWhereInput
+  }
+
+  export type AudioUpdateToOneWithWhereWithoutSalesByCountryInput = {
+    where?: AudioWhereInput
+    data: XOR<AudioUpdateWithoutSalesByCountryInput, AudioUncheckedUpdateWithoutSalesByCountryInput>
+  }
+
+  export type AudioUpdateWithoutSalesByCountryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    releaseDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    primaryGenre?: StringFieldUpdateOperationsInput | string
+    secondaryGenre?: StringFieldUpdateOperationsInput | string
+    language?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    copyrightHolder?: StringFieldUpdateOperationsInput | string
+    copyrightYear?: StringFieldUpdateOperationsInput | string
+    productionHolder?: StringFieldUpdateOperationsInput | string
+    productionYear?: StringFieldUpdateOperationsInput | string
+    releaseCover?: StringFieldUpdateOperationsInput | string
+    releaseAudio?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseAudioLink?: NullableStringFieldUpdateOperationsInput | string | null
+    lyrics?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    UPC?: StringFieldUpdateOperationsInput | string
+    ISRC?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    smartLink?: StringFieldUpdateOperationsInput | string
+    Track?: TrackUpdateManyWithoutAudioNestedInput
+    Streams?: StreamsUpdateManyWithoutAudioNestedInput
+    StreamByCountry?: StreamByCountryUpdateManyWithoutAudioNestedInput
+    Store?: StoreUpdateManyWithoutAudioNestedInput
+    MonthlyReport?: MonthlyReportUpdateManyWithoutAudioNestedInput
+    CountryEarnings?: CountryEarningsUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUpdateManyWithoutAudioNestedInput
+  }
+
+  export type AudioUncheckedUpdateWithoutSalesByCountryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    releaseDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    primaryGenre?: StringFieldUpdateOperationsInput | string
+    secondaryGenre?: StringFieldUpdateOperationsInput | string
+    language?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    copyrightHolder?: StringFieldUpdateOperationsInput | string
+    copyrightYear?: StringFieldUpdateOperationsInput | string
+    productionHolder?: StringFieldUpdateOperationsInput | string
+    productionYear?: StringFieldUpdateOperationsInput | string
+    releaseCover?: StringFieldUpdateOperationsInput | string
+    releaseAudio?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseAudioLink?: NullableStringFieldUpdateOperationsInput | string | null
+    lyrics?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    UPC?: StringFieldUpdateOperationsInput | string
+    ISRC?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    smartLink?: StringFieldUpdateOperationsInput | string
+    Track?: TrackUncheckedUpdateManyWithoutAudioNestedInput
+    Streams?: StreamsUncheckedUpdateManyWithoutAudioNestedInput
+    StreamByCountry?: StreamByCountryUncheckedUpdateManyWithoutAudioNestedInput
+    Store?: StoreUncheckedUpdateManyWithoutAudioNestedInput
+    MonthlyReport?: MonthlyReportUncheckedUpdateManyWithoutAudioNestedInput
+    CountryEarnings?: CountryEarningsUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByMonth?: SalesByMonthUncheckedUpdateManyWithoutAudioNestedInput
+  }
+
+  export type AudioCreateWithoutSalesByMonthInput = {
+    id?: string
+    userId: string
+    title: string
+    artist: string
+    releaseDate?: Date | string
+    primaryGenre: string
+    secondaryGenre: string
+    language: string
+    label: string
+    copyrightHolder: string
+    copyrightYear: string
+    productionHolder: string
+    productionYear: string
+    releaseCover: string
+    releaseAudio?: string | null
+    releaseAudioLink?: string | null
+    lyrics?: string | null
+    releaseType: string
+    status: string
+    UPC?: string
+    ISRC?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    smartLink?: string
+    Track?: TrackCreateNestedManyWithoutAudioInput
+    Streams?: StreamsCreateNestedManyWithoutAudioInput
+    StreamByCountry?: StreamByCountryCreateNestedManyWithoutAudioInput
+    Store?: StoreCreateNestedManyWithoutAudioInput
+    MonthlyReport?: MonthlyReportCreateNestedManyWithoutAudioInput
+    CountryEarnings?: CountryEarningsCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryCreateNestedManyWithoutAudioInput
+  }
+
+  export type AudioUncheckedCreateWithoutSalesByMonthInput = {
+    id?: string
+    userId: string
+    title: string
+    artist: string
+    releaseDate?: Date | string
+    primaryGenre: string
+    secondaryGenre: string
+    language: string
+    label: string
+    copyrightHolder: string
+    copyrightYear: string
+    productionHolder: string
+    productionYear: string
+    releaseCover: string
+    releaseAudio?: string | null
+    releaseAudioLink?: string | null
+    lyrics?: string | null
+    releaseType: string
+    status: string
+    UPC?: string
+    ISRC?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    smartLink?: string
+    Track?: TrackUncheckedCreateNestedManyWithoutAudioInput
+    Streams?: StreamsUncheckedCreateNestedManyWithoutAudioInput
+    StreamByCountry?: StreamByCountryUncheckedCreateNestedManyWithoutAudioInput
+    Store?: StoreUncheckedCreateNestedManyWithoutAudioInput
+    MonthlyReport?: MonthlyReportUncheckedCreateNestedManyWithoutAudioInput
+    CountryEarnings?: CountryEarningsUncheckedCreateNestedManyWithoutAudioInput
+    SalesByStore?: SalesByStoreUncheckedCreateNestedManyWithoutAudioInput
+    SalesByCountry?: SalesByCountryUncheckedCreateNestedManyWithoutAudioInput
+  }
+
+  export type AudioCreateOrConnectWithoutSalesByMonthInput = {
+    where: AudioWhereUniqueInput
+    create: XOR<AudioCreateWithoutSalesByMonthInput, AudioUncheckedCreateWithoutSalesByMonthInput>
+  }
+
+  export type AudioUpsertWithoutSalesByMonthInput = {
+    update: XOR<AudioUpdateWithoutSalesByMonthInput, AudioUncheckedUpdateWithoutSalesByMonthInput>
+    create: XOR<AudioCreateWithoutSalesByMonthInput, AudioUncheckedCreateWithoutSalesByMonthInput>
+    where?: AudioWhereInput
+  }
+
+  export type AudioUpdateToOneWithWhereWithoutSalesByMonthInput = {
+    where?: AudioWhereInput
+    data: XOR<AudioUpdateWithoutSalesByMonthInput, AudioUncheckedUpdateWithoutSalesByMonthInput>
+  }
+
+  export type AudioUpdateWithoutSalesByMonthInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    releaseDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    primaryGenre?: StringFieldUpdateOperationsInput | string
+    secondaryGenre?: StringFieldUpdateOperationsInput | string
+    language?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    copyrightHolder?: StringFieldUpdateOperationsInput | string
+    copyrightYear?: StringFieldUpdateOperationsInput | string
+    productionHolder?: StringFieldUpdateOperationsInput | string
+    productionYear?: StringFieldUpdateOperationsInput | string
+    releaseCover?: StringFieldUpdateOperationsInput | string
+    releaseAudio?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseAudioLink?: NullableStringFieldUpdateOperationsInput | string | null
+    lyrics?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    UPC?: StringFieldUpdateOperationsInput | string
+    ISRC?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    smartLink?: StringFieldUpdateOperationsInput | string
+    Track?: TrackUpdateManyWithoutAudioNestedInput
+    Streams?: StreamsUpdateManyWithoutAudioNestedInput
+    StreamByCountry?: StreamByCountryUpdateManyWithoutAudioNestedInput
+    Store?: StoreUpdateManyWithoutAudioNestedInput
+    MonthlyReport?: MonthlyReportUpdateManyWithoutAudioNestedInput
+    CountryEarnings?: CountryEarningsUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUpdateManyWithoutAudioNestedInput
+  }
+
+  export type AudioUncheckedUpdateWithoutSalesByMonthInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    releaseDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    primaryGenre?: StringFieldUpdateOperationsInput | string
+    secondaryGenre?: StringFieldUpdateOperationsInput | string
+    language?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    copyrightHolder?: StringFieldUpdateOperationsInput | string
+    copyrightYear?: StringFieldUpdateOperationsInput | string
+    productionHolder?: StringFieldUpdateOperationsInput | string
+    productionYear?: StringFieldUpdateOperationsInput | string
+    releaseCover?: StringFieldUpdateOperationsInput | string
+    releaseAudio?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseAudioLink?: NullableStringFieldUpdateOperationsInput | string | null
+    lyrics?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseType?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    UPC?: StringFieldUpdateOperationsInput | string
+    ISRC?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    smartLink?: StringFieldUpdateOperationsInput | string
+    Track?: TrackUncheckedUpdateManyWithoutAudioNestedInput
+    Streams?: StreamsUncheckedUpdateManyWithoutAudioNestedInput
+    StreamByCountry?: StreamByCountryUncheckedUpdateManyWithoutAudioNestedInput
+    Store?: StoreUncheckedUpdateManyWithoutAudioNestedInput
+    MonthlyReport?: MonthlyReportUncheckedUpdateManyWithoutAudioNestedInput
+    CountryEarnings?: CountryEarningsUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByStore?: SalesByStoreUncheckedUpdateManyWithoutAudioNestedInput
+    SalesByCountry?: SalesByCountryUncheckedUpdateManyWithoutAudioNestedInput
   }
 
   export type TrackCreateManyAudioInput = {
@@ -15038,6 +20080,38 @@ export namespace Prisma {
     streams: number
     totalSales: number
     earnings: number
+  }
+
+  export type SalesByStoreCreateManyAudioInput = {
+    id?: string
+    name: string
+    ISRC: string
+    trackDownloads: number
+    streams: number
+    totalSales: number
+    earnings: number
+  }
+
+  export type SalesByCountryCreateManyAudioInput = {
+    id?: string
+    name: string
+    trackDownloads: number
+    ISRC: string
+    streams: number
+    totalSales: number
+    earnings: number
+  }
+
+  export type SalesByMonthCreateManyAudioInput = {
+    id?: string
+    month: number
+    year: number
+    trackDownloads: number
+    streams: number
+    ISRC: string
+    totalSales: number
+    earnings: number
+    date: string
   }
 
   export type TrackUpdateWithoutAudioInput = {
@@ -15199,6 +20273,102 @@ export namespace Prisma {
     earnings?: FloatFieldUpdateOperationsInput | number
   }
 
+  export type SalesByStoreUpdateWithoutAudioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    ISRC?: StringFieldUpdateOperationsInput | string
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    streams?: IntFieldUpdateOperationsInput | number
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type SalesByStoreUncheckedUpdateWithoutAudioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    ISRC?: StringFieldUpdateOperationsInput | string
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    streams?: IntFieldUpdateOperationsInput | number
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type SalesByStoreUncheckedUpdateManyWithoutAudioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    ISRC?: StringFieldUpdateOperationsInput | string
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    streams?: IntFieldUpdateOperationsInput | number
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type SalesByCountryUpdateWithoutAudioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    ISRC?: StringFieldUpdateOperationsInput | string
+    streams?: IntFieldUpdateOperationsInput | number
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type SalesByCountryUncheckedUpdateWithoutAudioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    ISRC?: StringFieldUpdateOperationsInput | string
+    streams?: IntFieldUpdateOperationsInput | number
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type SalesByCountryUncheckedUpdateManyWithoutAudioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    ISRC?: StringFieldUpdateOperationsInput | string
+    streams?: IntFieldUpdateOperationsInput | number
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type SalesByMonthUpdateWithoutAudioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    month?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    streams?: IntFieldUpdateOperationsInput | number
+    ISRC?: StringFieldUpdateOperationsInput | string
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+    date?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SalesByMonthUncheckedUpdateWithoutAudioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    month?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    streams?: IntFieldUpdateOperationsInput | number
+    ISRC?: StringFieldUpdateOperationsInput | string
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+    date?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SalesByMonthUncheckedUpdateManyWithoutAudioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    month?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    trackDownloads?: IntFieldUpdateOperationsInput | number
+    streams?: IntFieldUpdateOperationsInput | number
+    ISRC?: StringFieldUpdateOperationsInput | string
+    totalSales?: IntFieldUpdateOperationsInput | number
+    earnings?: FloatFieldUpdateOperationsInput | number
+    date?: StringFieldUpdateOperationsInput | string
+  }
+
   export type StreamsCreateManyDspInput = {
     id?: string
     total: number
@@ -15308,6 +20478,18 @@ export namespace Prisma {
      * @deprecated Use MonthlyReportDefaultArgs instead
      */
     export type MonthlyReportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MonthlyReportDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use SalesByStoreDefaultArgs instead
+     */
+    export type SalesByStoreArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SalesByStoreDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use SalesByCountryDefaultArgs instead
+     */
+    export type SalesByCountryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SalesByCountryDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use SalesByMonthDefaultArgs instead
+     */
+    export type SalesByMonthArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SalesByMonthDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

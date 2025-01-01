@@ -216,6 +216,41 @@ exports.Prisma.MonthlyReportScalarFieldEnum = {
   audioId: 'audioId'
 };
 
+exports.Prisma.SalesByStoreScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  ISRC: 'ISRC',
+  trackDownloads: 'trackDownloads',
+  streams: 'streams',
+  totalSales: 'totalSales',
+  earnings: 'earnings',
+  audioId: 'audioId'
+};
+
+exports.Prisma.SalesByCountryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  trackDownloads: 'trackDownloads',
+  ISRC: 'ISRC',
+  streams: 'streams',
+  totalSales: 'totalSales',
+  earnings: 'earnings',
+  audioId: 'audioId'
+};
+
+exports.Prisma.SalesByMonthScalarFieldEnum = {
+  id: 'id',
+  month: 'month',
+  year: 'year',
+  trackDownloads: 'trackDownloads',
+  streams: 'streams',
+  ISRC: 'ISRC',
+  totalSales: 'totalSales',
+  earnings: 'earnings',
+  date: 'date',
+  audioId: 'audioId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -241,7 +276,10 @@ exports.Prisma.ModelName = {
   StreamByCountry: 'StreamByCountry',
   Store: 'Store',
   CountryEarnings: 'CountryEarnings',
-  MonthlyReport: 'MonthlyReport'
+  MonthlyReport: 'MonthlyReport',
+  SalesByStore: 'SalesByStore',
+  SalesByCountry: 'SalesByCountry',
+  SalesByMonth: 'SalesByMonth'
 };
 
 /**

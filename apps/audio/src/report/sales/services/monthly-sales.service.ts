@@ -133,7 +133,7 @@ export class MonthlySalesService {
 
   // Fetch streams for the specified audio IDs
   private async fetchAudioMonthlyReports(audioIds: string[]) {
-    return await this.prisma.monthlyReport.findMany({
+    return await this.prisma.salesByMonth.findMany({
       where: { audioId: { in: audioIds } },
       select: {
         trackDownloads: true,
@@ -153,7 +153,7 @@ export class MonthlySalesService {
     const audioIds = audios.map((audio) => audio.id);
     if (audioIds.length === 0) return [];
 
-    const monthlyReports = await this.prisma.monthlyReport.findMany({
+    const monthlyReports = await this.prisma.salesByMonth.findMany({
       where: { audioId: { in: audioIds } },
       select: {
         trackDownloads: true,

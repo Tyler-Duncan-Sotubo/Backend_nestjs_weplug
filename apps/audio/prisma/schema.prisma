@@ -45,6 +45,12 @@ model Audio {
   Store            Store[]
   MonthlyReport    MonthlyReport[]
   CountryEarnings  CountryEarnings[]
+
+  SalesByStore SalesByStore[]
+
+  SalesByCountry SalesByCountry[]
+
+  SalesByMonth SalesByMonth[]
 }
 
 model Track {
@@ -113,7 +119,7 @@ model Store {
   audio          Audio  @relation(fields: [audioId], references: [id])
 
   // index
-  @@index([audioId], name: "unique_store")
+  @@index([audioId], name: "unique_sales_by_store")
 }
 
 model CountryEarnings {
@@ -144,4 +150,44 @@ model MonthlyReport {
 
   // Ensure unique reports for each month/year/store/country combo
   @@index([audioId], name: "unique_monthly_report")
+}
+
+// This schema is for Prisma ORM and should be placed in your `schema.prisma` file.
+
+model SalesByStore {
+  id             String @id @default(uuid())
+  name           String
+  ISRC           String
+  trackDownloads Int
+  streams        Int
+  totalSales     Int
+  earnings       Float
+  audioId        String
+  audio          Audio  @relation(fields: [audioId], references: [id])
+}
+
+model SalesByCountry {
+  id             String @id @default(uuid())
+  name           String
+  trackDownloads Int
+  ISRC           String
+  streams        Int
+  totalSales     Int
+  earnings       Float
+  audioId        String
+  audio          Audio  @relation(fields: [audioId], references: [id])
+}
+
+model SalesByMonth {
+  id             String @id @default(uuid())
+  month          Int
+  year           Int
+  trackDownloads Int
+  streams        Int
+  ISRC           String
+  totalSales     Int
+  earnings       Float
+  date           String
+  audioId        String
+  audio          Audio  @relation(fields: [audioId], references: [id])
 }

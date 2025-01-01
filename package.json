@@ -11,7 +11,7 @@
     "start": "concurrently -c \"bgBlue.bold,bgMagenta.bold\" \"npm run dev-api\" \"npm run dev-audio\" \"npm run dev-payment\"",
     "postinstall": "prisma generate --schema=./apps/audio/prisma/schema.prisma && prisma generate --schema=./apps/payment/prisma/schema.prisma",
     "prisma:generate": "prisma generate --schema=./apps/audio/prisma/schema.prisma && prisma generate --schema=./apps/payment/prisma/schema.prisma ",
-    "start:dev": "concurrently -c \"green.bold,red.bold,blue.bold\" \"npm:dev-*\"  ",
+    "dev": "concurrently -c \"green.bold,red.bold,blue.bold\" \"npm:dev-*\"  ",
     "dev-api": "nest start --watch api",
     "dev-audio": "nest start --watch audio",
     "dev-payment": "nest start --watch payment",

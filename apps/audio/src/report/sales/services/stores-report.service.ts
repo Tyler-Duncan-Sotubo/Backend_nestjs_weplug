@@ -136,7 +136,7 @@ export class StoresReportService {
   }
 
   private async fetchAudioStoreReports(audioIds: string[]) {
-    return await this.prisma.store.findMany({
+    return await this.prisma.salesByStore.findMany({
       where: { audioId: { in: audioIds } },
       select: {
         name: true,
