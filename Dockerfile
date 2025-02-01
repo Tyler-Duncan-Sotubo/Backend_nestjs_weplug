@@ -1,28 +1,28 @@
-# Use the official Node.js image
-FROM node:18-alpine AS builder
+# Stage 1: Build
+FROM node:18 AS builder
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm ci
+COPY package.json package-lock.json ./
+RUN npm install
 
+# Copy all files including Prisma schema if present
 COPY . .
-RUN npm run prisma:generate
-RUN npm run build
 
-FROM node:18-alpine
+# Generate Prisma Client and build the app
+RUN npm run prisma:generate && npm run build
 
-ENV NODE_ENV=production
+# Stage 2: Serve
+FROM node:18 AS runner
 
 WORKDIR /app
 
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/node_modules ./node_modules
+ENV NODE_ENV production
 
-RUN npm ci --omit=dev
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
 
 EXPOSE 8080
 
-CMD ["node", "dist/src/main.js"]
+CMD ["node", "dist/main.js"]

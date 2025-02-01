@@ -2,14 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { CreateStreamsDTO, TimeRangeDTO } from '../../dto/report';
 import { PrismaService } from '../../../../database/prisma.service';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
-import { CacheService } from 'config/cache/cache.service';
 
 @Injectable()
 export class StreamsService {
-  constructor(
-    private readonly prisma: PrismaService,
-    private readonly cacheService: CacheService,
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   async create(CreateStreamDTO: CreateStreamsDTO) {
     try {
@@ -32,40 +28,16 @@ export class StreamsService {
 
   // Fetch streams by audio id within a time range
   async findOneById(id: string, timeRangeDto: TimeRangeDTO) {
-    // Create cache key
-    const cacheKey = `streams:${id}:${timeRangeDto.timeRange}`;
-
-    // Check if data exists in cache
-    const cachedData = await this.cacheService.get(cacheKey);
-
-    // If data exists in cache, return it
-    if (cachedData) {
-      return JSON.parse(cachedData);
-    }
-
     const { startDate, endDate } = this.calculateDateRange(timeRangeDto);
 
     const streams = await this.fetchStreamsByAudioId(id, startDate, endDate);
     const groupedStreams = this.groupStreamsByDsp(streams);
-
-    // Store data in cache
-    await this.cacheService.set(cacheKey, JSON.stringify(groupedStreams));
 
     return groupedStreams;
   }
 
   // Fetch streams for a user’s audios in a time range
   async findAllStreamsByUserId(userId: string, timeRangeDto: TimeRangeDTO) {
-    // Create cache key
-    const cacheKey = `streams:${userId}:${timeRangeDto.timeRange}`;
-
-    // Check if data exists in cache
-    const cachedData = await this.cacheService.get(cacheKey);
-
-    // If data exists in cache, return it
-    if (cachedData) {
-      return JSON.parse(cachedData);
-    }
     const { startDate, endDate } = this.calculateDateRange(timeRangeDto);
 
     const audioIds = await this.fetchUserAudioIds(userId);
@@ -79,24 +51,11 @@ export class StreamsService {
 
     const groupedStreams = this.groupAndFormatStreamsByDsp(streams);
 
-    // Store data in cache
-    await this.cacheService.set(cacheKey, JSON.stringify(groupedStreams));
     return groupedStreams;
   }
 
   // Fetch all streams by audio ID for a user
   async findAllByAudioStreams(userId: string) {
-    // Create cache key
-    const cacheKey = `streams:${userId}`;
-
-    // Check if data exists in cache
-    const cachedData = await this.cacheService.get(cacheKey);
-
-    // If data exists in cache, return it
-    if (cachedData) {
-      return JSON.parse(cachedData);
-    }
-
     const audios = await this.fetchUserAudios(userId);
     const audioMap = this.createAudioMap(audios);
     const audioIds = audios.map((audio) => audio.id);
@@ -106,12 +65,6 @@ export class StreamsService {
     const streams = await this.fetchAudioStreams(audioIds);
 
     const totalStreamsByAudioId = this.aggregateStreams(streams, audioMap);
-
-    // Store data in cache
-    await this.cacheService.set(
-      cacheKey,
-      JSON.stringify(totalStreamsByAudioId),
-    );
 
     return totalStreamsByAudioId;
   }

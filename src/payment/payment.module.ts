@@ -6,6 +6,7 @@ import { AwsService } from 'config/aws/aws.service';
 import { IdentityService } from 'config/mail/identity.service';
 import { CacheService } from 'config/cache/cache.service';
 import { CacheModule } from 'config/cache/cache.module';
+import { MonthlySalesService } from 'src/audio/sales-report/services';
 
 @Module({
   imports: [CacheModule],
@@ -16,6 +17,7 @@ import { CacheModule } from 'config/cache/cache.module';
     AwsService,
     IdentityService,
     CacheService,
+    MonthlySalesService,
   ],
 })
 export class PaymentModule {}

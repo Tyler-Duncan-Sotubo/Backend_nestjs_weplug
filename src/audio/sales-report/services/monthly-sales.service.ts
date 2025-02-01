@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../../../database/prisma.service';
 import { MonthlyReportsResponseDTO } from 'src/audio/dto/report';
-import { CacheService } from 'config/cache/cache.service';
 
 type AggregatedData = {
   trackDownloads: number;
@@ -15,10 +14,7 @@ type AggregatedData = {
 
 @Injectable()
 export class MonthlySalesService {
-  constructor(
-    private readonly prisma: PrismaService,
-    private readonly cacheService: CacheService,
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   // Function to find an existing report by audioId and date
   private async findExistingReport(audioId: string, date: string) {
@@ -103,16 +99,6 @@ export class MonthlySalesService {
   // -------------------------------------  // Fetch  Logic for Monthly Sales Report  ----------------------
 
   async fetchMonthlyReports(userId: string) {
-    const cacheKey = `monthly-report-${userId}`;
-
-    // Check if the report already exists in the cache
-    const cachedData = await this.cacheService.get(cacheKey);
-
-    if (cachedData) {
-      // If the report exists, return the cached data
-      return JSON.parse(cachedData);
-    }
-
     // Fetch audio IDs for the user
     const audios = await this.fetchUserAudios(userId);
     const audioIds = audios.map((audio) => audio.id);
@@ -121,12 +107,6 @@ export class MonthlySalesService {
     const monthlyReports = await this.fetchAudioMonthlyReports(audioIds);
 
     const aggregatedMonthlyReports = this.aggregateMonthlyData(monthlyReports);
-
-    // Store the aggregated data in the cache
-    await this.cacheService.set(
-      cacheKey,
-      JSON.stringify(aggregatedMonthlyReports),
-    );
 
     return aggregatedMonthlyReports;
   }
@@ -199,26 +179,24 @@ export class MonthlySalesService {
     const aggregated: Record<string, AggregatedData> = {};
 
     data.forEach((item) => {
-      const key = `${item.year}-${item.month}`; // Unique key based on year and month
+      const key = `${item.year}-${item.month}`;
 
-      // Initialize if the key doesn't exist
       if (!aggregated[key]) {
         aggregated[key] = {
           trackDownloads: 0,
           streams: 0,
           totalSales: 0,
           earnings: 0,
-          date: item.date, // Keep the original date for display purposes
+          date: item.date,
           year: item.year,
           month: item.month,
         };
       }
 
-      // Sum the values
       aggregated[key].trackDownloads += item.trackDownloads;
       aggregated[key].streams += item.streams;
       aggregated[key].totalSales += item.totalSales;
-      aggregated[key].earnings += item.earnings;
+      aggregated[key].earnings += parseFloat(item.earnings) || 0; // Convert to number
     });
 
     // Convert the aggregated object back into an array

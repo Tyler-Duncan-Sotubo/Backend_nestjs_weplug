@@ -9,7 +9,6 @@ import { AwsService } from '../../../config/aws/aws.service';
 import { PrismaService } from '../../../database/prisma.service';
 import { MusicReleaseService } from '../../../config/mail/musicRelease.service';
 import { NotificationService } from '../../../config/mail/notification.service';
-import { CacheService } from '../../../config/cache/cache.service';
 
 export type User = {
   id: string;
@@ -24,7 +23,6 @@ export class MusicService {
     private prisma: PrismaService,
     private musicReleaseService: MusicReleaseService,
     private notificationService: NotificationService,
-    private readonly cacheService: CacheService,
   ) {}
   async createAudioRelease(dto: AudioReleaseDto) {
     // strip off space in string
@@ -91,21 +89,10 @@ export class MusicService {
       this.notificationService.sendMusicReleaseEmail();
     }
 
-    await this.cacheService.del(`audio-release-${user.id}`);
-
     return 'Audio Release Created';
   }
 
   async getAudioReleasesByUserId(dto: UserIdDto) {
-    // create cache key
-    const cacheKey = `audio-release-${dto.userId}`;
-
-    // check if cache exist
-    const cacheData = await this.cacheService.get(cacheKey);
-    if (cacheData) {
-      return JSON.parse(cacheData);
-    }
-
     const audioReleases = await this.prisma.audio.findMany({
       where: {
         userId: dto.userId,
@@ -126,22 +113,10 @@ export class MusicService {
       return [];
     }
 
-    // store data in cache
-    await this.cacheService.set(cacheKey, JSON.stringify(audioReleases));
-
     return audioReleases;
   }
 
   async getAudioReleaseById(dto: AudioByIdDto) {
-    // create cache key
-    const cacheKey = `single-audio-${dto.audioId}`;
-
-    // check if cache exist
-    const cacheData = await this.cacheService.get(cacheKey);
-    if (cacheData) {
-      return JSON.parse(cacheData);
-    }
-
     const { audioId } = dto;
     const audio = await this.prisma.audio.findUnique({
       where: {
@@ -156,22 +131,10 @@ export class MusicService {
       return null;
     }
 
-    // store data in cache
-    await this.cacheService.set(cacheKey, JSON.stringify(audio));
-
     return audio;
   }
 
   async getAudioById(dto: AudioByIdDto) {
-    // create cache key
-    const cacheKey = `audio-${dto.audioId}`;
-
-    // check if cache exist
-    const cacheData = await this.cacheService.get(cacheKey);
-    if (cacheData) {
-      return JSON.parse(cacheData);
-    }
-
     const { audioId } = dto;
     const audio = await this.prisma.audio.findUnique({
       where: {
@@ -186,9 +149,6 @@ export class MusicService {
     if (!audio) {
       return null;
     }
-
-    // store data in cache
-    await this.cacheService.set(cacheKey, JSON.stringify(audio));
 
     return audio;
   }

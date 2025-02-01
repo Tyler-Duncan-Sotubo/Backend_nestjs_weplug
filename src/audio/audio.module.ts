@@ -13,13 +13,12 @@ import { AwsService } from 'config/aws/aws.service';
 import { PrismaService } from 'database/prisma.service';
 import { MusicReleaseService } from 'config/mail/musicRelease.service';
 import { NotificationService } from 'config/mail/notification.service';
-import { CacheService } from 'config/cache/cache.service';
-import { CacheModule } from 'config/cache/cache.module';
 import { TrackService } from './track/track.service';
 import { CountryService, StreamsService } from './streams/services';
+import { SmartlinkModule } from './smartlink/smartlink.module';
 
 @Module({
-  imports: [CacheModule],
+  imports: [SmartlinkModule],
   controllers: [
     ApiMusicController,
     TrackController,
@@ -35,7 +34,6 @@ import { CountryService, StreamsService } from './streams/services';
     PrismaService,
     MusicReleaseService,
     NotificationService,
-    CacheService,
     TrackService,
     StreamsService,
     CountryService,

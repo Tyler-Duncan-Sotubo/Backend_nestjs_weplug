@@ -3,6 +3,9 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { AudioModule } from './audio/audio.module';
 import { PaymentModule } from './payment/payment.module';
+import { PostModule } from './post/post.module';
+import { UserModule } from './user/user.module';
+import { ShopModule } from './shop/shop.module';
 
 @Module({
   imports: [
@@ -29,6 +32,9 @@ import { PaymentModule } from './payment/payment.module';
     }),
     AudioModule,
     PaymentModule,
+    PostModule,
+    UserModule,
+    ShopModule,
   ],
   controllers: [],
   providers: [],

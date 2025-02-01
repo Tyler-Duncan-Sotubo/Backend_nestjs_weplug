@@ -2,14 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../../../database/prisma.service';
 import { CreateStreamsDTO } from '../../dto/report';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
-import { CacheService } from 'config/cache/cache.service';
 
 @Injectable()
 export class CountryService {
-  constructor(
-    private readonly prisma: PrismaService,
-    private readonly cacheService: CacheService,
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   async create(createStreamDto: CreateStreamsDTO) {
     try {
@@ -27,24 +23,12 @@ export class CountryService {
   }
 
   async findAllCountryStreamsByUserId(userId: string) {
-    // Create cache key
-    const cacheKey = `country-streams-${userId}`;
-    // Check if data is in cache
-    const cachedData = await this.cacheService.get(cacheKey);
-    // If data exists in cache, return it
-    if (cachedData) {
-      return JSON.parse(cachedData);
-    }
-
     const audioIds = await this.fetchUserAudioIds(userId);
     if (audioIds.length === 0) return [];
 
     const streams = await this.fetchStreamsForAudioIds(audioIds);
 
     const formattedStreams = this.groupAndFormatStreamsByCountry(streams);
-
-    // Store data in cache
-    await this.cacheService.set(cacheKey, JSON.stringify(formattedStreams));
 
     return formattedStreams;
   }

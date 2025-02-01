@@ -2,15 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { StoresResponseDTO } from 'src/audio/dto/report';
 import { PrismaService } from '../../../../database/prisma.service';
 import { ReportType } from '../types/report.type';
-import { CacheService } from 'config/cache/cache.service';
 import { Store } from '@prisma/client';
 
 @Injectable()
 export class StoresReportService {
-  constructor(
-    private readonly prisma: PrismaService,
-    private readonly cacheService: CacheService,
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
   // Method to find an existing report based on 'name'
   async findExistingReport(audioId: string, name: string) {
     return await this.prisma.store.findFirst({
@@ -97,16 +93,6 @@ export class StoresReportService {
   // ---------------------------------- Fetch Logic for Sales Report  ----------------------
 
   async fetchStoreReports(userId: string) {
-    // Check if the report already exists in the cache
-    const cacheKey = `store-report-${userId}`;
-
-    const cachedData = await this.cacheService.get(cacheKey);
-
-    if (cachedData) {
-      // If the report exists, return the cached data
-      return JSON.parse(cachedData);
-    }
-
     // Fetch audio IDs for the user
     const audios = await this.fetchUserAudios(userId);
     const audioIds = audios.map((audio) => audio.id);
@@ -115,12 +101,6 @@ export class StoresReportService {
     const storeReports = await this.fetchAudioStoreReports(audioIds);
 
     const aggregatedStoreReports = this.aggregateData(storeReports);
-
-    // Cache the fetched data
-    await this.cacheService.set(
-      cacheKey,
-      JSON.stringify(aggregatedStoreReports),
-    );
 
     return aggregatedStoreReports;
   }
