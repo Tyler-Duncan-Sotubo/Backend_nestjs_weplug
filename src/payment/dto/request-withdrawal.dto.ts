@@ -1,6 +1,6 @@
-import { IsString } from 'class-validator';
+import { IsNumber } from 'class-validator';
 
 export class RequestWithdrawalDto {
-  @IsString()
-  userId: string;
+  @IsNumber()
+  amount: number;
 }

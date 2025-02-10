@@ -1,6 +1,14 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { PaymentService } from './payment.service';
-import { IdCheckDTO, PayPalDto, OrderDto } from './dto';
+import { IdCheckDTO, PayPalDto, OrderDto, RequestWithdrawalDto } from './dto';
 @Controller('api/payment')
 export class PaymentController {
   constructor(private readonly paymentService: PaymentService) {}
@@ -18,6 +26,27 @@ export class PaymentController {
   @Get('/revenue/:userId')
   accumulateEarnings(@Param('userId') userId: string) {
     return this.paymentService.accumulateEarningsForUser(userId);
+  }
+
+  @HttpCode(HttpStatus.CREATED)
+  @Post('/request/:userId')
+  async payoutUser(
+    @Param('userId') userId: string,
+    @Body() amount: RequestWithdrawalDto,
+  ) {
+    return this.paymentService.requestPayment(userId, amount);
+  }
+
+  @HttpCode(HttpStatus.CREATED)
+  @Get('/payout/:userId')
+  async getUserPayout(@Param('userId') userId: string) {
+    return this.paymentService.getUserPayouts(userId);
+  }
+
+  @HttpCode(HttpStatus.CREATED)
+  @Get('/payouts/:userId')
+  async getUserPayouts(@Param('userId') userId: string) {
+    return this.paymentService.getUserPayouts(userId);
   }
 
   @Post('/identity')

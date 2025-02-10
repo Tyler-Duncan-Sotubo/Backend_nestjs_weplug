@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { AwsService } from 'config/aws/aws.service';
 import { PrismaService } from 'database/prisma.service';
 import { IdentityService } from 'config/mail/identity.service';
-import { IdCheckDTO, OrderDto, PayPalDto } from './dto';
+import { IdCheckDTO, OrderDto, PayPalDto, RequestWithdrawalDto } from './dto';
 import fetch from 'node-fetch';
 import { ConfigService } from '@nestjs/config';
 import { MonthlySalesService } from 'src/audio/sales-report/services';
@@ -68,6 +68,67 @@ export class PaymentService {
       year: report.year,
       earnings: report.earnings,
     }));
+  }
+
+  // Request Payment
+
+  async getUserPayouts(userId: string) {
+    const payouts = await this.prisma.payout.findMany({
+      where: {
+        userId,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+
+    if (!payouts) {
+      return null;
+    }
+
+    return payouts;
+  }
+
+  async getUserPayout(userId: string) {
+    const payouts = await this.prisma.payout.findFirst({
+      where: {
+        userId,
+        status: 'pending',
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+      take: 1,
+    });
+
+    if (!payouts) {
+      return null;
+    }
+
+    return payouts;
+  }
+
+  async requestPayment(userId: string, dto: RequestWithdrawalDto) {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    const payout = await this.prisma.payout.create({
+      data: {
+        amount: dto.amount,
+        userId,
+      },
+    });
+
+    this.notificationService.sendIdentityVerificationEmail();
+
+    return payout;
   }
 
   // Identity
